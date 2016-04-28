@@ -1,13 +1,9 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace WebService
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("PlacementList")]
-    public partial class PlacementList
+    public class PlacementList
     {
         public int Id { get; set; }
 

@@ -1,20 +1,19 @@
+using System.Data.Entity;
+
 namespace WebService
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-
-    public partial class StatueContext : DbContext
+    public class StatueContext : DbContext
     {
         public StatueContext()
             : base("name=StatueContext")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
-        public virtual DbSet<Culturalvalue> Culturalvalues { get; set; }
+        public virtual DbSet<CulturalValue> CulturalValues { get; set; }
         public virtual DbSet<CulturalValueList> CulturalValueLists { get; set; }
         public virtual DbSet<Description> Descriptions { get; set; }
+        // ReSharper disable once InconsistentNaming
         public virtual DbSet<GPSLocation> GPSLocations { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<ImageList> ImageLists { get; set; }
@@ -29,13 +28,13 @@ namespace WebService
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Culturalvalue>()
+            modelBuilder.Entity<CulturalValue>()
                 .Property(e => e.CulturalValue1)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Culturalvalue>()
+            modelBuilder.Entity<CulturalValue>()
                 .HasMany(e => e.CulturalValueLists)
-                .WithRequired(e => e.Culturalvalue)
+                .WithRequired(e => e.CulturalValue)
                 .HasForeignKey(e => e.FK_CulturalValue)
                 .WillCascadeOnDelete(false);
 
