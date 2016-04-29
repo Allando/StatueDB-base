@@ -129,6 +129,13 @@
     <None Include="StatueApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\kklogo.png" />
+    <Content Include="Assets\logo.png" />
+    <Content Include="Assets\Statue1.png" />
+    <Content Include="Assets\Statue2.png" />
+    <Content Include="Assets\Statue3.png" />
+    <Content Include="Assets\Statue4.png" />
+    <Content Include="Assets\_DSC0396.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
