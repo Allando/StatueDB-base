@@ -9,7 +9,7 @@
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
-            <Image x:Name="image" Width="100" Source="logo.png" Margin="0,0,0,-0.2"/>
+            <Image x:Name="image" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
             <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="atabase_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="atabase" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
@@ -33,7 +33,7 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Width="844" Height="336" VerticalAlignment="Top" Orientation="Horizontal" Margin="90,254,90,0">
             <StackPanel Padding="0" Width="250" Margin="15,0">
-                <Image x:Name="image1" Height="150" Source="Assets/Statue1.png"/>                
+                <Image x:Name="image1" Height="150" Source="ms-appx:///Assets/Statue1.png"/>                
                 <StackPanel Margin="0" Width="200">
                     <TextBlock x:Name="textBlock_Navn" TextWrapping="Wrap" Text="Statue bla bla" Height="35" FontSize="18.667" Margin="0,0,0,15" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="textBlock_Adresse" TextWrapping="Wrap" Text="Markussensvej 19, 2100 Valby" Height="52" FontSize="18.667" Margin="0,0,0,15" HorizontalAlignment="Center"/>
@@ -42,7 +42,7 @@
                 
             </StackPanel>
             <StackPanel Padding="0" Width="250" Margin="15,0">
-                <Image x:Name="image2" Height="150" Source="Assets/Statue2.png"/>
+                <Image x:Name="image2" Height="150" Source="ms-appx:///Assets/Statue2.png"/>
                 <StackPanel Margin="0" Width="200">
                     <TextBlock x:Name="textBlock_Navn2" TextWrapping="Wrap" Text="Statue bla bla" Height="35" FontSize="18.667" Margin="0,0,0,15" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="textBlock_Adresse2" TextWrapping="Wrap" Text="Markussensvej 19, 2100 Valby" Height="52" FontSize="18.667" Margin="0,0,0,15" HorizontalAlignment="Center"/>
@@ -50,7 +50,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Width="250" Margin="15,0">
-                <Image x:Name="image3" Height="150" Source="Assets/Statue3.png"/>
+                <Image x:Name="image3" Height="150" Source="ms-appx:///Assets/Statue3.png"/>
                 <StackPanel Margin="0" Width="200">
                     <TextBlock x:Name="textBlock_Navn3" TextWrapping="Wrap" Text="Statue bla bla" Height="35" FontSize="18.667" Margin="0,0,0,15" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="textBlock_Adresse3" TextWrapping="Wrap" Text="Markussensvej 19, 2100 Valby" Height="52" FontSize="18.667" Margin="0,0,0,15" HorizontalAlignment="Center"/>
@@ -59,7 +59,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">
-            <Image x:Name="KKlogoimage" Width="155" Source="Assets/kklogo.png"/>
+            <Image x:Name="KKlogoimage" Width="155" Source="ms-appx:///Assets/kklogo.png"/>
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="- Monument ansvarlige gruppe v. Eva Bøje Nielsen"  FontSize="10" Margin="4,4,0,0" FontFamily="Verdana" VerticalAlignment="Center"/>
             <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,2" Background="#FFB4A390" Width="150" Margin="321,5,0,5" CornerRadius="25">
                 <Button x:Name="button4" Content="Admin" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="81" FontSize="16" FontFamily="Verdana" Background="#00000000"/>

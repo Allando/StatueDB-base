@@ -14,13 +14,13 @@
                     <Core:NavigateToPageAction TargetPage="SkulpturDatabase.MainPage"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
-            <Image x:Name="image" Width="100" Source="logo.png" Margin="0,0,0,-0.2"/>
+            <Image x:Name="image" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
             <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="atabase_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="atabase" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
         </StackPanel>
         <Border BorderBrush="#FF786B5E" BorderThickness="2" Background="White" Width="150" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="86,168,0,0">
-            <Image x:Name="image4" Height="150" Source="Assets/Statue4.png"/>
+            <Image x:Name="image4" Height="150" Source="ms-appx:///Assets/Statue4.png"/>
         </Border>
         <StackPanel HorizontalAlignment="Left" Height="404" Margin="300,154,0,0" VerticalAlignment="Top" Width="702">
             <StackPanel Height="75" Margin="0" Orientation="Horizontal">
@@ -72,7 +72,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">
-            <Image x:Name="KKlogoimage" Width="155" Source="Assets/kklogo.png"/>
+            <Image x:Name="KKlogoimage" Width="155" Source="ms-appx:///Assets/kklogo.png"/>
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="- Monument ansvarlige gruppe v. Eva Bøje Nielsen"  FontSize="10" Margin="4,4,0,0" FontFamily="Verdana" VerticalAlignment="Center"/>
             <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,2" Background="#FFB4A390" Width="150" Margin="321,5,0,5" CornerRadius="25" HorizontalAlignment="Right">
                 <Button x:Name="button4" Content="Admin" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="81" FontSize="16" FontFamily="Verdana" Background="#00000000"/>
