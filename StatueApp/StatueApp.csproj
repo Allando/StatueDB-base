@@ -96,8 +96,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\StatueSingleton.cs" />
     <Compile Include="Facade\facadeStatue.cs" />
     <Compile Include="Handler\handlerStatue.cs" />
+    <Compile Include="ViewModel\ViewmodelOpretStatue.cs" />
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />
     <Compile Include="View\MainPage.xaml.cs" />
