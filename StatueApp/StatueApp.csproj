@@ -101,9 +101,6 @@
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />
     <Compile Include="View\MainPage.xaml.cs" />
-    <Compile Include="View\MainPageOld.xaml.cs">
-      <DependentUpon>MainPageOld.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\modelCulturalValue.cs" />
     <Compile Include="Model\modelCulturalValueList.cs" />
     <Compile Include="Model\modelDescription.cs" />
@@ -159,10 +156,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\MainPageOld.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
