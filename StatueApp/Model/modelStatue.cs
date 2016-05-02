@@ -2,11 +2,11 @@
 
 namespace StatueApp.Model
 {
-    class modelStatue
+    public class modelStatue
     {
         public int Id { get; set; }
 
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         
         public string Adress { get; set; }

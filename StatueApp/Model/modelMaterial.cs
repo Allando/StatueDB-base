@@ -1,6 +1,6 @@
 ﻿namespace StatueApp.Model
 {
-    class modelMaterial
+    public class modelMaterial
     {
         public int Id { get; set; }
 

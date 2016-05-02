@@ -1,6 +1,6 @@
 ﻿namespace StatueApp.Model
 {
-    class modelImageList
+    public class modelImageList
     {
         public int Id { get; set; }
         public int FK_Statue { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace StatueApp.Model
 {
-    class modelCulturalValueList
+    public class modelCulturalValueList
     {
         public int Id { get; set; }
         public int FK_Statue { get; set; }

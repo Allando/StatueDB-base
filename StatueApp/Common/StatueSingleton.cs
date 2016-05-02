@@ -7,7 +7,7 @@ using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    class StatueSingleton
+    public class StatueSingleton
     {
 
         public modelCulturalValue CulturalValue { get; set; }

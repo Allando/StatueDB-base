@@ -1,6 +1,6 @@
 ﻿namespace StatueApp.Model
 {
-    class modelGPSLocation
+    public class modelGPSLocation
     {
         public int Id { get; set; }
 
