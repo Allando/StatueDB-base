@@ -15,7 +15,7 @@ namespace StatueApp.Handler
 
         /// <summary>
         /// Denne Metode henter alle de Objecter som vores DropDownMeny i OpretStatue Skal Bruge.
-        /// Dette gør den hved at kalde andre mindre metoder
+        /// Dette gør den bland andet hved at kalde andre mindre metoder
         /// </summary>
         public static void Get_Info()
         {

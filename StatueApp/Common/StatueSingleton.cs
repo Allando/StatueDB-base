@@ -13,7 +13,7 @@ namespace StatueApp.Common
 {
     public class StatueSingleton : INotifyPropertyChanged
     {
-#region Properties
+        #region Properties
         // de her properties er dem som bliver bindet til "Text" i textboxe og "Selectet Item" I dropdown Menuer
         public modelCulturalValue CulturalValue { get; set; }
         public modelDescription Description { get; set; }
@@ -24,9 +24,9 @@ namespace StatueApp.Common
         public modelStatue Statue { get; set; }
         public modelStatueType StatueType { get; set; }
         public modelZipcode Zipcode { get; set; }
-#endregion
+        #endregion
 
-#region Collections
+        #region Collections
         // de her collections bliver brugt til at fylde dropdown Menyerne"
         public ObservableCollection<modelMaterial> All_Materials { get; }
         public ObservableCollection<string> Materialtypes { get; }
@@ -58,7 +58,7 @@ namespace StatueApp.Common
             StatueTypes = new ObservableCollection<modelStatueType>();
             Placements = new ObservableCollection<modelPlacement>();
         }
-#region Property Changed
+        #region Property Changed
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -66,6 +66,6 @@ namespace StatueApp.Common
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-#endregion
+        #endregion
     }
 }
