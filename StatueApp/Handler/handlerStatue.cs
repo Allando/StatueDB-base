@@ -6,22 +6,38 @@ namespace StatueApp.Handler
     class handlerStatue
     {
 
-        private StatueSingleton Singleton { get; }
 
+        /// <summary>
+        /// Denne Metode henter alle de Objecter som vores DropDownMeny i OpretStatue Skal Bruge.
+        /// Dette gør den hved at kalde andre mindre metoder
+        /// </summary>
         public static void Get_Info()
         {
-          
-           
-            
+
+            StatueSingleton Singleton = StatueSingleton.Instance;
+            GetMaterialtypes();
         }
 
-
-        public handlerStatue()
+        /// <summary>
+        /// Denne Metode Vil Tilføje Alle Materialetyperne Til Listen Materialtypes i Singletonen;
+        /// </summary>
+        public static void GetMaterialtypes()
         {
-            Singleton = StatueSingleton.Instance;
+            StatueSingleton Singleton = StatueSingleton.Instance;
+            foreach (var Material in Singleton.All_Materials)
+            {
+                if (!Singleton.Materialtypes.Contains(Material.Types))
+                {
+                    Singleton.Materialtypes.Add(Material.Types);
+                }
+
+            }
         }
 
-       
+
+
+
+
 
 
     }

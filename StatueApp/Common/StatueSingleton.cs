@@ -21,11 +21,11 @@ namespace StatueApp.Common
         public int StatueType { get; set; }
         public modelZipcode Zipcode { get; set; }
 
-        public ObservableCollection<modelMaterial> All_Materials; 
-        public ObservableCollection<string> Materialtypes;
-        public ObservableCollection<modelMaterial> Maeterial_By_Type; 
-   
-        
+        public ObservableCollection<modelMaterial> All_Materials { get; } 
+        public ObservableCollection<string> Materialtypes { get; }
+        public ObservableCollection<modelMaterial> Maeterial_By_Type { get; }
+
+
 
         #region Singleton
         private static StatueSingleton _instance;

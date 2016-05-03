@@ -30,12 +30,12 @@
         <StackPanel HorizontalAlignment="Left" Height="404" Margin="300,154,0,0" VerticalAlignment="Top" Width="702">
             <StackPanel Height="75" Margin="0" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock12" TextWrapping="Wrap" Text="Materialetype" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedIndex="{Binding Singleton.Material}" IsDropDownOpen="True" ItemsSource="{Binding Singleton.Material.Types}"/>
+                <ComboBox x:Name="comboBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedIndex="{Binding Singleton.Material}" IsDropDownOpen="True" ItemsSource="{Binding Singleton.Materialtypes}"/>
 
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock32" TextWrapping="Wrap" Text="Materiale" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0"/>
+                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" ItemsSource="{Binding Singleton.Maeterial_By_Type}"/>
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
