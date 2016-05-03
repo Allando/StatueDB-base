@@ -12,20 +12,16 @@ namespace StatueApp.ViewModel
 {
     class ViewmodelOpretStatue :INotifyPropertyChanged
     {
-       public StatueSingleton Singleton { get; }
+        public StatueSingleton Singleton { get; }
         public string selectedtype;
 
-
         private RelayCommand MaterialetypeCommand;
-
-
 
         public ViewmodelOpretStatue()
         {
             MaterialetypeCommand = new RelayCommand(MaterialByTypeSortment);
             Singleton = StatueSingleton.Instance;
         }
-
         /// <summary>
         /// Denne Metode Laver En Observable Collection Kun Med De Materiels Som Er Af Den Type Som Bruger Har Valgt
         /// </summary>
@@ -40,14 +36,14 @@ namespace StatueApp.ViewModel
                 
             }
         }
-#region Propety Changed
-        public event PropertyChangedEventHandler PropertyChanged;
+        #region Propety Changed
+                public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-#endregion
+                [NotifyPropertyChangedInvocator]
+                protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+                {
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                }
+        #endregion
     }
 }

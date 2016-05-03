@@ -11,19 +11,15 @@ namespace StatueApp.Handler
 {
     class handlerStatue
     {
-
-
         /// <summary>
-        /// Denne Metode henter alle de Objecter som vores DropDownMeny i OpretStatue Skal Bruge.
-        /// Dette gør den bland andet hved at kalde andre mindre metoder
+        /// Denne Metode henter alle de Objecter som vores DropDownMenu i OpretStatue Skal Bruge.
+        /// Dette gør den bland andet ved at kalde andre mindre metoder
         /// </summary>
         public static void Get_Info()
         {
-
             StatueSingleton Singleton = StatueSingleton.Instance;
             GetMaterialtypes();
         }
-
         /// <summary>
         /// Denne Metode Vil Tilføje Alle Materialetyperne Til Listen Materialtypes i Singletonen;
         /// </summary>
@@ -36,10 +32,8 @@ namespace StatueApp.Handler
                 {
                     Singleton.Materialtypes.Add(Material.Types);
                 }
-
             }
         }
-
         /// <summary>
         /// Denne Metode Vil Oprette En Statue Og Gemme Den I Databasen
         /// </summary>
@@ -66,22 +60,9 @@ namespace StatueApp.Handler
                 modelImageList.FK_Image = Singleton.Image.Id;
             }
 
-
             //Temp Er bare så den kan builde mens jeg laver metoden
             string temp = "Hej";
             return temp;
-
-
         }
-
-
-        
-
-
-
-
-
-
-
     }
 }

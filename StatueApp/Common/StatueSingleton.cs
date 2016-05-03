@@ -27,7 +27,7 @@ namespace StatueApp.Common
         #endregion
 
         #region Collections
-        // de her collections bliver brugt til at fylde dropdown Menyerne"
+        // de her collections bliver brugt til at fylde dropdown Menuerne"
         public ObservableCollection<modelMaterial> All_Materials { get; }
         public ObservableCollection<string> Materialtypes { get; }
         public ObservableCollection<modelMaterial> Maeterial_By_Type { get; }
