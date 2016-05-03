@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Newtonsoft.Json;
+using StatueApp.Interface;
 
 namespace StatueApp.SampleCode
 {
@@ -12,20 +13,22 @@ namespace StatueApp.SampleCode
     /// 
     /// WORK IN PROGRESS
     /// 
-    /// ////////////////
-    /// 
-    /// Do NOT Implement
-    /// 
     /// </summary>
 
-    internal class Facade
+    public class Facade
     {
-        private const string ServerUrl = "http://localhost:55000/";
-//        private static IEnumerable<object> ObjEnum { get; set; }
+        private const string ServerUrl = "http://localhost:55000";  // HTTP URL of Server
+        private const string ApiBaseUrl = "/api/";                  // Base Directory of the Api
 
-        public static async Task<IEnumerable<object>> GetItemsAsync(object obj)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns>Enumerable List of T</returns>
+        public static async Task<IEnumerable<T>> GetListAsync<T>(T obj) where T : IWebUri 
         {
-            IEnumerable<object> objEnum = null;
+            IEnumerable<T> listOfObjects = null;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -34,12 +37,10 @@ namespace StatueApp.SampleCode
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    string asyncString = String.Format("api/{0}", obj.GetType().ToString());
-                    var response = await client.GetAsync(asyncString);
+                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
                     if (response.IsSuccessStatusCode)
                     {
-                        var result = response.Content.ReadAsStringAsync().Result;
-                        objEnum = JsonConvert.DeserializeObject<IEnumerable<object>>(result);
+                        listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
                     }
                 }
                 catch (Exception ex)
@@ -47,13 +48,19 @@ namespace StatueApp.SampleCode
                     var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
                     await msgDialog.ShowAsync();
                 }
-                return objEnum;
+                return listOfObjects;
             }
         }
 
-        public static async Task<object> GetItemAsync(object obj, int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static async Task<T> GetAsync<T>(int id) where T : IWebUri, new()
         {
-            object objSingle = null;
+            T result = new T();
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -62,16 +69,10 @@ namespace StatueApp.SampleCode
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    string asyncString = String.Format("api/{0}/{1}", obj.GetType().ToString(), id.ToString());
-                    var response = await client.GetAsync(asyncString);
+                    var response = await client.GetAsync(ApiBaseUrl + result.ResourceUri + "/" + id);
                     if (response.IsSuccessStatusCode)
                     {
-                        var result = response.Content.ReadAsStringAsync().Result;
-                        var listOfItems = JsonConvert.DeserializeObject<List<object>>(result);
-                        foreach (var item in listOfItems)
-                        {
-                            objSingle = item.Id == id ? item : null;
-                        }
+                        result = response.Content.ReadAsAsync<T>().Result;
                     }
                 }
                 catch (Exception ex)
@@ -79,90 +80,87 @@ namespace StatueApp.SampleCode
                     var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
                     await msgDialog.ShowAsync();
                 }
-                return objSingle;
+                return result;
             }
         }
 
-        //public static async Task<string> PostGuestAsync(object obj)
-        //{
-        //    object objSinle = obj;
-        //    var handler = new HttpClientHandler {UseDefaultCredentials = true};
-        //    using (var client = new HttpClient(handler))
-        //    {
-        //        client.BaseAddress = new Uri(ServerUrl);
-        //        client.DefaultRequestHeaders.Clear();
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        try
-        //        {
-        //            string asyncString = String.Format("api/{0}/{1}", objSingle.GetType().ToString());
-        //            var response = await client.PostAsJsonAsync(asyncString, objSingle);
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                return "Guest Created";
-        //            }
-        //            return "Error Creating Guest: " + response.StatusCode;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-        //            await msgDialog.ShowAsync();
-        //            throw;
-        //        }
-        //    }
-        //}
+        public static async Task<string> PostAsync<T>(T obj) where T : IWebUri
+        {
+            T objSingle = obj;
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, objSingle);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return obj.ResourceUri + " Created";
+                    }
+                    return "Error Creating "+ obj.ResourceUri + ": " + response.StatusCode;
+                }
+                catch (Exception ex)
+                {
+                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
+                    await msgDialog.ShowAsync();
+                    throw;
+                }
+            }
+        }
 
-        //public static async Task<string> PutGuestAsync(Guest guest, int id)
-        //{
-        //    Guest = guest;
-        //    var handler = new HttpClientHandler {UseDefaultCredentials = true};
-        //    using (var client = new HttpClient(handler))
-        //    {
-        //        client.BaseAddress = new Uri(ServerUrl);
-        //        client.DefaultRequestHeaders.Clear();
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        try
-        //        {
-        //            var response = await client.PutAsJsonAsync("api/guests/" + id, Guest);
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                return "Guest Updated";
-        //            }
-        //            return "Error Updating Guest: " + response.StatusCode;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-        //            await msgDialog.ShowAsync();
-        //            throw;
-        //        }
-        //    }
-        //}
+        public static async Task<string> PutAsync<T>(T obj, int id) where T : IWebUri
+        {
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = await client.PutAsJsonAsync(ApiBaseUrl + obj.ResourceUri + "/" + id, obj);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return obj.ResourceUri + " Updated";
+                    }
+                    return "Error Updating " + obj.ResourceUri + ": " + response.StatusCode;
+                }
+                catch (Exception ex)
+                {
+                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
+                    await msgDialog.ShowAsync();
+                    throw;
+                }
+            }
+        }
 
-        //public static async Task<string> DeleteGuestAsync(Guest guest)
-        //{
-        //    Guest = guest;
-        //    var handler = new HttpClientHandler {UseDefaultCredentials = true};
-        //    using (var client = new HttpClient(handler))
-        //    {
-        //        client.BaseAddress = new Uri(ServerUrl);
-        //        client.DefaultRequestHeaders.Clear();
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        try
-        //        {
-        //            var response = await client.DeleteAsync("api/guests/" + Guest.Guest_No);
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                return "Guest Deleted";
-        //            }
-        //            return "Error Deleting Guest: " + response.StatusCode;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-        //            await msgDialog.ShowAsync();
-        //            throw;
-        //        }
-        //    }
-        //}
+        public static async Task<string> DeleteAsync<T>(T obj, int id) where T : IWebUri
+        {
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/" + id);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return obj.ResourceUri + " Deleted";
+                    }
+                    return "Error Deleting " + obj.ResourceUri + ": " + response.StatusCode;
+                }
+                catch (Exception ex)
+                {
+                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
+                    await msgDialog.ShowAsync();
+                    throw;
+                }
+            }
+        }
     }
 }

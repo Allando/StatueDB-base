@@ -98,6 +98,7 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Facade\facadeStatue.cs" />
     <Compile Include="Handler\handlerStatue.cs" />
+    <Compile Include="Interface\IWebUri.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SampleCode\SampleFacade.cs" />
     <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
