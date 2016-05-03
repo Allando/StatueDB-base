@@ -100,7 +100,6 @@
     <Compile Include="Handler\handlerStatue.cs" />
     <Compile Include="Interface\IWebUri.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="SampleCode\SampleFacade.cs" />
     <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
     <Compile Include="SampleCode\SampleSingleton.cs" />
     <Compile Include="View\MainPage.xaml.cs">

@@ -1,24 +1,24 @@
 ﻿using System;
+using StatueApp.Interface;
 
 namespace StatueApp.Model
 {
-    class modelStatue
+    public class modelStatue : IWebUri
     {
         public int Id { get; set; }
-
-        public int Name { get; set; }
-
-        
-        public string Adress { get; set; }
-
-     
+        public string Name { get; set; }
+        public string Address { get; set; }
         public string Zipcode { get; set; }
-
-      
         public DateTime Created { get; set; }
-
         public DateTime Updated { get; set; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
 
-    
+        public modelStatue()
+        {
+            ResourceUri = "Statue";
+            VerboseName = "Statue";
+        }
+
     }
 }
