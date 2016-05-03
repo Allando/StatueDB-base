@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,16 @@ namespace StatueApp.Common
         public modelGPSLocation GpsLocation { get; set; }
         public modelImage Image { get; set; }
         public modelMaterial Material { get; set; }
-        public modelPlacement Placement { get; set; }
+        public int Placement { get; set; }
         public modelStatue Statue { get; set; }
-        public modelStatueType StatueType { get; set; }
+        public int StatueType { get; set; }
         public modelZipcode Zipcode { get; set; }
+
+        public ObservableCollection<modelMaterial> All_Materials; 
+        public ObservableCollection<string> Materialtypes;
+        public ObservableCollection<modelMaterial> Maeterial_By_Type; 
    
+        
 
         #region Singleton
         private static StatueSingleton _instance;
@@ -38,7 +44,9 @@ namespace StatueApp.Common
 #endregion
         private StatueSingleton()
         {
-            
+            All_Materials = new ObservableCollection<modelMaterial>();
+            Maeterial_By_Type = new ObservableCollection<modelMaterial>();
+            Materialtypes = new ObservableCollection<string>();
         }
     }
 }

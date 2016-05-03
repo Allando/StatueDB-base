@@ -11,9 +11,22 @@ namespace StatueApp.ViewModel
     {
        public StatueSingleton Singleton { get; }
 
+
+
+        private RelayCommand MaterialetypeCommand;
+
+
+
         public ViewmodelOpretStatue()
         {
+            MaterialetypeCommand = new RelayCommand(MaterialByTypeSortment);
             Singleton = StatueSingleton.Instance;
+        }
+
+
+        public void MaterialByTypeSortment()
+        {
+          
         }
     }
 }
