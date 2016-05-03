@@ -35,15 +35,15 @@
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock32" TextWrapping="Wrap" Text="Materiale" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" ItemsSource="{Binding Singleton.Maeterial_By_Type}"/>
+                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" ItemsSource="{Binding Singleton.Maeterial_By_Type}" SelectedItem="{Binding Singleton.Material}"/>
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox22" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedIndex="{Binding Singleton.Placement}"/>
+                <ComboBox x:Name="comboBox22" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.Placement}"/>
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock34" TextWrapping="Wrap" Text="Type" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="comboBox23" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedIndex="{Binding Singleton.StatueType}"/>
+                <ComboBox x:Name="comboBox23" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.StatueType}"/>
             </StackPanel>
             <StackPanel Height="100" Orientation="Horizontal" Margin="0">
                 <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,0,0,20" Height="60" VerticalAlignment="Bottom">
