@@ -77,9 +77,7 @@ namespace StatueApp.Handler
 
         
 
-
-
-
+        
 
 
 
