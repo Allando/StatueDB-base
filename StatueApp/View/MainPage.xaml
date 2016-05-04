@@ -19,6 +19,7 @@
                 <Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="PointerPressed">
                         <Core:NavigateToPageAction TargetPage="CreateStatue1"/>
+                        <Core:NavigateToPageAction TargetPage="StatueApp.View.CreateStatue1"/>
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>
                 <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Opret Statue" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,1.6,0,-1.8" FontSize="26.667" Foreground="#FF0E143F" FontFamily="Verdana" />

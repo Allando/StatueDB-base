@@ -59,6 +59,7 @@
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="PointerPressed">
                             <Core:NavigateToPageAction TargetPage="SkulpturDatabase.StatueIsCreated"/>
+                            <Core:NavigateToPageAction TargetPage="StatueApp.View.StatueIsCreated"/>
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                     <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Opret" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" FontFamily="Verdana" FontSize="16" Padding="0" Foreground="#FF0E143F"/>
