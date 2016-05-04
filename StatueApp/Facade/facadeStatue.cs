@@ -12,8 +12,6 @@ namespace StatueApp.Facade
     /// 
     /// WORK IN PROGRESS
     /// 
-    /// TODO: Method GetByStatueID 
-    /// 
     /// </summary>
 
     public class facadeStatue
@@ -57,9 +55,10 @@ namespace StatueApp.Facade
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static async Task<T> GetAsync<T>(int id) where T : IWebUri, new()
+        public static async Task<T> GetAsync<T>(T obj, int id) where T : IWebUri, new()
         {
             T result = new T();
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
@@ -85,7 +84,14 @@ namespace StatueApp.Facade
             }
         }
 
-        public static async Task<T> GetByStatueIdAsync<T>(int statueId) where T : IWebUri, new()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="statueId"></param>
+        /// <returns></returns>
+        public static async Task<T> GetByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, new()
         {
             T result = new T();
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
@@ -131,9 +137,9 @@ namespace StatueApp.Facade
                     var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, objSingle);
                     if (response.IsSuccessStatusCode)
                     {
-                        return obj.ResourceUri + " Created";
+                        return obj.VerboseName + " Created";
                     }
-                    return "Error Creating "+ obj.ResourceUri + ": " + response.StatusCode;
+                    return "Error Creating "+ obj.VerboseName + ": " + response.StatusCode;
                 }
                 catch (Exception ex)
                 {
@@ -164,9 +170,9 @@ namespace StatueApp.Facade
                     var response = await client.PutAsJsonAsync(ApiBaseUrl + obj.ResourceUri + "/" + id, obj);
                     if (response.IsSuccessStatusCode)
                     {
-                        return obj.ResourceUri + " Updated";
+                        return obj.VerboseName + " Updated";
                     }
-                    return "Error Updating " + obj.ResourceUri + ": " + response.StatusCode;
+                    return "Error Updating " + obj.VerboseName + ": " + response.StatusCode;
                 }
                 catch (Exception ex)
                 {
@@ -197,9 +203,9 @@ namespace StatueApp.Facade
                     var response = await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/" + id);
                     if (response.IsSuccessStatusCode)
                     {
-                        return obj.ResourceUri + " Deleted";
+                        return obj.VerboseName + " Deleted";
                     }
-                    return "Error Deleting " + obj.ResourceUri + ": " + response.StatusCode;
+                    return "Error Deleting " + obj.VerboseName + ": " + response.StatusCode;
                 }
                 catch (Exception ex)
                 {
