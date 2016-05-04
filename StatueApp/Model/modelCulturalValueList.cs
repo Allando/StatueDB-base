@@ -15,5 +15,13 @@ namespace StatueApp.Model
             ResourceUri = "CulturalValueList";
             VerboseName = "List of Cultural Values";
         }
+
+        public modelCulturalValueList(int id, int fkStatue, int fkCulturalValue) : this() 
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Id = id;
+            FK_Statue = fkStatue;
+            FK_CulturalValue = fkCulturalValue;
+        }
     }
 }

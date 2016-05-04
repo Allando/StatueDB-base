@@ -2,7 +2,7 @@
 
 namespace StatueApp.Model
 {
-    public class modelGPSLocation:IWebUri
+    public class modelGPSLocation : IWebUri
     {
         public int Id { get; set; }
         public string Coordinates { get; set; }
@@ -16,5 +16,12 @@ namespace StatueApp.Model
             VerboseName = "GPS Location";
         }
 
+        public modelGPSLocation(int id, string coordinates, int fkStatue):this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Id = id;
+            Coordinates = coordinates;
+            FK_Statue = fkStatue;
+        }
     }
 }

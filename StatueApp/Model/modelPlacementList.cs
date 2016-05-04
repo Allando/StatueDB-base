@@ -15,5 +15,13 @@ namespace StatueApp.Model
             ResourceUri = "PlacementList";
             VerboseName = "List of Placements";
         }
+
+        public modelPlacementList(int id, int fkStatue, int fkPlacement):this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Id = id;
+            FK_Statue = fkStatue;
+            FK_Placement = fkPlacement;
+        }
     }
 }

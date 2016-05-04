@@ -14,5 +14,12 @@ namespace StatueApp.Model
             ResourceUri = "Placement";
             VerboseName = "Placement";
         }
+
+        public modelPlacement(int id, string placement1) : this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Id = id;
+            Placement1 = placement1;
+        }
     }
 }

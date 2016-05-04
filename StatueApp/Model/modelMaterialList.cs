@@ -15,5 +15,13 @@ namespace StatueApp.Model
             ResourceUri = "MaterialList";
             VerboseName = "List of Materials";
         }
+
+        public modelMaterialList(int id, int fkStatue, int fkMaterial) : this()
+        {
+            // Constructs Object with parameters AND the content of the Default Constructor
+            Id = id;
+            FK_Statue = fkStatue;
+            FK_Material = fkMaterial;
+        }
     }
 }
