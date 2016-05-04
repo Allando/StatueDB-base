@@ -11,7 +11,7 @@ using StatueApp.Common;
 namespace StatueApp.ViewModel
 {
     class ViewmodelOpretStatue :INotifyPropertyChanged
-    {
+    { 
         public StatueSingleton Singleton { get; }
         public string selectedtype;
 
