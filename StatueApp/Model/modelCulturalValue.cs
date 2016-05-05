@@ -15,6 +15,12 @@ namespace StatueApp.Model
             VerboseName = "Cultural Value";
         }
 
+        public modelCulturalValue(string culturalValue1) : this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            CulturalValue1 = culturalValue1;
+        }
+
         public modelCulturalValue(int id, string culturalValue1) : this()
         // Constructs Object with parameters AND the content of the Default Constructor
         {

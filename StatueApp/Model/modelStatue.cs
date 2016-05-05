@@ -20,6 +20,16 @@ namespace StatueApp.Model
             VerboseName = "Statue";
         }
 
+        public modelStatue(string name, string address, string zipcode, DateTime created, DateTime updated) : this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Name = name;
+            Address = address;
+            Zipcode = zipcode;
+            Created = created;
+            Updated = updated;
+        }
+
         public modelStatue(int id, string name, string address, string zipcode, DateTime created, DateTime updated) :this()
         // Constructs Object with parameters AND the content of the Default Constructor
         {

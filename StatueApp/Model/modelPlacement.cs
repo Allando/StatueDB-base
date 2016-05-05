@@ -15,6 +15,12 @@ namespace StatueApp.Model
             VerboseName = "Placement";
         }
 
+        public modelPlacement(string placement1) : this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Placement1 = placement1;
+        }
+
         public modelPlacement(int id, string placement1) : this()
         // Constructs Object with parameters AND the content of the Default Constructor
         {

@@ -2,18 +2,27 @@
 
 namespace StatueApp.Model
 {
-    public class modelMaterialList:IWebUri
+    public class modelMaterialList:IWebUri, IGetByStatueId
     {
         public int Id { get; set; }
         public int FK_Statue { get; set; }
         public int FK_Material { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
+        public bool CanGetByStatueId { get; }
 
         public modelMaterialList()
         {
             ResourceUri = "MaterialList";
             VerboseName = "List of Materials";
+            CanGetByStatueId = true;
+        }
+
+        public modelMaterialList(int fkStatue, int fkMaterial) : this()
+        {
+            // Constructs Object with parameters AND the content of the Default Constructor
+            FK_Statue = fkStatue;
+            FK_Material = fkMaterial;
         }
 
         public modelMaterialList(int id, int fkStatue, int fkMaterial) : this()
@@ -23,5 +32,6 @@ namespace StatueApp.Model
             FK_Statue = fkStatue;
             FK_Material = fkMaterial;
         }
+
     }
 }

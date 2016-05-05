@@ -15,6 +15,12 @@ namespace StatueApp.Model
             VerboseName = "Image";
         }
 
+        public modelImage(string image1) : this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Image1 = image1;
+        }
+
         public modelImage(int id, string image1) : this()
         // Constructs Object with parameters AND the content of the Default Constructor
         {

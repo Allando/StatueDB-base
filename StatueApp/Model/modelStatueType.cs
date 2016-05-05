@@ -15,6 +15,12 @@ namespace StatueApp.Model
             VerboseName = "Type of Statue";
         }
 
+        public modelStatueType(string statueType) : this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            StatueType_ = statueType;
+        }
+
         public modelStatueType(int id, string statueType) : this()
         // Constructs Object with parameters AND the content of the Default Constructor
         {

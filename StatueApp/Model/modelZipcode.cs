@@ -16,6 +16,12 @@ namespace StatueApp.Model
             VerboseName = "Zipcode";
         }
 
+        public modelZipcode(string zipcode) : this()
+        // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Zipcode = zipcode;
+        }
+
         public modelZipcode(string zipcode, string city1) : this()
         // Constructs Object with parameters AND the content of the Default Constructor
         {
