@@ -91,7 +91,7 @@ namespace StatueApp.Facade
         /// <param name="obj"></param>
         /// <param name="statueId"></param>
         /// <returns></returns>
-        public static async Task<T> GetByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, new()
+        public static async Task<T> GetByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, IGetByStatueId, new()
         {
             T result = new T();
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
@@ -125,7 +125,6 @@ namespace StatueApp.Facade
         /// <returns></returns>
         public static async Task<string> PostAsync<T>(T obj) where T : IWebUri
         {
-            T objSingle = obj;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -134,7 +133,7 @@ namespace StatueApp.Facade
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, objSingle);
+                    var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, obj);
                     if (response.IsSuccessStatusCode)
                     {
                         return obj.VerboseName + " Created";
