@@ -8,12 +8,6 @@ using StatueApp.Interface;
 
 namespace StatueApp.Facade
 {
-    /// <summary>
-    /// 
-    /// WORK IN PROGRESS
-    /// 
-    /// </summary>
-
     public class facadeStatue
     {
         private const string ServerUrl = "http://localhost:55000";  // HTTP URL of Server
@@ -91,9 +85,9 @@ namespace StatueApp.Facade
         /// <param name="obj"></param>
         /// <param name="statueId"></param>
         /// <returns></returns>
-        public static async Task<T> GetByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, IGetByStatueId, new()
+        public static async Task<IEnumerable<T>> GetByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, IGetByStatueId, new()
         {
-            T result = new T();
+            IEnumerable<T> listOfObjects = null;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -102,10 +96,10 @@ namespace StatueApp.Facade
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await client.GetAsync(ApiBaseUrl + result.ResourceUri + "/ByStatueId/" + statueId);
+                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
                     if (response.IsSuccessStatusCode)
                     {
-                        result = response.Content.ReadAsAsync<T>().Result;
+                        listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
                     }
                 }
                 catch (Exception ex)
@@ -113,7 +107,7 @@ namespace StatueApp.Facade
                     var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
                     await msgDialog.ShowAsync();
                 }
-                return result;
+                return listOfObjects;
             }
         }
 

@@ -5,23 +5,14 @@ namespace StatueApp.Model
 {
     public class modelStatue : IWebUri
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Zipcode { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime Updated { get; set; }
-        public string ResourceUri { get; }
-        public string VerboseName { get; }
-
         public modelStatue()
         {
-            ResourceUri = "Statue";
+            ResourceUri = "Statues";
             VerboseName = "Statue";
         }
 
         public modelStatue(string name, string address, string zipcode, DateTime created, DateTime updated) : this()
-        // Constructs Object with parameters AND the content of the Default Constructor
+            // Constructs Object with parameters AND the content of the Default Constructor
         {
             Name = name;
             Address = address;
@@ -30,8 +21,9 @@ namespace StatueApp.Model
             Updated = updated;
         }
 
-        public modelStatue(int id, string name, string address, string zipcode, DateTime created, DateTime updated) :this()
-        // Constructs Object with parameters AND the content of the Default Constructor
+        public modelStatue(int id, string name, string address, string zipcode, DateTime created, DateTime updated)
+            : this()
+            // Constructs Object with parameters AND the content of the Default Constructor
         {
             Id = id;
             Name = name;
@@ -40,5 +32,14 @@ namespace StatueApp.Model
             Created = created;
             Updated = updated;
         }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Zipcode { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Updated { get; set; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
     }
 }

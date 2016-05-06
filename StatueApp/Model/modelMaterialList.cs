@@ -2,18 +2,11 @@
 
 namespace StatueApp.Model
 {
-    public class modelMaterialList:IWebUri, IGetByStatueId
+    public class modelMaterialList : IWebUri, IGetByStatueId
     {
-        public int Id { get; set; }
-        public int FK_Statue { get; set; }
-        public int FK_Material { get; set; }
-        public string ResourceUri { get; }
-        public string VerboseName { get; }
-        public bool CanGetByStatueId { get; }
-
         public modelMaterialList()
         {
-            ResourceUri = "MaterialList";
+            ResourceUri = "MaterialLists";
             VerboseName = "List of Materials";
             CanGetByStatueId = true;
         }
@@ -33,5 +26,11 @@ namespace StatueApp.Model
             FK_Material = fkMaterial;
         }
 
+        public int Id { get; set; }
+        public int FK_Statue { get; set; }
+        public int FK_Material { get; set; }
+        public bool CanGetByStatueId { get; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
     }
 }
