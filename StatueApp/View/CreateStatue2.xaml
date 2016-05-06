@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.CreateStatue2"
     mc:Ignorable="d">
 
@@ -23,14 +24,18 @@
             <Image x:Name="image4" Height="150" Source="ms-appx:///Assets/Statue4.png"/>
         </Border>
         <StackPanel HorizontalAlignment="Left" Height="404" Margin="300,154,0,0" VerticalAlignment="Top" Width="702">
-            <StackPanel Height="75" Margin="0" Orientation="Horizontal">
-                <TextBlock x:Name="textBlock12" TextWrapping="Wrap" Text="Materialetype" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0"/>
-
-            </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
-                <TextBlock x:Name="textBlock32" TextWrapping="Wrap" Text="Materiale" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0"/>
+                <TextBlock x:Name="textBlock32" TextWrapping="Wrap" Text="Materiale:" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
+                <ListBox x:Name="ListBox" Width="208" Margin="0,0,0,0.2">
+                    <ListBox.DataContext>
+                        <ViewModel:viewmodelStatue/>
+                    </ListBox.DataContext>
+                    <DataTemplate>
+                        <CheckBox Content="checkboks" Margin="0 0 0 0"/>
+                    </DataTemplate>
+                </ListBox>
+
+
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
