@@ -100,6 +100,8 @@
     <Compile Include="Handler\handlerStatue.cs" />
     <Compile Include="Interface\IGetByStatueId.cs" />
     <Compile Include="Interface\IWebUri.cs" />
+    <Compile Include="Model\PlacmentSingleton.cs" />
+    <Compile Include="Model\StatueSingleton.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
     <Compile Include="SampleCode\SampleSingleton.cs" />
