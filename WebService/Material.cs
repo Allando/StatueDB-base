@@ -19,7 +19,7 @@ namespace WebService
         [Column("Material")]
         [Required]
         [StringLength(50)]
-        public string MaterialNavn { get; set; }
+        public string MaterialName { get; set; }
 
         [Required]
         [StringLength(1)]
