@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,7 +12,7 @@ using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    public class StatueSingleton : INotifyPropertyChanged
+    public class StatueSingleton : INotifyPropertyChanged, INotifyCollectionChanged
     {
         #region Properties
         // de her properties er dem som bliver bindet til "Text" i textboxe og "Selectet Item" I dropdown Menuer
@@ -60,6 +61,7 @@ namespace StatueApp.Common
         }
         #region Property Changed
         public event PropertyChangedEventHandler PropertyChanged;
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
