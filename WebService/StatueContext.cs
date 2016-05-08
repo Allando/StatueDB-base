@@ -53,7 +53,7 @@ namespace WebService
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Material>()
-                .Property(e => e.Material1)
+                .Property(e => e.MaterialName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Material>()

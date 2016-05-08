@@ -98,12 +98,10 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Facade\facadeStatue.cs" />
     <Compile Include="Handler\handlerStatue.cs" />
+    <Compile Include="Interface\IGetByStatueId.cs" />
+    <Compile Include="Interface\IWebUri.cs" />
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />
-    <Compile Include="View\MainPage.xaml.cs" />
-    <Compile Include="View\MainPageOld.xaml.cs">
-      <DependentUpon>MainPageOld.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\modelCulturalValue.cs" />
     <Compile Include="Model\modelCulturalValueList.cs" />
     <Compile Include="Model\modelDescription.cs" />
@@ -120,6 +118,9 @@
     <Compile Include="Model\modelZipcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\viewmodelStatue.cs" />
+    <Compile Include="View\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StatueIsCreated.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,12 +160,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\MainPageOld.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\StatueIsCreated.xaml">
       <Generator>MSBuild:Compile</Generator>
