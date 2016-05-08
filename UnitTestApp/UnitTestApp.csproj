@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{1B2B741B-FB99-4358-9E82-E491FABCA8D8}</ProjectGuid>
+    <ProjectGuid>{321f9093-533e-4f43-b2de-82677a95afa9}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StatueApp</RootNamespace>
-    <AssemblyName>StatueApp</AssemblyName>
+    <RootNamespace>UnitTestApp</RootNamespace>
+    <AssemblyName>UnitTestApp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -16,7 +16,10 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>StatueApp_TemporaryKey.pfx</PackageCertificateKeyFile>
+    
+    <PackageCertificateKeyFile>UnitTestApp_TemporaryKey.pfx</PackageCertificateKeyFile>
+    
+    <UnitTestPlatformVersion  Condition="'$(UnitTestPlatformVersion)' == ''">14.0</UnitTestPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -88,49 +91,34 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <!--A reference to the entire .Net Framework and Windows SDK are automatically included-->
     <None Include="project.json" />
+    <SDKReference Include="MSTestFramework.Universal, Version=$(UnitTestPlatformVersion)" />
+    <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Facade\facadeStatue.cs" />
-    <Compile Include="Handler\handlerStatue.cs" />
-    <Compile Include="Interface\IGetByStatueId.cs" />
-    <Compile Include="Interface\IWebUri.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
-    <Compile Include="SampleCode\SampleSingleton.cs" />
-    <Compile Include="View\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Model\modelCulturalValue.cs" />
-    <Compile Include="Model\modelCulturalValueList.cs" />
-    <Compile Include="Model\modelDescription.cs" />
-    <Compile Include="Model\modelGPSLocation.cs" />
-    <Compile Include="Model\modelImage.cs" />
-    <Compile Include="Model\modelImageList.cs" />
-    <Compile Include="Model\modelMaterial.cs" />
-    <Compile Include="Model\modelMaterialList.cs" />
-    <Compile Include="Model\modelPlacement.cs" />
-    <Compile Include="Model\modelPlacementList.cs" />
-    <Compile Include="Model\modelStatue.cs" />
-    <Compile Include="Model\modelStatueType.cs" />
-    <Compile Include="Model\modelStatueTypeList.cs" />
-    <Compile Include="Model\modelZipcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\viewmodelStatue.cs" />
+    <Compile Include="UnitTestApp.xaml.cs">
+      <DependentUpon>UnitTestApp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UnitTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="UnitTestApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="StatueApp_TemporaryKey.pfx" />
+    
+    <None Include="UnitTestApp_TemporaryKey.pfx" />
+    
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Properties\UnitTestApp.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -139,17 +127,6 @@
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="View\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

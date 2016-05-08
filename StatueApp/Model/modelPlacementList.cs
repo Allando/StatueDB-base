@@ -1,9 +1,36 @@
-﻿namespace StatueApp.Model
+﻿using StatueApp.Interface;
+
+namespace StatueApp.Model
 {
-    class modelPlacementList
+    public class modelPlacementList : IWebUri, IGetByStatueId
     {
+        public modelPlacementList()
+        {
+            ResourceUri = "PlacementLists";
+            VerboseName = "List of Placements";
+            CanGetByStatueId = true;
+        }
+
+        public modelPlacementList(int fkStatue, int fkPlacement) : this()
+            // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            FK_Statue = fkStatue;
+            FK_Placement = fkPlacement;
+        }
+
+        public modelPlacementList(int id, int fkStatue, int fkPlacement) : this()
+            // Constructs Object with parameters AND the content of the Default Constructor
+        {
+            Id = id;
+            FK_Statue = fkStatue;
+            FK_Placement = fkPlacement;
+        }
+
         public int Id { get; set; }
         public int FK_Statue { get; set; }
         public int FK_Placement { get; set; }
+        public bool CanGetByStatueId { get; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
     }
 }
