@@ -101,7 +101,10 @@
     <Compile Include="Handler\handlerStatue.cs" />
     <Compile Include="Interface\IGetByStatueId.cs" />
     <Compile Include="Interface\IWebUri.cs" />
+    <Compile Include="Model\PlacmentSingleton.cs" />
+    <Compile Include="Model\StatueTypeSingleton.cs" />
     <Compile Include="Properties\Annotations2.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="ViewModel\ViewmodelOpretStatue.cs" />
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />
