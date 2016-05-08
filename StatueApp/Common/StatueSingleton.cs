@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using StatueApp.Annotations;
 using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    class StatueSingleton
+    public class StatueSingleton : INotifyPropertyChanged, INotifyCollectionChanged
     {
-
+        #region Properties
+        // de her properties er dem som bliver bindet til "Text" i textboxe og "Selectet Item" I dropdown Menuer
         public modelCulturalValue CulturalValue { get; set; }
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
@@ -19,7 +25,16 @@ namespace StatueApp.Common
         public modelStatue Statue { get; set; }
         public modelStatueType StatueType { get; set; }
         public modelZipcode Zipcode { get; set; }
-   
+        #endregion
+
+        #region Collections
+        // de her collections bliver brugt til at fylde dropdown Menuerne"
+        public ObservableCollection<modelMaterial> All_Materials { get; }
+        public ObservableCollection<string> Materialtypes { get; }
+        public ObservableCollection<modelMaterial> Maeterial_By_Type { get; }
+        public ObservableCollection<modelPlacement> Placements { get; }
+        public ObservableCollection<modelStatueType> StatueTypes { get; }
+        #endregion
 
         #region Singleton
         private static StatueSingleton _instance;
@@ -38,7 +53,21 @@ namespace StatueApp.Common
 #endregion
         private StatueSingleton()
         {
-            
+            All_Materials = new ObservableCollection<modelMaterial>();
+            Maeterial_By_Type = new ObservableCollection<modelMaterial>();
+            Materialtypes = new ObservableCollection<string>();
+            StatueTypes = new ObservableCollection<modelStatueType>();
+            Placements = new ObservableCollection<modelPlacement>();
         }
+        #region Property Changed
+        public event PropertyChangedEventHandler PropertyChanged;
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }

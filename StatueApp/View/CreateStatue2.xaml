@@ -4,8 +4,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.CreateStatue2"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <ViewModel:ViewmodelOpretStatue/>
+    </Page.DataContext>
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center" Margin="0">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
@@ -25,20 +30,20 @@
         <StackPanel HorizontalAlignment="Left" Height="404" Margin="300,154,0,0" VerticalAlignment="Top" Width="702">
             <StackPanel Height="75" Margin="0" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock12" TextWrapping="Wrap" Text="Materialetype" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0"/>
+                <ComboBox x:Name="comboBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedIndex="{Binding Singleton.Material}" IsDropDownOpen="True" ItemsSource="{Binding Singleton.Materialtypes}"/>
 
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock32" TextWrapping="Wrap" Text="Materiale" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0"/>
+                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" ItemsSource="{Binding Singleton.Maeterial_By_Type}" SelectedItem="{Binding Singleton.Material}"/>
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox22" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0"/>
+                <ComboBox x:Name="comboBox22" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.Placement}" ItemsSource="{Binding Singleton.Placements}"/>
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock34" TextWrapping="Wrap" Text="Type" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="comboBox23" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0"/>
+                <ComboBox x:Name="comboBox23" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.StatueType}" ItemsSource="{Binding Singleton.StatueTypes}"/>
             </StackPanel>
             <StackPanel Height="100" Orientation="Horizontal" Margin="0">
                 <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,0,0,20" Height="60" VerticalAlignment="Bottom">
@@ -54,6 +59,7 @@
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="PointerPressed">
                             <Core:NavigateToPageAction TargetPage="SkulpturDatabase.StatueIsCreated"/>
+                            <Core:NavigateToPageAction TargetPage="StatueApp.View.StatueIsCreated"/>
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                     <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Opret" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" FontFamily="Verdana" FontSize="16" Padding="0" Foreground="#FF0E143F"/>

@@ -1,4 +1,5 @@
-﻿using StatueApp.Common;
+﻿using System.Collections.Generic;
+using StatueApp.Common;
 
 namespace StatueApp.ViewModel
 {

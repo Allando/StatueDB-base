@@ -4,8 +4,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.StatueIsCreated"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <ViewModel:ViewmodelOpretStatue/>
+    </Page.DataContext>
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
@@ -36,7 +41,7 @@
             <Button x:Name="button1" Content="Indsæt billede" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,30,0,0" Width="167" Height="40" FontFamily="Verdana" FontSize="16"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Height="270" Margin="0,217,64,0" VerticalAlignment="Top" Width="302">
-            <ListView x:Name="listView" Height="246" Margin="10,20,10.4,0"/>
+            <ListView x:Name="listView" Height="246" Margin="10,20,10.4,0" ItemsSource="{Binding Singleton.Image}"/>
         </StackPanel>
         <StackPanel Height="100" Orientation="Horizontal" Margin="0,492,10,48" HorizontalAlignment="Right">
             <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,0,0,20" Height="60" VerticalAlignment="Bottom">
