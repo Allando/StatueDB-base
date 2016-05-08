@@ -15,17 +15,27 @@ namespace StatueApp.ViewModel
 {
     class ViewModel: INotifyPropertyChanged
     {
+        #region Properties
         public StatueSingleton StatueSingleton { get; }
-        public PlacmentSingleton PlacementSingleton { get; }
+        public PlacmentSingleton PlacementSingleton { get; } 
+        #endregion
 
+        #region Constructor
         public ViewModel()
         {
-            StatueSingleton=StatueSingleton.Instance;
+            //Henter singleton ned så den kan bruges i meotderne
+            StatueSingleton = StatueSingleton.Instance;
+            //Skyder metoden så den bruges
             GetStatueTypeAsync();
 
+            //Henter singleton ned så den kan bruges i meotderne
             PlacementSingleton = PlacmentSingleton.Instance;
+            //Skyder metoden så den bruges
             GetStatuePlacementAsync();
-        }
+        } 
+        #endregion
+
+        #region Method
         /// <summary>
         /// Henter StatueTyper
         /// </summary>
@@ -47,7 +57,8 @@ namespace StatueApp.ViewModel
             {
                 PlacementSingleton.Add(statuePlacement);
             }
-        }
+        } 
+        #endregion
 
         #region PropertyChangedSupport
         public event PropertyChangedEventHandler PropertyChanged;
