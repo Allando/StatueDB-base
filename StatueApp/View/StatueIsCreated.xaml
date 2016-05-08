@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Page.DataContext>
-        <ViewModel:ViewmodelOpretStatue/>
+        <ViewModel:viewmodelStatue/>
     </Page.DataContext>
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center">
