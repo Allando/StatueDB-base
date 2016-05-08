@@ -104,6 +104,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
     <Compile Include="SampleCode\SampleSingleton.cs" />
+    <Compile Include="ViewModel\ViewmodelOpretStatue.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
