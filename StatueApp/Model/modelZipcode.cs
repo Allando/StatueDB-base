@@ -3,7 +3,7 @@
 namespace StatueApp.Model
 {
     // i WebService hedder class'en "City"
-    internal class modelZipcode : IWebUri
+    public class modelZipcode : IWebUri
     {
         public modelZipcode()
         {

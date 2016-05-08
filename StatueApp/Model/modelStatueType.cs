@@ -2,7 +2,7 @@
 
 namespace StatueApp.Model
 {
-    internal class modelStatueType : IWebUri
+    public class modelStatueType : IWebUri
     {
         public modelStatueType()
         {
