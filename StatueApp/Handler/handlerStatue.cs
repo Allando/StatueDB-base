@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Appointments;
 using Newtonsoft.Json.Linq;
 using StatueApp.Common;
+using StatueApp.Facade;
 using StatueApp.Model;
 
 namespace StatueApp.Handler
@@ -18,51 +21,154 @@ namespace StatueApp.Handler
         public static void Get_Info()
         {
             StatueSingleton Singleton = StatueSingleton.Instance;
-            GetMaterialtypes();
+            //GetMaterialtypes();
         }
         /// <summary>
         /// Denne Metode Vil Tilføje Alle Materialetyperne Til Listen Materialtypes i Singletonen;
         /// </summary>
-        public static void GetMaterialtypes()
-        {
-            StatueSingleton Singleton = StatueSingleton.Instance;
-            foreach (var Material in Singleton.All_Materials)
-            {
-                if (!Singleton.Materialtypes.Contains(Material.Types))
-                {
-                    Singleton.Materialtypes.Add(Material.Types);
-                }
-            }
-        }
+        //public static void GetMaterialtypes()
+        //{
+        //    StatueSingleton Singleton = StatueSingleton.Instance;
+        //    foreach (var Material in Singleton.All_Materials)
+        //    {
+        //        if (!Singleton.Materialtypes.Contains(Material.Types))
+        //        {
+        //            Singleton.Materialtypes.Add(Material.Types);
+        //        }
+        //    }
+        //}
         /// <summary>
         /// Denne Metode Vil Oprette En Statue Og Gemme Den I Databasen
         /// </summary>
         /// <returns> Fejlbesked Eller Sysesbesked </returns>
-        public static string Opretstatue()
+
+
+        public async static Task<string> Opretstatue()
         {
             StatueSingleton Singleton = StatueSingleton.Instance;
-            modelCulturalValueList modelCulturalValueList = new modelCulturalValueList();
-            modelImageList modelImageList = new modelImageList();
-            modelMaterialList materialList = new modelMaterialList();
-            modelPlacementList modelPlacementList = new modelPlacementList();
-            modelStatueTypeList modelStatueTypeList = new modelStatueTypeList();
+            ObservableCollection<modelCulturalValueList> culturalValueLists = new ObservableCollection<modelCulturalValueList>();
+            ObservableCollection<modelImageList> imageLists = new ObservableCollection<modelImageList>();
+            ObservableCollection<modelMaterialList> materialLists = new ObservableCollection<modelMaterialList>();
+            ObservableCollection<Model.modelPlacementList> placementLists = new ObservableCollection<modelPlacementList>();
+            ObservableCollection<Model.modelStatueTypeList> statueTypeLists = new ObservableCollection<modelStatueTypeList>();
 
-            // her skal du sette alle statueiderne på listerne
 
-            modelStatueTypeList.FK_StatueType = Singleton.StatueType.Id;
-            modelPlacementList.FK_Placement = Singleton.Placement.Id;
-            materialList.FK_Material = Singleton.Material.Id;
-            modelCulturalValueList.FK_CulturalValue = Singleton.CulturalValue.Id;
+
+            Task<IEnumerable<modelStatue>> Statues = facadeStatue.GetListAsync(new modelStatue());
             
-            // jeg laver denne if da det ikke er sikkert at der er et billed
-            if (Singleton.Image != null)
+           modelStatue StatueMedId = new modelStatue();
+            StatueMedId.Id = 0;
+
+            foreach (var statue in Statues.Result)
             {
-                modelImageList.FK_Image = Singleton.Image.Id;
+                if (statue.Id > StatueMedId.Id)
+                {
+                    StatueMedId = statue;
+                }
             }
+            try
+            {
+                await facadeStatue.PostAsync(Singleton.Statue);
+
+                #region ListsID
+                // her skal du sette alle statueiderne på listerne
+                foreach (var culturalValue in Singleton.CulturalValues)
+                {
+                    modelCulturalValueList culturalValueList = new modelCulturalValueList();
+                    culturalValueList.FK_CulturalValue = culturalValue.Id;
+                    culturalValueList.FK_Statue = StatueMedId.Id;
+                    culturalValueLists.Add(culturalValueList);
+                }
+                foreach (var image in Singleton.Images)
+                {
+                    modelImageList imageList = new modelImageList();
+                    imageList.FK_Image = image.Id;
+                    imageList.FK_Statue = StatueMedId.Id;
+                    imageLists.Add(imageList);
+
+                }
+                foreach (var material in Singleton.Materials)
+                {
+                    modelMaterialList materialList = new modelMaterialList();
+                    materialList.FK_Material = material.Id;
+                    materialList.FK_Statue = StatueMedId.Id;
+                    materialLists.Add(materialList);
+                }
+                foreach (var placement in Singleton.Placements)
+                {
+                    modelPlacementList placementList = new modelPlacementList();
+                    placementList.FK_Placement = placement.Id;
+                    placementList.FK_Statue = StatueMedId.Id;
+                    placementLists.Add(placementList);
+                }
+                foreach (var statueType in Singleton.StatueTypes)
+                {
+                    modelStatueTypeList statueTypeList = new modelStatueTypeList();
+                    statueTypeList.FK_StatueType = statueType.Id;
+                    statueTypeList.FK_Statue = StatueMedId.Id;
+                    statueTypeLists.Add(statueTypeList);
+                }
+                #endregion
+
+                try
+                {
+                    foreach (var culturalValueList in culturalValueLists)
+                    {
+                        await facadeStatue.PostAsync(culturalValueList);
+                    }
+
+                    foreach (var imageList in imageLists)
+                    {
+                        await facadeStatue.PostAsync(imageList);
+                    }
+                    foreach (var materialList in materialLists)
+                    {
+                        await facadeStatue.PostAsync(materialList);
+                    }
+                    foreach (var placementList in placementLists)
+                    {
+                        await facadeStatue.PostAsync(placementList);
+                    }
+                    foreach (var statueTypeList in statueTypeLists)
+                    {
+                        await facadeStatue.PostAsync(statueTypeList);
+                    }
+                    if (Singleton.Description != null)
+                    {
+                    await facadeStatue.PostAsync(Singleton.Description);
+                    }
+                    if (Singleton.GpsLocation != null)
+                    {
+                        await facadeStatue.PostAsync(Singleton.GpsLocation);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }  
+           
+
+         
+
+
+
+            // jeg laver denne if da det ikke er sikkert at der er et billed
+
 
             //Temp Er bare så den kan builde mens jeg laver metoden
             string temp = "Hej";
             return temp;
         }
+
+
     }
 }
