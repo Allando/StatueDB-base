@@ -27,5 +27,10 @@ namespace StatueApp.Model
         public string Placement1 { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
+
+        public override string ToString()
+        {
+            return $"{Placement1}";
+        }
     }
 }
