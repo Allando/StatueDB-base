@@ -96,10 +96,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\StatueSingleton.cs" />
     <Compile Include="Facade\facadeStatue.cs" />
     <Compile Include="Handler\handlerStatue.cs" />
     <Compile Include="Interface\IGetByStatueId.cs" />
     <Compile Include="Interface\IWebUri.cs" />
+    <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
+    <Compile Include="SampleCode\SampleSingleton.cs" />
+    <Compile Include="ViewModel\ViewmodelOpretStatue.cs" />
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />
     <Compile Include="Model\modelCulturalValue.cs" />
