@@ -7,9 +7,8 @@
     xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.StatueIsCreated"
     mc:Ignorable="d">
-
     <Page.DataContext>
-        <ViewModel:viewmodelStatue/>
+        <ViewModel:ViewModelCreateStatue/>
     </Page.DataContext>
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center">

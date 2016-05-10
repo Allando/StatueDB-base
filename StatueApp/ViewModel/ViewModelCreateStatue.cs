@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,15 +14,15 @@ using StatueApp.Model;
 
 namespace StatueApp.ViewModel
 {
-    class ViewModel: INotifyPropertyChanged
+    class ViewModelCreateStatue: INotifyPropertyChanged
     {
         #region Properties
         public StatueTypeSingleton StatueTypeSingleton { get; }
         public PlacmentSingleton PlacementSingleton { get; } 
         #endregion
 
-        #region Constructor
-        public ViewModel()
+        #region Constructors
+        public ViewModelCreateStatue()
         {
             //Henter singleton ned så den kan bruges i meotderne
             StatueTypeSingleton = StatueTypeSingleton.Instance;
@@ -35,7 +36,7 @@ namespace StatueApp.ViewModel
         } 
         #endregion
 
-        #region Method
+        #region Methods
         /// <summary>
         /// Henter StatueTyper
         /// </summary>
@@ -47,6 +48,7 @@ namespace StatueApp.ViewModel
                 StatueTypeSingleton.Add(statueType);
             }
         }
+
         /// <summary>
         /// Henter StatuePlacering
         /// </summary>

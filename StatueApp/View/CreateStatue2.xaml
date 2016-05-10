@@ -7,10 +7,10 @@
     xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.CreateStatue2"
     mc:Ignorable="d">
-
     <Page.DataContext>
-        <ViewModel:ViewModel/>
+        <ViewModel:ViewModelCreateStatue/>
     </Page.DataContext>
+
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center" Margin="0">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">

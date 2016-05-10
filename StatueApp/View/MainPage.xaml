@@ -9,10 +9,11 @@
     xmlns:viewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.MainPage"
     mc:Ignorable="d">
-
     <Page.DataContext>
-        <viewModel:viewmodelStatue/>
+        <viewModel:ViewModelCreateStatue/>
     </Page.DataContext>
+
+
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">

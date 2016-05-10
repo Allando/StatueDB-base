@@ -98,14 +98,13 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\StatueSingleton.cs" />
     <Compile Include="Facade\facadeStatue.cs" />
-    <Compile Include="Handler\handlerStatue.cs" />
+    <Compile Include="Handler\handlerCreateStatue.cs" />
     <Compile Include="Interface\IGetByStatueId.cs" />
     <Compile Include="Interface\IWebUri.cs" />
     <Compile Include="Model\PlacmentSingleton.cs" />
     <Compile Include="Model\StatueTypeSingleton.cs" />
     <Compile Include="Properties\Annotations2.cs" />
-    <Compile Include="ViewModel\ViewModel.cs" />
-    <Compile Include="ViewModel\ViewmodelOpretStatue.cs" />
+    <Compile Include="ViewModel\ViewModelCreateStatue.cs" />
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />
     <Compile Include="Model\modelCulturalValue.cs" />
@@ -123,7 +122,6 @@
     <Compile Include="Model\modelStatueTypeList.cs" />
     <Compile Include="Model\modelZipcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\viewmodelStatue.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
