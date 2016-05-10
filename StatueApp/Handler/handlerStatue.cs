@@ -14,35 +14,15 @@ namespace StatueApp.Handler
 {
     class handlerStatue
     {
-        /// <summary>
-        /// Denne Metode henter alle de Objecter som vores DropDownMenu i OpretStatue Skal Bruge.
-        /// Dette gør den bland andet ved at kalde andre mindre metoder
-        /// </summary>
-        public static void Get_Info()
-        {
-            StatueSingleton Singleton = StatueSingleton.Instance;
-            //GetMaterialtypes();
-        }
-        /// <summary>
-        /// Denne Metode Vil Tilføje Alle Materialetyperne Til Listen Materialtypes i Singletonen;
-        /// </summary>
-        //public static void GetMaterialtypes()
-        //{
-        //    StatueSingleton Singleton = StatueSingleton.Instance;
-        //    foreach (var Material in Singleton.All_Materials)
-        //    {
-        //        if (!Singleton.Materialtypes.Contains(Material.Types))
-        //        {
-        //            Singleton.Materialtypes.Add(Material.Types);
-        //        }
-        //    }
-        //}
+        
+       
+
+
+
         /// <summary>
         /// Denne Metode Vil Oprette En Statue Og Gemme Den I Databasen
         /// </summary>
         /// <returns> Fejlbesked Eller Sysesbesked </returns>
-
-
         public async static Task<string> Opretstatue()
         {
             StatueSingleton Singleton = StatueSingleton.Instance;
@@ -54,24 +34,28 @@ namespace StatueApp.Handler
 
 
 
-            Task<IEnumerable<modelStatue>> Statues = facadeStatue.GetListAsync(new modelStatue());
-            
-           modelStatue StatueMedId = new modelStatue();
-            StatueMedId.Id = 0;
-
-            foreach (var statue in Statues.Result)
-            {
-                if (statue.Id > StatueMedId.Id)
-                {
-                    StatueMedId = statue;
-                }
-            }
+          
             try
             {
+                Singleton.Statue.Created = DateTime.Now;
                 await facadeStatue.PostAsync(Singleton.Statue);
 
+
+                Task<IEnumerable<modelStatue>> Statues =  facadeStatue.GetListAsync(new modelStatue());
+
+                modelStatue StatueMedId = new modelStatue();
+                StatueMedId.Id = 0;
+
+                foreach (var statue in Statues.Result)
+                {
+                    if (statue.Id > StatueMedId.Id)
+                    {
+                        StatueMedId = statue;
+                    }
+                }
+
                 #region ListsID
-                // her skal du sette alle statueiderne på listerne
+               
                 foreach (var culturalValue in Singleton.CulturalValues)
                 {
                     modelCulturalValueList culturalValueList = new modelCulturalValueList();
@@ -160,8 +144,6 @@ namespace StatueApp.Handler
          
 
 
-
-            // jeg laver denne if da det ikke er sikkert at der er et billed
 
 
             //Temp Er bare så den kan builde mens jeg laver metoden

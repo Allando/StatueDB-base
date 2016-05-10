@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using StatueApp.Annotations;
+using StatueApp.Common;
 using StatueApp.Facade;
 using StatueApp.Model;
 
@@ -35,6 +36,7 @@ namespace StatueApp.ViewModel
         } 
         #endregion
 
+    
         #region Method
         /// <summary>
         /// Henter StatueTyper
@@ -45,6 +47,7 @@ namespace StatueApp.ViewModel
             foreach (var statueType in listOfStatueType)
             {
                 StatueTypeSingleton.Add(statueType);
+              
             }
         }
         /// <summary>
