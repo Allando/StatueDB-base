@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Page.DataContext>
-        <ViewModel:viewmodelStatue/>
+        <ViewModel:ViewModel/>
     </Page.DataContext>
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center" Margin="0">
@@ -39,11 +39,11 @@
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox22" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.Placement}" ItemsSource="{Binding Singleton.Placements}"/>
+                <ComboBox x:Name="comboBox22" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.Placement}" ItemsSource="{Binding PlacementSingleton.Placements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock34" TextWrapping="Wrap" Text="Type" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="comboBox23" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.StatueType}" ItemsSource="{Binding Singleton.StatueTypes}"/>
+                <ComboBox x:Name="comboBox23" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.StatueType}" ItemsSource="{Binding StatueTypeSingleton.StatueTypes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Height="100" Orientation="Horizontal" Margin="0">
                 <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,0,0,20" Height="60" VerticalAlignment="Bottom">
