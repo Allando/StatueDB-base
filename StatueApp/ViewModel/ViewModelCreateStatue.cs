@@ -19,6 +19,9 @@ namespace StatueApp.ViewModel
         #region Properties
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement  { get; set; } 
+        public static ObservableCollection<modelCulturalValue> CulturalValues { get; set; } 
+        public static ObservableCollection<modelImage> StatueImage { get; set; } 
+        public static ObservableCollection<modelMaterial> StatueMaterial { get; set; } 
         #endregion
 
         #region Constructors
@@ -38,6 +41,15 @@ namespace StatueApp.ViewModel
 
             StatuePlacement = new ObservableCollection<modelPlacement>();
             GetStatuePlacementAsync();
+
+            CulturalValues = new ObservableCollection<modelCulturalValue>();
+            GetCulturalValueAsync();
+
+            StatueImage = new ObservableCollection<modelImage>();
+            GetStatueImageAsync();
+
+            StatueMaterial = new ObservableCollection<modelMaterial>();
+            GetStatueMaterialAsync();
         } 
         #endregion
 
@@ -63,6 +75,33 @@ namespace StatueApp.ViewModel
             foreach (var statuePlacement in listOfStatuePlacement)
             {
                StatuePlacement.Add(statuePlacement);
+            }
+        }
+
+        public async void GetCulturalValueAsync()
+        {
+            var listOfCulturalValue = await facadeStatue.GetListAsync(new modelCulturalValue());
+            foreach (var culturalValues in listOfCulturalValue)
+            {
+                CulturalValues.Add(culturalValues);
+            }
+        }
+
+        public async void GetStatueImageAsync()
+        {
+            var listOfStatueImage = await facadeStatue.GetListAsync(new modelImage());
+            foreach (var statueImage in listOfStatueImage)
+            {
+                StatueImage.Add(statueImage);
+            }
+        }
+
+        public async void GetStatueMaterialAsync()
+        {
+            var listOfStatueMaterial = await facadeStatue.GetListAsync(new modelMaterial());
+            foreach (var statueMaterial in listOfStatueMaterial)
+            {
+                StatueMaterial.Add(statueMaterial);
             }
         }
         #endregion
