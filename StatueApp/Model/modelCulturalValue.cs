@@ -27,5 +27,10 @@ namespace StatueApp.Model
         public string CulturalValueName { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
+
+        public override string ToString()
+        {
+            return $"{CulturalValueName}";
+        }
     }
 }

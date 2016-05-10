@@ -30,5 +30,10 @@ namespace StatueApp.Model
         public string Types { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
+
+        public override string ToString()
+        {
+            return $"{MaterialName}";
+        }
     }
 }
