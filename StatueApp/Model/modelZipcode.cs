@@ -11,21 +11,21 @@ namespace StatueApp.Model
             VerboseName = "Zipcode";
         }
 
-        public modelZipcode(string zipcode) : this()
+        public modelZipcode(string zipcodeValue) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
-            Zipcode = zipcode;
+            ZipcodeValue = zipcodeValue;
         }
 
-        public modelZipcode(string zipcode, string city1) : this()
+        public modelZipcode(string zipcodeValue, string cityName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
-            Zipcode = zipcode;
-            City1 = city1;
+            ZipcodeValue = zipcodeValue;
+            CityName = cityName;
         }
 
-        public string Zipcode { get; set; }
-        public string City1 { get; set; }
+        public string ZipcodeValue { get; set; }
+        public string CityName { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
     }

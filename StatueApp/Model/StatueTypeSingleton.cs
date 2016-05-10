@@ -29,6 +29,11 @@ namespace StatueApp.Model
         //        return _instance;
         //    }
         //}
+        //public static StatueTypeSingleton Instance
+        //{
+        //    get { return _instance ?? (_instance = new StatueTypeSingleton()); }
+        //}
+
         public static StatueTypeSingleton Instance => _instance ?? (_instance = new StatueTypeSingleton());
 
         private static StatueTypeSingleton _instance; // Should match class name
@@ -38,14 +43,14 @@ namespace StatueApp.Model
         {
             StatueTypes = new ObservableCollection<modelStatueType>();
         }
-
+        
         /// <summary>
         /// Public Method that return a singleton refence
         /// </summary>
-        public void Add(modelStatueType newStatue)
-        {
-            StatueTypes.Add(newStatue);
-        }
+        //public void Add(modelStatueType newStatue)
+        //{
+        //    StatueTypes.Add(newStatue);
+        //}
 
         #region PropertyChangedSupport
         public event PropertyChangedEventHandler PropertyChanged;

@@ -13,11 +13,11 @@ namespace StatueApp.Handler
         /// Denne Metode henter alle de Objecter som vores DropDownMenu i OpretStatue Skal Bruge.
         /// Dette gør den bland andet ved at kalde andre mindre metoder
         /// </summary>
-        public static void Get_Info()
-        {
-            //var Singleton = StatueSingleton.Instance;
-            //GetMaterialtypes();
-        }
+        //public static void Get_Info()
+        //{
+        //    var Singleton = StatueSingleton.Instance;
+        //    GetMaterialtypes();
+        //}
         /// <summary>
         /// Denne Metode Vil Tilføje Alle Materialetyperne Til Listen Materialtypes i Singletonen;
         /// </summary>

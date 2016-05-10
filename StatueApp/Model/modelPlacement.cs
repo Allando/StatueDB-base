@@ -10,27 +10,27 @@ namespace StatueApp.Model
             VerboseName = "Placement";
         }
 
-        public modelPlacement(string placement1) : this()
+        public modelPlacement(string placementName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
-            Placement1 = placement1;
+            PlacementName = placementName;
         }
 
-        public modelPlacement(int id, string placement1) : this()
+        public modelPlacement(int id, string placementName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             Id = id;
-            Placement1 = placement1;
+            PlacementName = placementName;
         }
 
         public int Id { get; set; }
-        public string Placement1 { get; set; }
+        public string PlacementName { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 
         public override string ToString()
         {
-            return $"{Placement1}";
+            return $"{PlacementName}";
         }
     }
 }

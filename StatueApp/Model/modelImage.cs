@@ -10,21 +10,21 @@ namespace StatueApp.Model
             VerboseName = "Image";
         }
 
-        public modelImage(string image1) : this()
+        public modelImage(string ImageUrl) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
-            Image1 = image1;
+            this.ImageUrl = ImageUrl;
         }
 
-        public modelImage(int id, string image1) : this()
+        public modelImage(int id, string imageUrl) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             Id = id;
-            Image1 = image1;
+            ImageUrl = imageUrl;
         }
 
         public int Id { get; set; }
-        public string Image1 { get; set; }
+        public string ImageUrl { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
     }

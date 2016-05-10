@@ -10,27 +10,27 @@ namespace StatueApp.Model
             VerboseName = "Type of Statue";
         }
 
-        public modelStatueType(string statueType) : this()
+        public modelStatueType(string statueTypeName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
-            StatueType_ = statueType;
+            StatueTypeName = statueTypeName;
         }
 
-        public modelStatueType(int id, string statueType) : this()
+        public modelStatueType(int id, string statueTypeName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             Id = id;
-            StatueType_ = statueType;
+            StatueTypeName = statueTypeName;
         }
 
         public int Id { get; set; }
-        public string StatueType_ { get; set; }
+        public string StatueTypeName { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 
         public override string ToString()
         {
-            return $"{StatueType_}";
+            return $"{StatueTypeName}";
         }
     }
 }

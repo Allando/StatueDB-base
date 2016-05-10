@@ -10,21 +10,21 @@ namespace StatueApp.Model
             VerboseName = "Cultural Value";
         }
 
-        public modelCulturalValue(string culturalValue1) : this()
+        public modelCulturalValue(string culturalValueName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
-            CulturalValue1 = culturalValue1;
+            CulturalValueName = culturalValueName;
         }
 
-        public modelCulturalValue(int id, string culturalValue1) : this()
+        public modelCulturalValue(int id, string culturalValueName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             Id = id;
-            CulturalValue1 = culturalValue1;
+            CulturalValueName = culturalValueName;
         }
 
         public int Id { get; set; }
-        public string CulturalValue1 { get; set; }
+        public string CulturalValueName { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
     }

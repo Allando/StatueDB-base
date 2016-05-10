@@ -45,7 +45,7 @@ namespace StatueApp.ViewModel
             var listOfStatueType = await facadeStatue.GetListAsync(new modelStatueType());
             foreach (var statueType in listOfStatueType)
             {
-                StatueTypeSingleton.Add(statueType);
+                StatueTypeSingleton.StatueTypes.Add(statueType);
             }
         }
 
@@ -57,7 +57,7 @@ namespace StatueApp.ViewModel
             var listOfStatuePlacement = await facadeStatue.GetListAsync(new modelPlacement());
             foreach (var statuePlacement in listOfStatuePlacement)
             {
-                PlacementSingleton.Add(statuePlacement);
+                PlacementSingleton.Placements.Add(statuePlacement);
             }
         }
         #endregion

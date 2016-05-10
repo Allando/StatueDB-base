@@ -18,7 +18,7 @@ namespace StatueApp.Model
         /// </summary>
         public ObservableCollection<modelPlacement> Placements { get; }
 
-        //public static PlacmentSingleton Instance
+        //public static PlacmentSingleton Instance // Normal
         //{
         //    get
         //    {
@@ -29,7 +29,11 @@ namespace StatueApp.Model
         //        return _instance;
         //    }
         //}
-        public static PlacmentSingleton Instance => _instance ?? (_instance = new PlacmentSingleton());
+        //public static PlacmentSingleton Instance // Use ?? Operator
+        //{
+        //    get { return _instance ?? (_instance = new PlacmentSingleton()); }
+        //}
+        public static PlacmentSingleton Instance => _instance ?? (_instance = new PlacmentSingleton()); // Expression Body
 
         private static PlacmentSingleton _instance; // Should match class name
 
@@ -38,7 +42,7 @@ namespace StatueApp.Model
         {
             Placements = new ObservableCollection<modelPlacement>();
         }
-        
+
 
         /// <summary>
         /// Public Method that return a singleton refence
@@ -48,8 +52,8 @@ namespace StatueApp.Model
             Placements.Add(newPlacement);
         }
 
-        #region PropetyChangedSupport
-        public event PropertyChangedEventHandler PropertyChanged;
+    #region PropetyChangedSupport
+    public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
