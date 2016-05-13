@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using StatueApp.Annotations;
 
-internal class ObservabelCollectionSingleton : INotifyPropertyChanged
+internal class SampleObservabelCollectionSingleton : INotifyPropertyChanged
 {
     /// <summary>
     /// This is a sample Observable Collection Singleton Class.
@@ -12,36 +12,18 @@ internal class ObservabelCollectionSingleton : INotifyPropertyChanged
 
     // Properties
     public ObservableCollection<object> ObservableCollectionSingleton { get; set; }
-    public static ObservabelCollectionSingleton Instance
+    public static SampleObservabelCollectionSingleton Instance
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new ObservabelCollectionSingleton();
-            }
-            return _instance;
-        }
+        get { return _instance ?? (_instance = new SampleObservabelCollectionSingleton()); }
     }
     
     // Instancers
-    private static ObservabelCollectionSingleton _instance;
+    private static SampleObservabelCollectionSingleton _instance;
 
     // Constructor
-    private ObservabelCollectionSingleton()
+    private SampleObservabelCollectionSingleton()
     {
         ObservableCollectionSingleton = new ObservableCollection<object>();
-    }
-
-    // Methods
-    public void Add(object newObject)
-    {
-        ObservableCollectionSingleton.Add(newObject);
-    }
-
-    public void Remove(object objectToBeRemoved)
-    {
-        ObservableCollectionSingleton.Remove(objectToBeRemoved);
     }
 
     #region PropertyChangedSupport

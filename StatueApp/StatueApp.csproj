@@ -102,6 +102,8 @@
     <Compile Include="Interface\IGetByStatueId.cs" />
     <Compile Include="Interface\IWebUri.cs" />
     <Compile Include="Properties\Annotations2.cs" />
+    <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
+    <Compile Include="SampleCode\SampleSingleton.cs" />
     <Compile Include="ViewModel\ViewModelCreateStatue.cs" />
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />

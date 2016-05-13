@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StatueApp.Common;
@@ -10,6 +9,10 @@ namespace StatueApp.Handler
 {
     public class handlerCreateStatue
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private static int GetHighestStatueId()
         {
             var statue = new modelStatue();
@@ -29,6 +32,10 @@ namespace StatueApp.Handler
             return statueList.Result.Select(item => item.Id).Concat(new[] { 0 }).Max();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static async Task<string> CreateStatue()
         {
             var Singleton = StatueSingleton.Instance;
@@ -42,27 +49,22 @@ namespace StatueApp.Handler
                 foreach (var culturalValue in Singleton.CulturalValues)
                 {
                     await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
-                    //culturalValueLists.Add(culturalValueList);
                 }
                 foreach (var image in Singleton.Images)
                 {
                     await facadeStatue.PostAsync(new modelImageList(statueId, image.Id));
-                    //imageLists.Add(imageList);
                 }
                 foreach (var material in Singleton.Materials)
                 {
                     await facadeStatue.PostAsync(new modelMaterialList(statueId, material.Id));
-                    //materialLists.Add(materialList);
                 }
                 foreach (var placement in Singleton.Placements)
                 {
                     await facadeStatue.PostAsync(new modelPlacementList(statueId, placement.Id));
-                    //placementLists.Add(placementList);
                 }
                 foreach (var statueType in Singleton.StatueTypes)
                 {
                     await facadeStatue.PostAsync(new modelStatueTypeList(statueId,statueType.Id));
-                    //statueTypeLists.Add(statueTypeList);
                 }
                 if (Singleton.Description != null)
                 {
@@ -74,41 +76,6 @@ namespace StatueApp.Handler
                 }
 
                 #endregion
-                //    try
-                //    {
-                //        foreach (var item in culturalValueLists)
-                //        {
-                //            await facadeStatue.PostAsync(item);
-                //        }
-                //        foreach (var item in imageLists)
-                //        {
-                //            await facadeStatue.PostAsync(item);
-                //        }
-                //        foreach (var materialList in materialLists)
-                //        {
-                //            await facadeStatue.PostAsync(materialList);
-                //        }
-                //        foreach (var placementList in placementLists)
-                //        {
-                //            await facadeStatue.PostAsync(placementList);
-                //        }
-                //        foreach (var statueTypeList in statueTypeLists)
-                //        {
-                //            await facadeStatue.PostAsync(statueTypeList);
-                //        }
-                //        if (Singleton.Description != null)
-                //        {
-                //            await facadeStatue.PostAsync(Singleton.Description);
-                //        }
-                //        if (Singleton.GpsLocation != null)
-                //        {
-                //            await facadeStatue.PostAsync(Singleton.GpsLocation);
-                //        }
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        throw new Exception(ex.Message);
-                //    }
             }
             catch (Exception ex)
             {
