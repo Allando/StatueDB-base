@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="StatueApp.View.SeeStatue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StatueApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FFE1D0BC">
+        <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
+
+            <Image x:Name="imageLogo" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
+            <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
+            <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
+            <TextBlock x:Name="atabase_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="atabase" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
+        </StackPanel>
+
+        <StackPanel Margin="98,154,98,55" >
+            <StackPanel Height="420" HorizontalAlignment="Left" Width="198" RenderTransformOrigin="0.5,0.5">
+                <StackPanel Height="200" Width="150">
+                    <Image x:Name="imageStatue" Height="200" Width="150" Source="ms-appx:///Assets/Wide310x150Logo.png"/>
+                </StackPanel>
+                <StackPanel Height="45" Width="150" Margin="0,10,0,0">
+                    <Rectangle Fill="#FFF4F4F5" Height="45" Stroke="Black" Width="150"/>
+                </StackPanel>
+                <StackPanel Height="30" Width="150" Margin="0,10,0,0">
+                    <Button x:Name="buttonAendreStatue" Content="Ændre Statue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </StackPanel>
+                <StackPanel Height="30" Width="150" Margin="0,10,0,0">
+                    <Button x:Name="buttonSletStatue" Content="Slet Statue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </StackPanel>
+                <StackPanel Height="30" Width="150" Margin="0,10,0,0">
+                    <Button x:Name="buttonSeSkade" Content="Se Skade" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </StackPanel>
+                <StackPanel Height="30" Width="150" Margin="0,10,0,0">
+                    <Button x:Name="buttonOpretSkade" Content="Opret Skade" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Height="116" Margin="343,-640,0,0">
+                <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0">
+                    <TextBlock x:Name="textBlockNavn" Height="30" Width="180" TextWrapping="Wrap" Text="Navn" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,0">
+                    <TextBlock x:Name="textBlockKunster" Height="30" Width="180" TextWrapping="Wrap" Text="Kunster" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,0">
+                    <TextBlock x:Name="textBlockAdr" Height="30" Width="180" TextWrapping="Wrap" Text="Adresse" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,0">
+                    <TextBlock x:Name="textBlockGPS" Height="30" Width="180" TextWrapping="Wrap" Text="GPS" FontWeight="Bold"/>
+                </StackPanel>
+
+
+
+            </StackPanel>
+            <StackPanel Height="250" Margin="343,-250,0,0" BorderThickness="1" BorderBrush="Black">
+                <StackPanel Height="44" Margin="0,0,-0.2,0" Orientation="Horizontal">
+                    <StackPanel Height="45" HorizontalAlignment="Left" Width="100" Margin="10,0,0,0">
+                        <TextBlock x:Name="textBlockNoter" TextWrapping="Wrap" Text="Noter:" Height="45" FontWeight="Bold" FontSize="18.667" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <StackPanel Width="150" Height="25" Margin="143,0,0,0">
+                        <TextBox x:Name="textBoxSog" TextWrapping="Wrap" Text="" Height="21" Margin="0,0,0.4,0" Padding="10,0,6,0" MinHeight="25"/>
+                    </StackPanel>
+                    <StackPanel Width="60" Margin="10,10,0,10" Height="25">
+                        <Button x:Name="buttonSog" Content="Søg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="25" FontSize="12" Padding="0"/>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel Height="201" Margin="0.2,0,0,0">
+                    <StackPanel Height="176" Margin="0,0,0.2,0">
+                        <ListView x:Name="listViewNoter" Height="167" Margin="10,5,10.2,0" BorderBrush="Gray" BorderThickness="1"/>
+                    </StackPanel>
+                    <StackPanel Height="20" HorizontalAlignment="Left" Width="65" Margin="10,3,0,0">
+                        <Button x:Name="buttonOpretNote" Content="Opret Note" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="20" Width="65" FontSize="10.667" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Height="20" Width="65" Margin="397,-20,0,0">
+                        <Button x:Name="buttonAendreNote" Content="Ændre Note" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="65" Height="20" Padding="0" FontSize="10.667"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">
+            <Image x:Name="KKlogoimage" Width="155" Source="ms-appx:///Assets/kklogo.png"/>
+            <TextBlock x:Name="textBlockAdresse" TextWrapping="Wrap" Text="- Monument ansvarlige gruppe v. Eva Bøje Nielsen"  FontSize="10" Margin="4,4,0,0" FontFamily="Verdana" VerticalAlignment="Center"/>
+            <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,2" Background="#FFB4A390" Width="150" Margin="321,5,0,5" CornerRadius="25" HorizontalAlignment="Right">
+                <Button x:Name="buttonAdmin" Content="Admin" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="81" FontSize="16" FontFamily="Verdana" Background="#00000000"/>
+            </Border>
+        </StackPanel>
+
+
+
+    </Grid>
+</Page>
