@@ -21,7 +21,8 @@ namespace StatueApp.ViewModel
         public static ObservableCollection<modelPlacement> StatuePlacement  { get; set; } 
         public static ObservableCollection<modelCulturalValue> CulturalValues { get; set; } 
         public static ObservableCollection<modelImage> StatueImage { get; set; } 
-        public static ObservableCollection<modelMaterial> StatueMaterial { get; set; } 
+        public static ObservableCollection<modelMaterial> StatueMaterial { get; set; }
+
         #endregion
 
         #region Constructors
