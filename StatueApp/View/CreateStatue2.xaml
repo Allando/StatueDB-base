@@ -36,7 +36,7 @@
             	</Interactivity:Interaction.Behaviors>
 
             </TextBlock>
-            <StackPanel x:Name="StackPanel_Matrialer" Height="270" Margin="0,0,10.4,0" Orientation="Vertical" Visibility="Collapsed">
+            <StackPanel x:Name="StackPanel_Matrialer" Height="270" Margin="0,0,10.4,0" Orientation="Vertical" Visibility="Visible">
                 <TextBlock x:Name="textBlock_Luk_Matrialer" TextWrapping="Wrap"  Text="Slå Matrialer Sammen" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="14.667" VerticalAlignment="Center">
                 	<Interactivity:Interaction.Behaviors>
                 		<Core:EventTriggerBehavior EventName="PointerPressed">
@@ -49,15 +49,20 @@
                 	</Interactivity:Interaction.Behaviors>
                 </TextBlock>
                 <ListBox x:Name="listBox" ItemsSource="{Binding StatueMaterial}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="SelectionChanged">
+                            <Core:CallMethodAction/>
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <CheckBox Content="{Binding MaterialName}" IsChecked="{Binding IsChecked}"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox>                
+                </ListBox>
             </StackPanel>
-            <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-            <StackPanel Height="75" Orientation="Horizontal" Visibility="Collapsed">
+            <TextBlock x:Name="textBlockPlacering" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
+            <StackPanel  x:Name="StackPanel_Placering" Height="75" Orientation="Horizontal" Visibility="Visible">
                 <ListBox ItemsSource="{Binding StatuePlacement}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -78,7 +83,6 @@
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                     <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Tilbage"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Padding="0"/>
-                    <!--<Button x:Name="button" Content="Tilbage" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Width="163" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Height="30" Padding="0" Background="#00000000" BorderThickness="0"/>-->
                 </Border>
                 <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,20,0,20">
                     <Interactivity:Interaction.Behaviors>
@@ -88,7 +92,6 @@
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                     <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Opret" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" FontFamily="Verdana" FontSize="16" Padding="0" Foreground="#FF0E143F"/>
-                    <!--<Button x:Name="Opret_button" Content="Opret" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Width="163" FontFamily="Verdana" FontSize="16" Height="30" Padding="0" Foreground="#FF0E143F" Background="#00000000"  BorderThickness="0"/>-->
                 </Border>
                 <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,20,0,20">
                     <Interactivity:Interaction.Behaviors>
@@ -98,7 +101,6 @@
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                     <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="Annullere" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Padding="0"/>
-                    <!--<Button x:Name="button2" Content="Annullere" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Width="163" FontFamily="Verdana" FontSize="16" Height="30" Foreground="#FF0E143F" Padding="0" Background="#00000000"  BorderThickness="0"/>-->
                 </Border>
             </StackPanel>
         </StackPanel>
