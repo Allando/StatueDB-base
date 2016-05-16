@@ -10,24 +10,24 @@ namespace StatueApp.Model
             VerboseName = "Material";
         }
 
-        public modelMaterial(string materialName, string types)
+        public modelMaterial(string materialName, string materialType)
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             MaterialName = materialName;
-            Types = types;
+            MaterialType = materialType;
         }
 
-        public modelMaterial(int id, string materialName, string types)
+        public modelMaterial(int id, string materialName, string materialType)
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             Id = id;
             MaterialName = materialName;
-            Types = types;
+            MaterialType = materialType;
         }
 
         public int Id { get; set; }
         public string MaterialName { get; set; }
-        public string Types { get; set; }
+        public string MaterialType { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 
