@@ -14,14 +14,20 @@ using StatueApp.Model;
 
 namespace StatueApp.ViewModel
 {
-    class ViewModelCreateStatue: INotifyPropertyChanged
+    public class ViewModelCreateStatue: INotifyPropertyChanged
     {
+        private static ObservableCollection<modelMaterial> _statueMaterialStone;
+
         #region Properties
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement  { get; set; } 
         public static ObservableCollection<modelCulturalValue> CulturalValues { get; set; } 
         public static ObservableCollection<modelImage> StatueImage { get; set; } 
-        public static ObservableCollection<modelMaterial> StatueMaterial { get; set; } 
+        public static ObservableCollection<modelMaterial> StatueMaterial { get; set; }
+
+        public static ObservableCollection<modelMaterial> StatueMaterialStone => GetSpecificMaterialList("S");
+        public static ObservableCollection<modelMaterial> StatueMaterialMetal => GetSpecificMaterialList("M");
+        public static ObservableCollection<modelMaterial> StatueMaterialOther => GetSpecificMaterialList("A");
         #endregion
 
         #region Constructors
@@ -59,12 +65,12 @@ namespace StatueApp.ViewModel
         /// </summary>
         /// <param name="c">Materiale Type</param>
         /// <returns>ObservableCollection of modelMaterial</returns>
-        public ObservableCollection<modelMaterial> GetSpecificMaterialList(char c)
+        public static ObservableCollection<modelMaterial> GetSpecificMaterialList(string c)
         {
             var MaterialList = new ObservableCollection<modelMaterial>();
             foreach (var material in StatueMaterial)
             {
-                if (string.Equals(material.Types, c.ToString(), StringComparison.CurrentCultureIgnoreCase))
+                if (string.Equals(material.Types, c, StringComparison.CurrentCultureIgnoreCase))
                 {
                     MaterialList.Add(material);
                 }
