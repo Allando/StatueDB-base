@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using StatueApp.Annotations;
 using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    public class StatueSingleton : INotifyPropertyChanged, INotifyCollectionChanged
+    public class StatueSingleton : INotifyPropertyChanged
     {
         // Properties
         #region Properties
@@ -59,7 +53,6 @@ namespace StatueApp.Common
 
         #region PropertyChanged Support
         public event PropertyChangedEventHandler PropertyChanged;
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
