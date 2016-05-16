@@ -50,10 +50,28 @@ namespace StatueApp.ViewModel
 
             StatueMaterial = new ObservableCollection<modelMaterial>();
             GetStatueMaterialAsync();
-        } 
+        }
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Genererer en Observable Collection af en Bestemt type Materialer 
+        /// </summary>
+        /// <param name="c">Materiale Type</param>
+        /// <returns>ObservableCollection of modelMaterial</returns>
+        public ObservableCollection<modelMaterial> GetSpecificMaterialList(char c)
+        {
+            var MaterialList = new ObservableCollection<modelMaterial>();
+            foreach (var material in StatueMaterial)
+            {
+                if (string.Equals(material.Types, c.ToString(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    MaterialList.Add(material);
+                }
+            }
+            return MaterialList;
+        }
+
         /// <summary>
         /// Henter StatueTyper
         /// </summary>
@@ -115,7 +133,5 @@ namespace StatueApp.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
-
     }
 }
