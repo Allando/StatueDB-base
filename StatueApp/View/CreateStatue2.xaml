@@ -28,18 +28,43 @@
             <Image x:Name="image4" Height="150" Source="ms-appx:///Assets/Statue4.png"/>
         </Border>
         <StackPanel HorizontalAlignment="Left" Height="404" Margin="300,154,0,0" VerticalAlignment="Top" Width="702">
-            <StackPanel Height="75" Margin="0" Orientation="Horizontal">
-                <TextBlock x:Name="textBlock12" TextWrapping="Wrap" Text="Materialetype" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedIndex="{Binding Singleton.Material}" IsDropDownOpen="True" ItemsSource="{Binding Singleton.Materialtypes}"/>
+            <TextBlock x:Name="textBlock_Matriale" TextWrapping="Wrap" Text="Matriale" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center" Visibility="Visible">
+            	<Interactivity:Interaction.Behaviors>
+            		<Core:EventTriggerBehavior EventName="PointerPressed">
+            			<Core:ChangePropertyAction TargetObject="{Binding ElementName=StackPanel_Matrialer}" PropertyName="Visibility"/>
+            		</Core:EventTriggerBehavior>
+            	</Interactivity:Interaction.Behaviors>
 
+            </TextBlock>
+            <StackPanel x:Name="StackPanel_Matrialer" Height="270" Margin="0,0,10.4,0" Orientation="Vertical" Visibility="Collapsed">
+                <TextBlock x:Name="textBlock_Luk_Matrialer" TextWrapping="Wrap"  Text="Slå Matrialer Sammen" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="14.667" VerticalAlignment="Center">
+                	<Interactivity:Interaction.Behaviors>
+                		<Core:EventTriggerBehavior EventName="PointerPressed">
+                			<Core:ChangePropertyAction TargetObject="{Binding ElementName=StackPanel_Matrialer}" PropertyName="Visibility">
+                				<Core:ChangePropertyAction.Value>
+                					<Visibility>Collapsed</Visibility>
+                				</Core:ChangePropertyAction.Value>
+                			</Core:ChangePropertyAction>
+                		</Core:EventTriggerBehavior>
+                	</Interactivity:Interaction.Behaviors>
+                </TextBlock>
+                <ListBox x:Name="listBox" ItemsSource="{Binding StatueMaterial}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding MaterialName}" IsChecked="{Binding IsChecked}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>                
             </StackPanel>
-            <StackPanel Height="75" Orientation="Horizontal">
-                <TextBlock x:Name="textBlock32" TextWrapping="Wrap" Text="Materiale" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" ItemsSource="{Binding Singleton.Maeterial_By_Type}" SelectedItem="{Binding Singleton.Material}"/>
-            </StackPanel>
-            <StackPanel Height="75" Orientation="Horizontal">
-                <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
-                <ComboBox x:Name="comboBox22" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="405" Height="40" Margin="32,0,0,0" SelectedItem="{Binding Singleton.Placement}" ItemsSource="{Binding StatuePlacement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock x:Name="textBlock53" TextWrapping="Wrap" Text="Placering" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center"/>
+            <StackPanel Height="75" Orientation="Horizontal" Visibility="Collapsed">
+                <ListBox ItemsSource="{Binding StatuePlacement}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding PlacementName}" IsChecked="{Binding IsChecked}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
             <StackPanel Height="75" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock34" TextWrapping="Wrap" Text="Type" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="26.667" VerticalAlignment="Center" HorizontalAlignment="Left"/>
