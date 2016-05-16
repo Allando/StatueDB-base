@@ -14,34 +14,23 @@ using StatueApp.Model;
 
 namespace StatueApp.ViewModel
 {
-    public class ViewModelCreateStatue: INotifyPropertyChanged
+    public class ViewModelCreateStatue : INotifyPropertyChanged
     {
-        private static ObservableCollection<modelMaterial> _statueMaterialStone;
-
         #region Properties
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
-        public static ObservableCollection<modelPlacement> StatuePlacement  { get; set; } 
-        public static ObservableCollection<modelCulturalValue> CulturalValues { get; set; } 
-        public static ObservableCollection<modelImage> StatueImage { get; set; } 
+        public static ObservableCollection<modelPlacement> StatuePlacement { get; set; }
+        public static ObservableCollection<modelCulturalValue> CulturalValues { get; set; }
+        public static ObservableCollection<modelImage> StatueImage { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterial { get; set; }
 
-        public static ObservableCollection<modelMaterial> StatueMaterialStone => GetSpecificMaterialList("S");
-        public static ObservableCollection<modelMaterial> StatueMaterialMetal => GetSpecificMaterialList("M");
-        public static ObservableCollection<modelMaterial> StatueMaterialOther => GetSpecificMaterialList("A");
+        public static ObservableCollection<modelMaterial> StatueMaterialStone { get; set; }
+        public static ObservableCollection<modelMaterial> StatueMaterialMetal { get; set; }
+        public static ObservableCollection<modelMaterial> StatueMaterialOther { get; set; }
         #endregion
 
         #region Constructors
         public ViewModelCreateStatue()
         {
-            ////Henter singleton ned så den kan bruges i meotderne
-            //StatueTypeSingleton = StatueTypeSingleton.Instance;
-            ////Skyder metoden så den bruges
-            //GetStatueTypeAsync();
-
-            ////Henter singleton ned så den kan bruges i meotderne
-            //PlacementSingleton = PlacmentSingleton.Instance;
-            ////Skyder metoden så den bruges
-            //GetStatuePlacementAsync();
             StatueType = new ObservableCollection<modelStatueType>();
             GetStatueTypeAsync();
 
@@ -70,7 +59,7 @@ namespace StatueApp.ViewModel
             var MaterialList = new ObservableCollection<modelMaterial>();
             foreach (var material in StatueMaterial)
             {
-                if (string.Equals(material.Types, c, StringComparison.CurrentCultureIgnoreCase))
+                if (string.Equals(material.MaterialType, c, StringComparison.CurrentCultureIgnoreCase))
                 {
                     MaterialList.Add(material);
                 }
@@ -98,7 +87,7 @@ namespace StatueApp.ViewModel
             var listOfStatuePlacement = await facadeStatue.GetListAsync(new modelPlacement());
             foreach (var statuePlacement in listOfStatuePlacement)
             {
-               StatuePlacement.Add(statuePlacement);
+                StatuePlacement.Add(statuePlacement);
             }
         }
 
@@ -127,6 +116,10 @@ namespace StatueApp.ViewModel
             {
                 StatueMaterial.Add(statueMaterial);
             }
+            StatueMaterialStone = GetSpecificMaterialList("s");
+            StatueMaterialMetal = GetSpecificMaterialList("m");
+            StatueMaterialOther = GetSpecificMaterialList("a");
+
         }
         #endregion
 

@@ -48,15 +48,15 @@
                 		</Core:EventTriggerBehavior>
                 	</Interactivity:Interaction.Behaviors>
                 </TextBlock>
-                <ListBox x:Name="listBox" ItemsSource="{Binding StatueMaterial}">
-                    <Interactivity:Interaction.Behaviors>
+                <ListBox x:Name="listBox" ItemsSource="{Binding StatueMaterialStone}">
+                    <!--<Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="SelectionChanged">
                             <Core:CallMethodAction/>
                         </Core:EventTriggerBehavior>
-                    </Interactivity:Interaction.Behaviors>
+                    </Interactivity:Interaction.Behaviors>-->
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding MaterialName}" IsChecked="{Binding IsChecked}"/>
+                            <CheckBox Content="{Binding MaterialName}" Height="15"/> <!--IsChecked="{Binding IsChecked}"-->
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
