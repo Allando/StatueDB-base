@@ -96,9 +96,9 @@ namespace StatueApp.ViewModel
         public async void GetCulturalValueAsync()
         {
             var listOfCulturalValue = await facadeStatue.GetListAsync(new modelCulturalValue());
-            foreach (var culturalValues in listOfCulturalValue)
+            foreach (var culturalValue in listOfCulturalValue)
             {
-                CulturalValue.Add(culturalValues);
+                CulturalValue.Add(culturalValue);
             }
         }
 
