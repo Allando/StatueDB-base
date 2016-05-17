@@ -152,6 +152,7 @@
   <ItemGroup>
     <Content Include="Assets\kklogo.png" />
     <Content Include="Assets\logo.png" />
+    <Content Include="Assets\LoopSearch.png" />
     <Content Include="Assets\Statue1.png" />
     <Content Include="Assets\Statue2.png" />
     <Content Include="Assets\Statue3.png" />

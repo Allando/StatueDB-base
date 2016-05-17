@@ -9,7 +9,7 @@
 
     <Grid Background="#FFE1D0BC">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
-            
+
             <Image x:Name="imageLogo" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
             <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
@@ -19,30 +19,28 @@
         <StackPanel Margin="98,154,98,78" >
             <StackPanel Height="26" Margin="0,0,10,0">
                 <TextBlock x:Name="textBlockFindStatue" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" Text="Find Statue:" Width="136" FontWeight="Bold" FontSize="18.667"/>
-
             </StackPanel>
             <StackPanel Height="35" Margin="0,345,0,0" Orientation="Horizontal">
                 <StackPanel Width="120" Margin="0,0,0,0.2" Height="32">
-                    <Button x:Name="buttonTilbage" Content="Tilbage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" Height="32"/>
+                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                        <TextBlock x:Name="textBlockTilbage" TextWrapping="Wrap" Text="Ændre Statue" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
+                    </Border>
                 </StackPanel>
                 <StackPanel Width="120" Margin="590,0,0,0.2" Height="32">
-                    <Button x:Name="buttonVaelg" Content="Vælg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" Height="32"/>
+                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                        <TextBlock x:Name="textBlockVælg" TextWrapping="Wrap" Text="Ændre Statue" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
+                    </Border>
                 </StackPanel>
             </StackPanel>
-
-
-
         </StackPanel>
 
-        
         <StackPanel Height="33" Margin="98,189,98,0" VerticalAlignment="Top" Orientation="Horizontal">
-            <StackPanel Margin="484,0,0,-0.2" Width="234">
+            <StackPanel Margin="548,0,0,-0.2" Width="234">
                 <TextBox x:Name="textBoxSog" TextWrapping="Wrap" Text=""/>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Right" Height="33" Width="90" Margin="20,0,0,0">
-                <Button x:Name="buttonSog" Content="Søg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"/>
+            <StackPanel Width="36" Height="33" Margin="8,-3,0,2.8">
+                <Image x:Name="image" Height="33" Margin="0,0,-0.2,0" Source="ms-appx:///Assets/LoopSearch.png"/>
             </StackPanel>
-            
         </StackPanel>
         <StackPanel Margin="98,250,98,130">
             <ListView x:Name="listViewStatue" Height="258" BorderBrush="Gray" BorderThickness="1"/>

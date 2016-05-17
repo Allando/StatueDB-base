@@ -25,18 +25,27 @@
                     <Rectangle Fill="#FFF4F4F5" Height="45" Stroke="Black" Width="150"/>
                 </StackPanel>
                 <StackPanel Height="30" Width="150" Margin="0,10,0,0">
-                    <Button x:Name="buttonAendreStatue" Content="Ændre Statue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                        <TextBlock x:Name="textBlockAendreStatue" TextWrapping="Wrap" Text="Ændre Statue" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Padding="0"/>
+                    </Border>
                 </StackPanel>
                 <StackPanel Height="30" Width="150" Margin="0,10,0,0">
-                    <Button x:Name="buttonSletStatue" Content="Slet Statue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                        <TextBlock x:Name="textBlockSletStatue" TextWrapping="Wrap" Text="Slet Statue" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Padding="0"/>
+                    </Border>
                 </StackPanel>
                 <StackPanel Height="30" Width="150" Margin="0,10,0,0">
-                    <Button x:Name="buttonSeSkade" Content="Se Skade" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                        <TextBlock x:Name="textBlockSeSkade" TextWrapping="Wrap" Text="Se Skade" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Padding="0"/>
+                    </Border>
                 </StackPanel>
                 <StackPanel Height="30" Width="150" Margin="0,10,0,0">
-                    <Button x:Name="buttonOpretSkade" Content="Opret Skade" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                        <TextBlock x:Name="textBlockOpretSkade" TextWrapping="Wrap" Text="Opret Skade" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Padding="0"/>
+                    </Border>
                 </StackPanel>
             </StackPanel>
+            
             <StackPanel Height="116" Margin="343,-640,0,0">
                 <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0">
                     <TextBlock x:Name="textBlockNavn" Height="30" Width="180" TextWrapping="Wrap" Text="Navn" FontWeight="Bold"/>
@@ -50,38 +59,37 @@
                 <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,0">
                     <TextBlock x:Name="textBlockGPS" Height="30" Width="180" TextWrapping="Wrap" Text="GPS" FontWeight="Bold"/>
                 </StackPanel>
-
-
-
             </StackPanel>
+            
             <StackPanel Height="250" Margin="343,-250,0,0" BorderThickness="1" BorderBrush="Black">
                 <StackPanel Height="44" Margin="0,0,-0.2,0" Orientation="Horizontal">
                     <StackPanel Height="45" HorizontalAlignment="Left" Width="100" Margin="10,0,0,0">
                         <TextBlock x:Name="textBlockNoter" TextWrapping="Wrap" Text="Noter:" Height="45" FontWeight="Bold" FontSize="18.667" HorizontalAlignment="Left"/>
                     </StackPanel>
-
-                    <StackPanel Width="150" Height="25" Margin="143,0,0,0">
+                    <StackPanel Width="150" Height="25" Margin="170,0,0,0">
                         <TextBox x:Name="textBoxSog" TextWrapping="Wrap" Text="" Height="21" Margin="0,0,0.4,0" Padding="10,0,6,0" MinHeight="25"/>
                     </StackPanel>
-                    <StackPanel Width="60" Margin="10,10,0,10" Height="25">
-                        <Button x:Name="buttonSog" Content="Søg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="25" FontSize="12" Padding="0"/>
+                    <StackPanel Width="37" Margin="3,5,0,9" Height="25">
+                        <Image x:Name="image" Height="26" Margin="0,0,-0.2,0" Source="ms-appx:///Assets/LoopSearch.png"/>
                     </StackPanel>
-
                 </StackPanel>
+                
                 <StackPanel Height="201" Margin="0.2,0,0,0">
                     <StackPanel Height="176" Margin="0,0,0.2,0">
                         <ListView x:Name="listViewNoter" Height="167" Margin="10,5,10.2,0" BorderBrush="Gray" BorderThickness="1"/>
                     </StackPanel>
                     <StackPanel Height="20" HorizontalAlignment="Left" Width="65" Margin="10,3,0,0">
-                        <Button x:Name="buttonOpretNote" Content="Opret Note" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="20" Width="65" FontSize="10.667" Padding="0"/>
+                        <Border BorderBrush="#FF786B5E" Height="20" BorderThickness="1,1,1,1" Background="#FFB4A390" CornerRadius="10" Margin="0">
+                            <TextBlock x:Name="textBlockOpretNote" TextWrapping="Wrap" Text="Opret Note" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="9" Foreground="#FF0E143F" Padding="0"/>
+                        </Border>
                     </StackPanel>
                     <StackPanel Height="20" Width="65" Margin="397,-20,0,0">
-                        <Button x:Name="buttonAendreNote" Content="Ændre Note" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="65" Height="20" Padding="0" FontSize="10.667"/>
+                        <Border BorderBrush="#FF786B5E" Height="20" BorderThickness="1,1,1,1" Background="#FFB4A390" CornerRadius="10" Margin="0">
+                            <TextBlock x:Name="textBlockAendreNote" TextWrapping="Wrap" Text="Opret Note" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="9" Foreground="#FF0E143F" Padding="0"/>
+                        </Border>
                     </StackPanel>
-
                 </StackPanel>
             </StackPanel>
-
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">
