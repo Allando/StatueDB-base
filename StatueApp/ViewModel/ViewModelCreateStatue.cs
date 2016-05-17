@@ -56,15 +56,15 @@ namespace StatueApp.ViewModel
         /// <returns>ObservableCollection of modelMaterial</returns>
         public static ObservableCollection<modelMaterial> GetSpecificMaterialList(string s)
         {
-            var MaterialList = new ObservableCollection<modelMaterial>();
+            var materialList = new ObservableCollection<modelMaterial>();
             foreach (var material in StatueMaterial)
             {
                 if (string.Equals(material.MaterialType, s, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    MaterialList.Add(material);
+                    materialList.Add(material);
                 }
             }
-            return MaterialList;
+            return materialList;
         }
 
         /// <summary>
@@ -96,9 +96,9 @@ namespace StatueApp.ViewModel
         public async void GetCulturalValueAsync()
         {
             var listOfCulturalValue = await facadeStatue.GetListAsync(new modelCulturalValue());
-            foreach (var culturalValues in listOfCulturalValue)
+            foreach (var culturalValue in listOfCulturalValue)
             {
-                CulturalValue.Add(culturalValues);
+                CulturalValue.Add(culturalValue);
             }
         }
 
