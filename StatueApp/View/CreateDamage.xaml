@@ -13,7 +13,7 @@
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="PointerPressed">
-                    <core:NavigateToPageAction TargetPage="SkulpturDatabase.MainPage"/>
+                    <core:NavigateToPageAction TargetPage="StatueApp.View.MainPage"/>
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
             <Image x:Name="imageLogo" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
@@ -50,6 +50,11 @@
                 
                 <StackPanel Height="45" Margin="150,10,10.2,0" Orientation="Horizontal">
                     <Border BorderBrush="#FF786B5E" Height="30" Width="94" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="PointerPressed">
+                                <core:NavigateToPageAction TargetPage="StatueApp.View.SeeStatue"/>
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="textBlockTilbage" TextWrapping="Wrap" Text="Tilbage" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
                     </Border>
                     <Border BorderBrush="#FF786B5E" Height="30" Width="94" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="20,0,0,0">
