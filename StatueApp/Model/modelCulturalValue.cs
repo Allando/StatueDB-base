@@ -10,27 +10,27 @@ namespace StatueApp.Model
             VerboseName = "Cultural Value";
         }
 
-        public modelCulturalValue(string culturalValueName) : this()
+        public modelCulturalValue(string culturalValueChar) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
-            CulturalValueName = culturalValueName;
+            CulturalValueChar = culturalValueChar;
         }
 
         public modelCulturalValue(int id, string culturalValueName) : this()
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             Id = id;
-            CulturalValueName = culturalValueName;
+            CulturalValueChar = culturalValueName;
         }
 
         public int Id { get; set; }
-        public string CulturalValueName { get; set; }
+        public string CulturalValueChar { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 
         public override string ToString()
         {
-            return $"{CulturalValueName}";
+            return $"{CulturalValueChar}";
         }
     }
 }
