@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml;
 using StatueApp.Annotations;
+using StatueApp.Common;
 using StatueApp.Facade;
 using StatueApp.Model;
-using StatueApp.View;
 
 
 namespace StatueApp.ViewModel
@@ -19,6 +13,9 @@ namespace StatueApp.ViewModel
     public class ViewModelCreateStatue : INotifyPropertyChanged
     {
         #region Properties
+
+        public StatueSingleton NewStatue { get; set; }
+
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement { get; set; }
         public static ObservableCollection<modelCulturalValue> CulturalValue { get; set; }
@@ -33,6 +30,8 @@ namespace StatueApp.ViewModel
         #region Constructors
         public ViewModelCreateStatue()
         {
+            NewStatue = StatueSingleton.Instance;
+
             StatueType = new ObservableCollection<modelStatueType>();
             GetStatueTypeAsync();
 
@@ -126,7 +125,6 @@ namespace StatueApp.ViewModel
             StatueMaterialMetal = GetSpecificMaterialList("m");
             StatueMaterialOther = GetSpecificMaterialList("a");
         }
-        
         #endregion
 
         #region PropertyChangedSupport

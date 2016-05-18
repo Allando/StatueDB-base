@@ -9,6 +9,7 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
 
+    
     <Grid Background="#FFE1D0BC">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <interactivity:Interaction.Behaviors>
@@ -55,6 +56,7 @@
                                 <core:NavigateToPageAction TargetPage="StatueApp.View.SeeStatue"/>
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
+                        
                         <TextBlock x:Name="textBlockTilbage" TextWrapping="Wrap" Text="Tilbage" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
                     </Border>
                     <Border BorderBrush="#FF786B5E" Height="30" Width="94" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="20,0,0,0">
