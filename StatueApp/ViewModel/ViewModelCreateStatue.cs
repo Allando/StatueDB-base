@@ -25,6 +25,7 @@ namespace StatueApp.ViewModel
         public static ObservableCollection<modelMaterial> StatueMaterialStone { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterialMetal { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterialOther { get; set; }
+        public static ObservableCollection<modelStatue> Statues  { get; set; }
         #endregion
 
         #region Constructors
@@ -46,6 +47,9 @@ namespace StatueApp.ViewModel
 
             StatueMaterial = new ObservableCollection<modelMaterial>();
             GetStatueMaterialAsync();
+
+            Statues = new ObservableCollection<modelStatue>();
+            GetStatueAsync();
         }
         #endregion
 
@@ -124,6 +128,15 @@ namespace StatueApp.ViewModel
             StatueMaterialStone = GetSpecificMaterialList("s");
             StatueMaterialMetal = GetSpecificMaterialList("m");
             StatueMaterialOther = GetSpecificMaterialList("a");
+        }
+
+        public async void GetStatueAsync()
+        {
+            var listOfStatues = await facadeStatue.GetListAsync(new modelStatue());
+            foreach (var statue in listOfStatues)
+            {
+                Statues.Add(statue);
+            }
         }
         #endregion
 

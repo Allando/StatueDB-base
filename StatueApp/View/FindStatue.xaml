@@ -8,8 +8,11 @@
     xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.FindStatue"
     mc:Ignorable="d">
+    <Page.DataContext>
+        <ViewModel:ViewModelCreateStatue/>
+    </Page.DataContext>
 
-    
+
     <Grid Background="#FFE1D0BC">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <Interactivity:Interaction.Behaviors>
@@ -61,7 +64,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="98,250,98,130">
-            <ListView x:Name="listViewStatue" Height="258" BorderBrush="Gray" BorderThickness="1"/>
+            <ListView x:Name="listViewStatue" Height="258" BorderBrush="Gray" BorderThickness="1" ItemsSource="{Binding Statues, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">
