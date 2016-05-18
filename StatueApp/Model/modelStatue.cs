@@ -41,5 +41,10 @@ namespace StatueApp.Model
         public DateTime Updated { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
+
+        public override string ToString()
+        {
+            return $"Nr: {Id}, Statue: {Name}";
+        }
     }
 }
