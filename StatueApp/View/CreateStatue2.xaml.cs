@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -13,5 +14,22 @@ namespace StatueApp.View
         {
             this.InitializeComponent();
         }
+        private void MatrialeKlik()
+        {
+            StackPanelMatrialer.Visibility = Visibility.Visible;
+            StackPanelPlacering.Visibility = Visibility.Collapsed;
+            StackPanelType.Visibility = Visibility.Collapsed;
+            StackPanelCv.Visibility = Visibility.Collapsed;
+
+        }
+        private void PlaceringsKlik()
+        {
+            StackPanelMatrialer.Visibility = Visibility.Collapsed;
+            StackPanelPlacering.Visibility = Visibility.Visible;
+            StackPanelType.Visibility = Visibility.Collapsed;
+            StackPanelCv.Visibility = Visibility.Collapsed;
+
+        }
+
     }
 }
