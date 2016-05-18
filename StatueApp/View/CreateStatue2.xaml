@@ -29,7 +29,8 @@
                 <Image x:Name="image4" Height="150" Source="ms-appx:///Assets/Statue4.png"/>
             </Border>
             <StackPanel x:Name="Hovedsektion" HorizontalAlignment="Left" Height="436" Margin="300,155,0,0" VerticalAlignment="Top" Width="702">
-                <StackPanel Orientation="Horizontal">
+            <StackPanel x:Name="menu" Orientation="Horizontal">
+                <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,0" Background="#FFF2F2F2" CornerRadius="0,80,0,0" Margin="0,0,0,0" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock x:Name="textBlock_Matriale" TextWrapping="Wrap" Text="Matriale" Width="125" Height="25" Margin="20,0,0,0" FontFamily="Verdana" FontSize="20" VerticalAlignment="Center" Visibility="Visible">
             	<Interactivity:Interaction.Behaviors>
             		<Core:EventTriggerBehavior EventName="PointerPressed">
@@ -57,7 +58,9 @@
             	</Interactivity:Interaction.Behaviors>
 
                     </TextBlock>
-                    <TextBlock x:Name="TextBlockPlacering" TextWrapping="Wrap" Text="Placering" Width="130" Height="25" Margin="20,0,0,0" FontFamily="Verdana" FontSize="20" VerticalAlignment="Center">
+                    </Border>
+                <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,0" Background="#FFF2F2F2" CornerRadius="0,80,0,0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30">
+                        <TextBlock x:Name="TextBlockPlacering" TextWrapping="Wrap" Text="Placering" Width="130" Height="25" Margin="20,0,0,0" FontFamily="Verdana" FontSize="20" VerticalAlignment="Center">
                 	<Interactivity:Interaction.Behaviors>
                 		<Core:EventTriggerBehavior EventName="PointerPressed">
 			<Core:ChangePropertyAction TargetObject="{Binding ElementName=StackPanelMatrialer}" PropertyName="Visibility">
@@ -83,6 +86,8 @@
 		</Core:EventTriggerBehavior>
                 	</Interactivity:Interaction.Behaviors>
                     </TextBlock>
+                    </Border>
+                <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,0" Background="#FFF2F2F2" CornerRadius="0,80,0,0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30">
                     <TextBlock x:Name="TextBlockType" TextWrapping="Wrap" Text="Type" Width="90" Height="25" Margin="20,0,0,0" FontFamily="Verdana" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="PointerPressed">
@@ -109,6 +114,8 @@
 		</Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                     </TextBlock>
+                </Border>
+                <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,0" Background="#FFF2F2F2" CornerRadius="0,80,0,0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30">
                     <TextBlock x:Name="TextBlockCV" TextWrapping="Wrap" Text="Kultural Værdi" Width="206" Height="25" Margin="20,0,0,0" FontFamily="Verdana" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="PointerPressed">
@@ -135,8 +142,9 @@
 		</Core:EventTriggerBehavior>                        
                     </Interactivity:Interaction.Behaviors>
                     </TextBlock>
-                </StackPanel>
-                <StackPanel Height="348">
+                </Border>
+            </StackPanel>
+            <StackPanel Height="348" Background="#FFF2F2F2">
                     <StackPanel x:Name="StackPanelMatrialer" Margin="0,0,10.4,0" Orientation="Vertical" Visibility="Visible">
                         <StackPanel Width="600" Orientation="Horizontal" HorizontalAlignment="Center">
                             <ListBox x:Name="ListBoxStoneMatrial" ItemsSource="{Binding StatueMaterialStone}" Width="200" >
@@ -162,59 +170,26 @@
                             </ListBox>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel  x:Name="StackPanelPlacering" Orientation="Vertical" Visibility="Collapsed" Margin="0,0,0.4,0">
-                        <ListBox ItemsSource="{Binding StatuePlacement}" Margin="0,0,0,0" Width="200" Height="285">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Content="{Binding PlacementName}" IsChecked="{Binding IsChecked}" MinHeight="26" Height="1"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <TextBlock x:Name="textBlock_Luk_Placering" TextWrapping="Wrap"  Text="Slå Placering Sammen" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="14.667" VerticalAlignment="Center">
-                	<Interactivity:Interaction.Behaviors>
-                		<Core:EventTriggerBehavior EventName="PointerPressed">
-                			<Core:ChangePropertyAction TargetObject="{Binding ElementName=StackPanelPlacering}" PropertyName="Visibility">
-                				<Core:ChangePropertyAction.Value>
-                					<Visibility>Collapsed</Visibility>
-                				</Core:ChangePropertyAction.Value>
-                			</Core:ChangePropertyAction>
-                		</Core:EventTriggerBehavior>
-                	</Interactivity:Interaction.Behaviors>
-                        </TextBlock>
+                    <StackPanel  x:Name="StackPanelPlacering" Orientation="Vertical" Visibility="Collapsed" Margin="0,0,0.4,0" Height="346">
+                    <ListBox ItemsSource="{Binding StatuePlacement}" Margin="0,87,0,0" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Height="162">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding PlacementName}" IsChecked="{Binding IsChecked}" MinHeight="26" Height="1"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelType" Orientation="Vertical" Visibility="Collapsed">
-                        <ListBox ItemsSource="{Binding StatueType}" Width="200" HorizontalAlignment="Center">
+                    <StackPanel x:Name="StackPanelType" Orientation="Vertical" Visibility="Collapsed" Height="345">
+                        <ListBox ItemsSource="{Binding StatueType}" Width="200" HorizontalAlignment="Center" Height="230" VerticalAlignment="Center" Margin="0,61,0,0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <CheckBox Content="{Binding StatueTypeName}" IsChecked="{Binding IsChecked}"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <TextBlock x:Name="textBlock_Luk_Type" TextWrapping="Wrap"  Text="Slå Type Sammen" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="14.667" VerticalAlignment="Center">
-                	<Interactivity:Interaction.Behaviors>
-                		<Core:EventTriggerBehavior EventName="PointerPressed">
-                			<Core:ChangePropertyAction TargetObject="{Binding ElementName=StackPanelType}" PropertyName="Visibility">
-                				<Core:ChangePropertyAction.Value>
-                					<Visibility>Collapsed</Visibility>
-                				</Core:ChangePropertyAction.Value>
-                			</Core:ChangePropertyAction>
-                		</Core:EventTriggerBehavior>
-                	</Interactivity:Interaction.Behaviors>
-                        </TextBlock>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelCv" Visibility="Collapsed" Orientation="Vertical">
+                    <StackPanel x:Name="StackPanelCv" Visibility="Collapsed" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,147,0,0">
                         <ComboBox x:Name="ComboBoxCv"  ItemsSource="{Binding CulturalValue}" HorizontalAlignment="Center" Width="200" PlaceholderText="Vælg"/>
-                        <TextBlock x:Name="textBlock_Luk_KulturalVærdi" TextWrapping="Wrap"  Text="Slå Kultural Værdi Sammen" Width="206" Height="35" Margin="20,0,0,0" FontFamily="Verdana" FontSize="14.667" VerticalAlignment="Center">
-                	<Interactivity:Interaction.Behaviors>
-                		<Core:EventTriggerBehavior EventName="PointerPressed">
-                			<Core:ChangePropertyAction TargetObject="{Binding ElementName=StackPanelCv}" PropertyName="Visibility">
-                				<Core:ChangePropertyAction.Value>
-                					<Visibility>Collapsed</Visibility>
-                				</Core:ChangePropertyAction.Value>
-                			</Core:ChangePropertyAction>
-                		</Core:EventTriggerBehavior>
-                	</Interactivity:Interaction.Behaviors>
-                        </TextBlock>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="Knapper" Height="58" Orientation="Horizontal" Padding="0" VerticalAlignment="Bottom" HorizontalAlignment="Center">
