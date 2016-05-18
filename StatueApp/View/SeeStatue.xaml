@@ -15,6 +15,7 @@
                     <Core:NavigateToPageAction TargetPage="StatueApp.View.MainPage"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
+            
             <Image x:Name="imageLogo" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
             <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
