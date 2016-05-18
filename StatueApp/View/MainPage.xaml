@@ -33,7 +33,13 @@
                 <!--<Button x:Name="opret_button" Content="Opret Statue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,1.6,0,-1.8" FontSize="26.667" Foreground="#FF0E143F" FontFamily="Verdana" Background="#00000000" />-->
             </Border>
             <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,20,0,20">
-                <Button x:Name="FindButton" Content="Find Statue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26.667" Foreground="#FF0E143F" FontFamily="Verdana" Background="#00000000"/>
+                <Button x:Name="FindButton" Content="Find Statue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26.667" Foreground="#FF0E143F" FontFamily="Verdana" Background="#00000000">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <core:NavigateToPageAction TargetPage="StatueApp.View.FindStatue"/>
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </Button>
             </Border>
             <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,20,0,20">
                 <Button x:Name="StatestikButton" Content="Statestik" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26.667" Foreground="#FF0E143F" FontFamily="Verdana" Background="#00000000"/>
