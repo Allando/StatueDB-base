@@ -7,9 +7,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using StatueApp.Annotations;
 using StatueApp.Facade;
 using StatueApp.Model;
+using StatueApp.View;
 
 
 namespace StatueApp.ViewModel
@@ -124,6 +126,7 @@ namespace StatueApp.ViewModel
             StatueMaterialMetal = GetSpecificMaterialList("m");
             StatueMaterialOther = GetSpecificMaterialList("a");
         }
+        
         #endregion
 
         #region PropertyChangedSupport
