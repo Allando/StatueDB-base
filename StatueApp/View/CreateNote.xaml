@@ -22,6 +22,7 @@
             <TextBlock x:Name="atabase_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="atabase" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
         </StackPanel>
 
+        
         <StackPanel Margin="98,154,98,78" >
             <StackPanel Height="36" Margin="0,20,0,0">
                 <TextBlock x:Name="textBlockOpretNote" TextWrapping="Wrap" Text="Opret Note:" Height="38" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18.667"/>

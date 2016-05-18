@@ -109,6 +109,12 @@
     <Compile Include="SampleCode\SampleSingleton.cs" />
     <Compile Include="ViewModel\ViewModelAddDamage.cs" />
     <Compile Include="ViewModel\ViewModelCreateStatue.cs" />
+    <Compile Include="View\CreateDamage.xaml.cs">
+      <DependentUpon>CreateDamage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateNote.xaml.cs">
+      <DependentUpon>CreateNote.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateStatue1.xaml.cs" />
     <Compile Include="View\CreateStatue2.xaml.cs" />
     <Compile Include="Model\modelCulturalValue.cs" />
@@ -126,8 +132,17 @@
     <Compile Include="Model\modelStatueTypeList.cs" />
     <Compile Include="Model\modelZipcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\CreateTreatment.xaml.cs">
+      <DependentUpon>CreateTreatment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FindStatue.xaml.cs">
+      <DependentUpon>FindStatue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SeeStatue.xaml.cs">
+      <DependentUpon>SeeStatue.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StatueIsCreated.xaml.cs" />
   </ItemGroup>
@@ -160,6 +175,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\CreateDamage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CreateNote.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\CreateStatue1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -168,9 +191,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\CreateTreatment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FindStatue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SeeStatue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\StatueIsCreated.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,139 @@
+﻿<Page
+    x:Class="StatueApp.View.CreateTreatment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StatueApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FFE1D0BC">
+        <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
+
+            
+          
+            
+            <Image x:Name="imageLogo" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
+            <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
+            <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
+            <TextBlock x:Name="atabase_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="atabase" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
+        </StackPanel>
+        <StackPanel Margin="98,154,98,78" >
+            <StackPanel Height="50" Margin="0,20,0,0">
+                <StackPanel Height="51" Width="424">
+                    <TextBlock x:Name="textBlockOpretBehandling" TextWrapping="Wrap" Text="Opret Behandlings Anbefaling:" Height="51" FontWeight="Bold" FontSize="18.667" HorizontalAlignment="Center" Padding="0,8,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Height="337" HorizontalAlignment="Left" Width="306" Orientation="Vertical">
+                <StackPanel Width="365" Height="33" VerticalAlignment="Top" Margin="0,8,0.2,0">
+                    <CheckBox x:Name="checkBoxAkut" Content="Akut behandlings krævet" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </StackPanel>
+                <StackPanel Width="365" Height="33" VerticalAlignment="Top" d:LayoutOverrides="TopMargin, BottomMargin" Margin="0,10,0,0">
+                    <CheckBox x:Name="checkBoxBehandlingsPlan" Content="Skal indgå i behandlings plan" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0"/>
+                </StackPanel>
+                <StackPanel Width="365" Height="33" VerticalAlignment="Top" Margin="0,10,0,0">
+                    <CheckBox x:Name="checkBoxTilses" Content="Tilses efter 10 år" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Height="342" Margin="360,-340,0,0">
+                <StackPanel Height="34" Margin="0,10,0.4,0" Width="522">
+                    <StackPanel Height="34" Margin="125,0" VerticalAlignment="Center" Width="261">
+                        <ComboBox x:Name="comboBoxFrekvens" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Height="34" Margin="0,40,0.4,0" Width="522" Orientation="Horizontal">
+                    <StackPanel Width="166" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockNaesteBehandling" TextWrapping="Wrap" Text="Næste Behandling:" Height="34" Margin="0,0,0.4,0" FontWeight="Bold" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="54" Margin="40,0,0,0.4">
+                        <TextBlock x:Name="textBlockMnd1" TextWrapping="Wrap" Text="Mnd" Height="32" Margin="0,0,0.4,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="72" Margin="0,0,30,0.4">
+                        <TextBox x:Name="textBoxMnd1" TextWrapping="Wrap" Text="" Height="32" MinWidth="0" MinHeight="0"/>
+                    </StackPanel>
+                    <StackPanel Width="34" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockAar1" TextWrapping="Wrap" Text="År" Height="32" Margin="0,0,0.2,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="48" Margin="0,0,0,0.4">
+                        <TextBox x:Name="textBoxAar1" TextWrapping="Wrap" Text="" MinHeight="0" MinWidth="0" Height="34"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Height="34" Margin="0,10,0.4,0" Width="522" Orientation="Horizontal">
+                    <StackPanel Width="166" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockSidstBehandlet" TextWrapping="Wrap" Text="Sidst Behandlet:" Height="34" Margin="0,0,0.4,0" FontWeight="Bold" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="54" Margin="40,0,0,0.4">
+                        <TextBlock x:Name="textBlockMnd2" TextWrapping="Wrap" Text="Mnd" Height="32" Margin="0,0,0.4,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="72" Margin="0,0,30,0.4">
+                        <TextBox x:Name="textBoxMnd2" TextWrapping="Wrap" Text="" Height="32" MinWidth="0" MinHeight="0"/>
+                    </StackPanel>
+                    <StackPanel Width="34" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockAar2" TextWrapping="Wrap" Text="År" Height="32" Margin="0,0,0.2,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="48" Margin="0,0,0,0.4">
+                        <TextBox x:Name="textBoxAar2" TextWrapping="Wrap" Text="" MinHeight="0" MinWidth="0" Height="34"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Height="34" Margin="0,10,0.4,0" Width="522" Orientation="Horizontal">
+                    <StackPanel Width="166" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockNaesteTilsyn" TextWrapping="Wrap" Text="Næste Tilsyn:" Height="34" Margin="0,0,0.4,0" FontWeight="Bold" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="54" Margin="40,0,0,0.4">
+                        <TextBlock x:Name="textBlockMnd3" TextWrapping="Wrap" Text="Mnd" Height="32" Margin="0,0,0.4,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="72" Margin="0,0,30,0.4">
+                        <TextBox x:Name="textBoxMnd3" TextWrapping="Wrap" Text="" Height="32" MinWidth="0" MinHeight="0"/>
+                    </StackPanel>
+                    <StackPanel Width="34" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockAar3" TextWrapping="Wrap" Text="År" Height="32" Margin="0,0,0.2,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="48" Margin="0,0,0,0.4">
+                        <TextBox x:Name="textBoxAar3" TextWrapping="Wrap" Text="" MinHeight="0" MinWidth="0" Height="34"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Height="34" Margin="0,10,0.4,0" Width="522" Orientation="Horizontal">
+                    <StackPanel Width="166" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockSidsteTilsyn" TextWrapping="Wrap" Text="Sidste Tilsyn:" Height="34" Margin="0,0,0.4,0" FontWeight="Bold" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="54" Margin="40,0,0,0.4">
+                        <TextBlock x:Name="textBlockMnd4" TextWrapping="Wrap" Text="Mnd" Height="32" Margin="0,0,0.4,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="72" Margin="0,0,30,0.4">
+                        <TextBox x:Name="textBoxMnd4" TextWrapping="Wrap" Text="" Height="32" MinWidth="0" MinHeight="0"/>
+                    </StackPanel>
+                    <StackPanel Width="34" Margin="0,0,0,0.4">
+                        <TextBlock x:Name="textBlockAar4" TextWrapping="Wrap" Text="År" Height="32" Margin="0,0,0.2,0" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    </StackPanel>
+                    <StackPanel Width="48" Margin="0,0,0,0.4">
+                        <TextBox x:Name="textBoxAar4" TextWrapping="Wrap" Text="" MinHeight="0" MinWidth="0" Height="34"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Height="43" Margin="0,45,0,0">
+                    <StackPanel Height="45" Margin="0,0,20,0" HorizontalAlignment="Right" Width="105">
+                        <Border BorderBrush="#FF786B5E" Height="43" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="0">
+                            <TextBlock x:Name="textBlockgem" TextWrapping="Wrap" Text="Gem" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Padding="0"/>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">
+            <Image x:Name="KKlogoimage" Width="155" Source="ms-appx:///Assets/kklogo.png"/>
+            <TextBlock x:Name="textBlockAdresse" TextWrapping="Wrap" Text="- Monument ansvarlige gruppe v. Eva Bøje Nielsen"  FontSize="10" Margin="4,4,0,0" FontFamily="Verdana" VerticalAlignment="Center"/>
+            <Border BorderBrush="#FF786B5E" BorderThickness="2,2,2,2" Background="#FFB4A390" Width="150" Margin="321,5,0,5" CornerRadius="25" HorizontalAlignment="Right">
+                <Button x:Name="buttonAdmin" Content="Admin" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="81" FontSize="16" FontFamily="Verdana" Background="#00000000"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
