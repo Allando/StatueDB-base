@@ -7,12 +7,10 @@
     xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.CreateStatue1"
     mc:Ignorable="d">
+    
     <Page.DataContext>
         <ViewModel:ViewModelCreateStatue/>
     </Page.DataContext>
-
-    
-
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
@@ -36,21 +34,21 @@
         <StackPanel HorizontalAlignment="Left" Margin="294,140,0,0" VerticalAlignment="Top" Width="689">
             <StackPanel Height="80" Margin="10,10,9.8,0" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock_Name" TextWrapping="Wrap" Text="Navn:" Width="126" Margin="20,15,0,15" FontFamily="Verdana" FontSize="26.667" Height="35"/>
-                <TextBox x:Name="textBox_Name" TextWrapping="Wrap" Margin="108,15,10,15" Width="403" Height="40" FontFamily="Verdana" FontSize="26.667" Background="White" Text="{Binding NewStatue.Statue.Name, Mode=TwoWay}"/>
+                <TextBox x:Name="textBox_Name" TextWrapping="Wrap" Margin="108,15,10,15" Width="403" Height="40" FontFamily="Verdana" FontSize="26.667" Background="White" Text="{Binding NewStatue.Statue.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Height="80" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock_Address" TextWrapping="Wrap" Text="Adresse:" Width="134" Margin="20,15,0,15" Height="35" FontFamily="Verdana" FontSize="26.667"/>
-                <TextBox x:Name="textBox_Address" TextWrapping="Wrap" Text="{Binding NewStatue.Statue.Address, Mode=TwoWay}" Width="402" Height="40" Margin="108,15,10,15" FontFamily="Verdana" FontSize="26.667"/>
+                <TextBox x:Name="textBox_Address" TextWrapping="Wrap" Text="{Binding NewStatue.Statue.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="402" Height="40" Margin="108,15,10,15" FontFamily="Verdana" FontSize="26.667"/>
             </StackPanel>
             <StackPanel Height="80" Orientation="Horizontal">
                 <TextBlock x:Name="textBlock_Zipcode" TextWrapping="Wrap" Text="Postnr &amp; By:" Width="172" Height="35" Margin="20,15,0,15" FontFamily="Verdana" FontSize="26.667"/>
-                <TextBox x:Name="textBox_Zipcocde" TextWrapping="Wrap" Text="{Binding NewStatue.Statue.Zipcode, Mode=TwoWay}" Width="103" Height="40" Margin="73,15,10,15"/>
+                <TextBox x:Name="textBox_Zipcocde" TextWrapping="Wrap" Text="{Binding NewStatue.Statue.Zipcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="103" Height="40" Margin="73,15,10,15"/>
                 <TextBox x:Name="textBox_City" TextWrapping="Wrap" Text="" Margin="10,15,0,15" Width="277" Height="40"/>
             </StackPanel>
             <StackPanel Height="80" Orientation="Horizontal" Margin="0,0,-0.2,0">
                 <TextBlock x:Name="textBlock_GPS" TextWrapping="Wrap" Text="GPS:" Width="136" Height="35" Margin="20,15,0,15" FontFamily="Verdana" FontSize="26.667"/>
                 <Button x:Name="button_FindGPS" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" Background="#FFB4A390" BorderBrush="#FF786B5E" BorderThickness="2" Content="Find GPS" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="40" Margin="110,0,10,0" Width="103"/>
-                <TextBox x:Name="TextBox_GPSLocation" TextWrapping="Wrap" Text="{Binding NewStatue.GpsLocation.Coordinates, Mode=TwoWay}" FontFamily="Verdana" FontSize="26.667" Width="275" Height="40" Margin="10,20,0,20"/>
+                <TextBox x:Name="TextBox_GPSLocation" TextWrapping="Wrap" Text="{Binding NewStatue.GpsLocation.Coordinates, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Verdana" FontSize="26.667" Width="275" Height="40" Margin="10,20,0,20"/>
             </StackPanel>
             <StackPanel Height="110" Orientation="Horizontal" Margin="0" HorizontalAlignment="Center">
                 <Border x:Name="Border_buttonBack" BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,20,0,20">

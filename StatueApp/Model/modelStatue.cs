@@ -15,7 +15,7 @@ namespace StatueApp.Model
             // Constructs Object with parameters AND the content of the Default Constructor
         {
             Name = name;
-            Address = address;
+            Adress = address;
             Zipcode = zipcode;
             Created = created;
             Updated = updated;
@@ -27,15 +27,15 @@ namespace StatueApp.Model
         {
             Id = id;
             Name = name;
-            Address = address;
+            Adress = address;
             Zipcode = zipcode;
             Created = created;
             Updated = updated;
         }
 
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public string Name { get; set; }
-        public string Address { get; set; }
+        public string Adress { get; set; }
         public string Zipcode { get; set; }
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }

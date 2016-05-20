@@ -10,7 +10,9 @@ namespace StatueApp.Facade
 {
     public class facadeStatue
     {
-        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net";  // HTTP URL of Server
+        //        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net";  // HTTP URL of Server
+        private const string ServerUrl = "http://localhost:55000";  // HTTP URL of Server
+
         private const string ApiBaseUrl = "/api/";                  // Base Directory of the Api (Remember Leading and Trailing "/")
 
         /// <summary>
@@ -110,6 +112,9 @@ namespace StatueApp.Facade
                 return listOfObjects;
             }
         }
+
+
+
 
         /// <summary>
         /// 

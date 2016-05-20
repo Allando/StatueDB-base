@@ -5,16 +5,17 @@ using System.Runtime.CompilerServices;
 using StatueApp.Annotations;
 using StatueApp.Common;
 using StatueApp.Facade;
+using StatueApp.Handler;
 using StatueApp.Model;
-
+using Windows.UI.Popups;
 
 namespace StatueApp.ViewModel
 {
     public class ViewModelCreateStatue : INotifyPropertyChanged
     {
         #region Properties
-
-        public StatueSingleton NewStatue { get; set; }
+        public static StatueSingleton NewStatue { get; set; }
+        public RelayCommand CreateStatueCommand { get; set; }
 
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement { get; set; }
@@ -25,7 +26,7 @@ namespace StatueApp.ViewModel
         public static ObservableCollection<modelMaterial> StatueMaterialStone { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterialMetal { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterialOther { get; set; }
-        public static ObservableCollection<modelStatue> Statues  { get; set; }
+        public static ObservableCollection<modelStatue> Statues { get; set; }
         #endregion
 
         #region Constructors
@@ -50,10 +51,13 @@ namespace StatueApp.ViewModel
 
             Statues = new ObservableCollection<modelStatue>();
             GetStatueAsync();
+
+            CreateStatueCommand = new RelayCommand(DoCreateStatue);
         }
         #endregion
 
         #region Methods
+        #region Liste Generatorer
         /// <summary>
         /// Genererer en Observable Collection af en Bestemt type Materialer 
         /// </summary>
@@ -73,7 +77,7 @@ namespace StatueApp.ViewModel
         }
 
         /// <summary>
-        /// Henter StatueTyper
+        /// Henter og laver liste over Statue Typer
         /// </summary>
         public async void GetStatueTypeAsync()
         {
@@ -85,7 +89,7 @@ namespace StatueApp.ViewModel
         }
 
         /// <summary>
-        /// Henter StatuePlacering
+        /// Henter og laver liste over Statue Placeringer
         /// </summary>
         public async void GetStatuePlacementAsync()
         {
@@ -95,8 +99,9 @@ namespace StatueApp.ViewModel
                 StatuePlacement.Add(statuePlacement);
             }
         }
+
         /// <summary>
-        /// Henter CulturalValue
+        /// Henter og laver liste over Kulturelle Værdier
         /// </summary>
         public async void GetCulturalValueAsync()
         {
@@ -107,6 +112,9 @@ namespace StatueApp.ViewModel
             }
         }
 
+        /// <summary>
+        /// Henter og laver liste over statue Billeder
+        /// </summary>
         public async void GetStatueImageAsync()
         {
             var listOfStatueImage = await facadeStatue.GetListAsync(new modelImage());
@@ -116,6 +124,9 @@ namespace StatueApp.ViewModel
             }
         }
 
+        /// <summary>
+        /// Henter og laver liste over statue Materialler
+        /// </summary>
         public async void GetStatueMaterialAsync()
         {
             var listOfStatueMaterial = await facadeStatue.GetListAsync(new modelMaterial());
@@ -130,6 +141,9 @@ namespace StatueApp.ViewModel
             StatueMaterialOther = GetSpecificMaterialList("a");
         }
 
+        /// <summary>
+        /// Henter og laver liste over statuer
+        /// </summary>
         public async void GetStatueAsync()
         {
             var listOfStatues = await facadeStatue.GetListAsync(new modelStatue());
@@ -138,6 +152,16 @@ namespace StatueApp.ViewModel
                 Statues.Add(statue);
             }
         }
+        #endregion
+        #region RelayCommands
+
+        public async void  DoCreateStatue()
+        {
+            var msg = await handlerCreateStatue.CreateStatue();
+            var message = new MessageDialog(msg);
+            await message.ShowAsync();
+        }
+        #endregion
         #endregion
 
         #region PropertyChangedSupport
