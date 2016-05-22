@@ -10,9 +10,8 @@ namespace StatueApp.Facade
 {
     public class facadeStatue
     {
-        //        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net";  // HTTP URL of Server
-        private const string ServerUrl = "http://localhost:55000";  // HTTP URL of Server
-
+        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net";  // HTTP URL of Server
+        //private const string ServerUrl = "http://localhost:55000";  // HTTP URL of Server
         private const string ApiBaseUrl = "/api/";                  // Base Directory of the Api (Remember Leading and Trailing "/")
 
         /// <summary>
@@ -21,7 +20,7 @@ namespace StatueApp.Facade
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
         /// <returns>Enumerable List of T</returns>
-        public static async Task<IEnumerable<T>> GetListAsync<T>(T obj) where T : IWebUri 
+        public static async Task<IEnumerable<T>> GetListAsync<T>(T obj) where T : IWebUri
         {
             IEnumerable<T> listOfObjects = null;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
@@ -137,7 +136,7 @@ namespace StatueApp.Facade
                     {
                         return obj.VerboseName + " Created";
                     }
-                    return "Error Creating "+ obj.VerboseName + ": " + response.StatusCode;
+                    return "Error Creating " + obj.VerboseName + ": " + response.StatusCode;
                 }
                 catch (Exception ex)
                 {
