@@ -8,7 +8,7 @@
     x:Class="StatueApp.View.CreateNote"
     mc:Ignorable="d">
 
-    <Grid Background="#FFE1D0BC"  Width="1024" Height="640">
+    <Grid Background="#FFE1D0BC">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="PointerPressed">

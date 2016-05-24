@@ -2,12 +2,10 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Windows.UI.Popups;
 using StatueApp.Annotations;
 using StatueApp.Common;
 using StatueApp.Facade;
 using StatueApp.Model;
-using StatueApp.View;
 
 
 namespace StatueApp.ViewModel
@@ -18,10 +16,6 @@ namespace StatueApp.ViewModel
 
         public StatueSingleton NewStatue { get; set; }
 
-        //Bruges til at finde den selected statue
-        public static modelStatue SelectedStatueFromList { get; set; }
-        //public static modelGPSLocation SelectedGPSFromList { get; set; }
-
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement { get; set; }
         public static ObservableCollection<modelCulturalValue> CulturalValue { get; set; }
@@ -31,10 +25,7 @@ namespace StatueApp.ViewModel
         public static ObservableCollection<modelMaterial> StatueMaterialStone { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterialMetal { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterialOther { get; set; }
-        public static ObservableCollection<modelStatue> Statues { get; set; }
-
-        public RelayCommand ViewStatueCommand { get; set; }
-
+        public static ObservableCollection<modelStatue> Statues  { get; set; }
         #endregion
 
         #region Constructors
@@ -59,8 +50,6 @@ namespace StatueApp.ViewModel
 
             Statues = new ObservableCollection<modelStatue>();
             GetStatueAsync();
-
-            ViewStatueCommand = new RelayCommand(ViewStatue);
         }
         #endregion
 
@@ -84,7 +73,7 @@ namespace StatueApp.ViewModel
         }
 
         /// <summary>
-        /// Henter en liste af StatueTyper
+        /// Henter StatueTyper
         /// </summary>
         public async void GetStatueTypeAsync()
         {
@@ -96,7 +85,7 @@ namespace StatueApp.ViewModel
         }
 
         /// <summary>
-        /// Henter en liste af StatuePlacering
+        /// Henter StatuePlacering
         /// </summary>
         public async void GetStatuePlacementAsync()
         {
@@ -107,7 +96,7 @@ namespace StatueApp.ViewModel
             }
         }
         /// <summary>
-        /// Henter en liste af CulturalValue
+        /// Henter CulturalValue
         /// </summary>
         public async void GetCulturalValueAsync()
         {
@@ -117,9 +106,7 @@ namespace StatueApp.ViewModel
                 CulturalValue.Add(culturalValue);
             }
         }
-        /// <summary>
-        /// Henter en liste af images
-        /// </summary>
+
         public async void GetStatueImageAsync()
         {
             var listOfStatueImage = await facadeStatue.GetListAsync(new modelImage());
@@ -136,36 +123,20 @@ namespace StatueApp.ViewModel
             {
                 StatueMaterial.Add(statueMaterial);
             }
+
             // Nødvendigt at kalde herfra da Materiale listen eller ikke er klar
             StatueMaterialStone = GetSpecificMaterialList("s");
             StatueMaterialMetal = GetSpecificMaterialList("m");
             StatueMaterialOther = GetSpecificMaterialList("a");
         }
 
-        /// <summary>
-        /// Henter en liste af statuer
-        /// </summary>
         public async void GetStatueAsync()
         {
             var listOfStatues = await facadeStatue.GetListAsync(new modelStatue());
-            Statues.Clear();
             foreach (var statue in listOfStatues)
             {
                 Statues.Add(statue);
             }
-        }
-
-        /// <summary>
-        /// Henter dataen fra den ene statue som man er valgt
-        /// </summary>
-        public void ViewStatue()
-        {
-            NewStatue.SelectedStatue.Name = SelectedStatueFromList.Name;
-            NewStatue.SelectedStatue.Address = SelectedStatueFromList.Address;
-            //NewStatue.GpsLocation.Coordinates = SelectedGPSFromList.Coordinates;
-
-            //Navigaere til viewet SeeStatue
-            NavigationHelper.navigate(typeof(SeeStatue));
         }
         #endregion
 
@@ -178,6 +149,5 @@ namespace StatueApp.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
     }
 }

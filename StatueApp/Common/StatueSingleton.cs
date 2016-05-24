@@ -10,8 +10,6 @@ namespace StatueApp.Common
     {
         // Properties
         #region Properties
-
-        public modelStatue SelectedStatue { get; set; }
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
         public modelStatue Statue { get; set; }
@@ -50,8 +48,6 @@ namespace StatueApp.Common
             Materials = new ObservableCollection<modelMaterial>();
             Placements = new ObservableCollection<modelPlacement>();
             StatueTypes = new ObservableCollection<modelStatueType>();
-            //GpsLocation = new modelGPSLocation();
-            SelectedStatue = new modelStatue();
         }
         #endregion
 
