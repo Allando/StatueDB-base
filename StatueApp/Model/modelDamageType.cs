@@ -3,17 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StatueApp.Interface;
 
 namespace StatueApp.Model
 {
-    public class modelDamageType
+    public class modelDamageType : IWebUri
     {
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
+
         public int Id { get; set; }
         public string Type { get; set; }
 
-        public modelDamageType(string type)
+        public modelDamageType()
+        {
+            ResourceUri = "DamageTypes";
+            VerboseName = "Damage Type";
+        }
+
+        public modelDamageType(string type) : this()
         {
             Type = type;
         }
+
+        public modelDamageType(int id, string type) : this()
+        {
+            Id = id;
+            Type = type;
+        }
+
     }
 }
