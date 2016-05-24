@@ -135,7 +135,7 @@ namespace StatueApp.ViewModel
                 StatueMaterial.Add(statueMaterial);
             }
 
-            // Nødvendigt at kalde herfra da Materiale listen eller ikke er klar
+            // Nødvendigt at kalde herfra da Materiale listen ellers ikke er klar
             StatueMaterialStone = GetSpecificMaterialList("s");
             StatueMaterialMetal = GetSpecificMaterialList("m");
             StatueMaterialOther = GetSpecificMaterialList("a");
