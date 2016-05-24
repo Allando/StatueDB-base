@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using StatueApp.Annotations;
@@ -6,14 +7,13 @@ using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    public class StatueSingleton : INotifyPropertyChanged
+    public class StatueSingleton : INotifyPropertyChanged//, IDisposable
     {
         // Properties
         #region Properties
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
         public modelStatue Statue { get; set; }
-        public modelZipcode Zipcode { get; set; }
         #endregion
 
         // OCs
@@ -25,15 +25,6 @@ namespace StatueApp.Common
         public ObservableCollection<modelCulturalValue> CulturalValues { get; set; }
         #endregion
 
-        #region Collections til dropdown
-        // de her collections bliver brugt til at fylde dropdown Menuerne"
-        //public ObservableCollection<modelMaterial> Materials { get; } // 
-        //public ObservableCollection<string> Materialtypes { get; }
-        //public ObservableCollection<modelMaterial> Maeterial_By_Type { get; }
-        //public ObservableCollection<modelPlacement> Placements { get; }
-        //public ObservableCollection<modelStatueType> StatueTypes { get; }
-        #endregion
-
         #region Singleton
         private static StatueSingleton _instance;
 
@@ -41,8 +32,15 @@ namespace StatueApp.Common
         {
             get { return _instance ?? (_instance = new StatueSingleton()); }
         }
+
+        //public void Dispose()
+        //{
+        //    _instance.Dispose();
+        //}
+
         private StatueSingleton()
         {
+            Statue = new modelStatue();
             CulturalValues = new ObservableCollection<modelCulturalValue>();
             Images = new ObservableCollection<modelImage>();
             Materials = new ObservableCollection<modelMaterial>();
@@ -60,5 +58,6 @@ namespace StatueApp.Common
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
     }
 }
