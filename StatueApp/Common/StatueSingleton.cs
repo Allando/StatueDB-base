@@ -14,6 +14,7 @@ namespace StatueApp.Common
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
         public modelStatue Statue { get; set; }
+        public modelStatue SelectedStatue { get; set; }
         #endregion
 
         // OCs
@@ -41,6 +42,7 @@ namespace StatueApp.Common
         private StatueSingleton()
         {
             Statue = new modelStatue();
+            SelectedStatue = new modelStatue();
             CulturalValues = new ObservableCollection<modelCulturalValue>();
             Images = new ObservableCollection<modelImage>();
             Materials = new ObservableCollection<modelMaterial>();
