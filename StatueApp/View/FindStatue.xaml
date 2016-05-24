@@ -13,7 +13,7 @@
     </Page.DataContext>
 
 
-    <Grid Background="#FFE1D0BC">
+    <Grid Background="#FFE1D0BC"  Width="1024" Height="640">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="PointerPressed">
@@ -43,13 +43,13 @@
                     </Border>
                 </StackPanel>
                 <StackPanel Width="120" Margin="590,0,0,0.2" Height="32">
-                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">
+                    <Border BorderBrush="#FF786B5E" Height="30" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0" Width="116">
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="PointerPressed">
-                                <Core:NavigateToPageAction TargetPage="StatueApp.View.SeeStatue"/>
+                                <Core:InvokeCommandAction Command="{Binding ViewStatueCommand}" />
                             </Core:EventTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
-                        <TextBlock x:Name="textBlockVælg" TextWrapping="Wrap" Text="Vælg" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
+                        <TextBlock x:Name="textBlockVaelg" TextWrapping="Wrap" Text="Vælg" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
                     </Border>
                 </StackPanel>
             </StackPanel>
@@ -64,7 +64,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="98,250,98,130">
-            <ListView x:Name="listViewStatue" Height="258" BorderBrush="Gray" BorderThickness="1" ItemsSource="{Binding Statues, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ListView x:Name="listViewStatue" Height="258" BorderBrush="Gray" BorderThickness="1" ItemsSource="{Binding Statues, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStatueFromList, Mode=TwoWay}"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">

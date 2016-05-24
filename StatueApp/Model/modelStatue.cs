@@ -3,7 +3,7 @@ using StatueApp.Interface;
 
 namespace StatueApp.Model
 {
-    public class modelStatue : IWebUri
+    public class modelStatue : IWebUri, IGetByStatueId
     {
         public modelStatue()
         {
@@ -46,5 +46,7 @@ namespace StatueApp.Model
         {
             return $"Nr: {Id}, Statue: {Name}";
         }
+
+        public bool CanGetByStatueId { get; }
     }
 }
