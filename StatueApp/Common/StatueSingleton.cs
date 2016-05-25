@@ -7,17 +7,14 @@ using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    public class StatueSingleton : INotifyPropertyChanged//, IDisposable
+    public class StatueSingleton : INotifyPropertyChanged, IDisposable
     {
-        // Properties
+        /// Properties
+        /// 
         #region Properties
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
         public modelStatue Statue { get; set; }
-        #endregion
-
-        // OCs
-        #region Observable Collection
         public ObservableCollection<modelImage> Images { get; set; }
         public ObservableCollection<modelMaterial> Materials { get; set; }
         public ObservableCollection<modelPlacement> Placements { get; set; }
@@ -25,20 +22,35 @@ namespace StatueApp.Common
         public ObservableCollection<modelCulturalValue> CulturalValues { get; set; }
         #endregion
 
+        /// <summary>
+        /// Backing Field til Instance
+        /// </summary>
         #region Singleton
         private static StatueSingleton _instance;
+        
+        /// <summary>
+        /// Sætter instancen af Singletonen udfra om den er initialiseret elle ikke.
+        /// </summary>
+        /// 
+        /// public static SampleSingleton Instance
+        /// {
+        ///     get
+        ///     {
+        ///         if (_instance == null)
+        ///         {
+        ///             _instance = new SampleSingleton();
+        ///         }
+        ///         return _instance;
+        ///     }
+        /// }
+        /// 
+        /// Gør det samme som ovenstående kode
+        public static StatueSingleton Instance => _instance ?? (_instance = new StatueSingleton());
 
-        public static StatueSingleton Instance
-        {
-            get { return _instance ?? (_instance = new StatueSingleton()); }
-        }
-
-        //public void Dispose()
-        //{
-        //    _instance.Dispose();
-        //}
-
-        private StatueSingleton()
+        /// <summary>
+        /// Constructor der assginer værdier, typer og Collections til klassens properties
+        /// </summary>
+        private StatueSingleton() // Default Constructor
         {
             Statue = new modelStatue();
             CulturalValues = new ObservableCollection<modelCulturalValue>();
@@ -57,6 +69,13 @@ namespace StatueApp.Common
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
+
+        #region Disposable Support
+        public void Dispose()
+        {
+            _instance.Dispose();
+        } 
         #endregion
 
     }
