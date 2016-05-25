@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using StatueApp.Common;
@@ -10,21 +12,21 @@ namespace StatueApp.Handler
     public class handlerCreateStatue
     {
         /// <summary>
-        /// 
+        /// Runs through the listn of Statue and finds the highest
         /// </summary>
         /// <returns>Highest Statue Id (int)</returns>
         private static async Task<int> GetHighestStatueId()
         {
             var statueList = await facadeStatue.GetListAsync(new modelStatue());
 
-            int max = 0;
-            foreach (var item in statueList)
-                max = Math.Max(max, item.Id);
-            return max;
+            //int max = 0;
+            //foreach (var item in statueList)
+            //    max = Math.Max(max, item.Id);
+            //return max;
 
             // Løber listen af statuer igennem og finder og retunerer det højeste Id (Sidst tilføjede statue)
             // Gør det samme som ovenstående Loop
-            //return statueList.Result.Select(item => item.Id).Concat(new[] {0}).Max();
+            return statueList.Select(item => item.Id).Concat(new[] {0}).Max();
         }
 
         /// <summary>
@@ -33,16 +35,16 @@ namespace StatueApp.Handler
         /// <returns></returns>
         public static async Task<string> CreateStatue()
         {
+            var statusMsg="";
             var NewStatue = StatueSingleton.Instance;
             NewStatue.Statue.Created = DateTime.Now;
             NewStatue.Statue.Updated = DateTime.Now;
             try
             {
-                var text = await facadeStatue.PostAsync(NewStatue.Statue);
-                int statueId = await GetHighestStatueId();
+                statusMsg = await facadeStatue.PostAsync(NewStatue.Statue);
+                var statueId = await GetHighestStatueId();
 
                 #region Posting Loops
-                // her skal du sette alle statueiderne på listerne
                 foreach (var culturalValue in NewStatue.CulturalValues)
                 {
                     await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
@@ -77,7 +79,7 @@ namespace StatueApp.Handler
             {
                 throw new Exception(ex.Message);
             }
-            //NewStatue.Dispose();
+            NewStatue.Dispose();
             return "Statue Created Successfully";
         }
     }
