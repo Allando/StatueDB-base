@@ -9,7 +9,7 @@ using StatueApp.Model;
 
 namespace StatueApp.Handler
 {
-    public class handlerStatue
+    public class handlerCreateStatue
     {
         /// <summary>
         /// Runs through the listn of Statue and finds the highest

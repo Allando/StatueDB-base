@@ -13,7 +13,7 @@
         <viewModel:ViewModelCreateStatue/>
     </Page.DataContext>
 
-    
+
 
 
     <Grid Background="#FFE1D0BC" Width="1024" Height="640" HorizontalAlignment="Center">
