@@ -7,18 +7,16 @@ using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    public class StatueSingleton : INotifyPropertyChanged//, IDisposable
+    public class StatueSingleton : INotifyPropertyChanged
     {
-        // Properties
+        /// Properties
+        /// 
         #region Properties
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
         public modelStatue Statue { get; set; }
         public modelStatue SelectedStatue { get; set; }
-        #endregion
 
-        // OCs
-        #region Observable Collection
         public ObservableCollection<modelImage> Images { get; set; }
         public ObservableCollection<modelMaterial> Materials { get; set; }
         public ObservableCollection<modelPlacement> Placements { get; set; }
@@ -26,20 +24,35 @@ namespace StatueApp.Common
         public ObservableCollection<modelCulturalValue> CulturalValues { get; set; }
         #endregion
 
+        /// <summary>
+        /// Backing Field til Instance
+        /// </summary>
         #region Singleton
         private static StatueSingleton _instance;
 
-        public static StatueSingleton Instance
-        {
-            get { return _instance ?? (_instance = new StatueSingleton()); }
-        }
+        /// <summary>
+        /// Sætter instancen af Singletonen udfra om den er initialiseret elle ikke.
+        /// </summary>
+        /// 
+        /// public static SampleSingleton Instance
+        /// {
+        ///     get
+        ///     {
+        ///         if (_instance == null)
+        ///         {
+        ///             _instance = new SampleSingleton();
+        ///         }
+        ///         return _instance;
+        ///     }
+        /// }
+        /// 
+        /// Gør det samme som ovenstående kode
+        public static StatueSingleton Instance => _instance ?? (_instance = new StatueSingleton());
 
-        //public void Dispose()
-        //{
-        //    _instance.Dispose();
-        //}
-
-        private StatueSingleton()
+        /// <summary>
+        /// Constructor der assginer værdier, typer og Collections til klassens properties
+        /// </summary>
+        private StatueSingleton() // Default Constructor
         {
             Statue = new modelStatue();
             SelectedStatue = new modelStatue();
@@ -60,6 +73,20 @@ namespace StatueApp.Common
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
+        /// <summary>
+        /// Nulstiller værdierne i Singletonen
+        /// </summary>
+        public void Dispose()
+        {
+            _instance.Statue = new modelStatue();
+            _instance.SelectedStatue = new modelStatue();
+            _instance.Description = new modelDescription();
+            _instance.GpsLocation = new modelGPSLocation();
+            _instance.CulturalValues.Clear();
+            _instance.Images.Clear();
+            _instance.Materials.Clear();
+            _instance.Placements.Clear();
+            _instance.StatueTypes.Clear();
+        }
     }
 }

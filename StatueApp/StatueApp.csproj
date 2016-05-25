@@ -89,17 +89,20 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="ClassDiagram1.cd" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\DamageSingleton.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\StatueSingleton.cs" />
     <Compile Include="Facade\facadeStatue.cs" />
-    <Compile Include="Handler\handlerCreateStatue.cs" />
+    <Compile Include="Handler\handlerStatue.cs" />
+    <Compile Include="Handler\handlerDamage.cs" />
     <Compile Include="Interface\IGetByStatueId.cs" />
     <Compile Include="Interface\IWebUri.cs" />
     <Compile Include="Model\modelDamage.cs" />

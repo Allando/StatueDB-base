@@ -57,7 +57,6 @@ namespace StatueApp.ViewModel
             GetStatueAsync();
 
             CreateStatueCommand = new RelayCommand(DoCreateStatue);
-
             ViewStatueCommand = new RelayCommand(ViewStatue);
         }
         #endregion
@@ -141,7 +140,7 @@ namespace StatueApp.ViewModel
                 StatueMaterial.Add(statueMaterial);
             }
 
-            // Nødvendigt at kalde herfra da Materiale listen eller ikke er klar
+            // Nødvendigt at kalde herfra da Materiale listen ellers ikke er klar
             StatueMaterialStone = GetSpecificMaterialList("s");
             StatueMaterialMetal = GetSpecificMaterialList("m");
             StatueMaterialOther = GetSpecificMaterialList("a");
@@ -160,11 +159,11 @@ namespace StatueApp.ViewModel
             }
         }
         #endregion
-        #region RelayCommands
 
+        #region RelayCommands
         public async void  DoCreateStatue()
         {
-            var msg = await handlerCreateStatue.CreateStatue();
+            var msg = await handlerStatue.CreateStatue();
             var message = new MessageDialog(msg);
             await message.ShowAsync();
         }

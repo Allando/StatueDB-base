@@ -10,9 +10,9 @@ namespace StatueApp.Facade
 {
     public class facadeStatue
     {
-        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net";  // HTTP URL of Server
-        //private const string ServerUrl = "http://localhost:55000";  // HTTP URL of Server
-        private const string ApiBaseUrl = "/api/";                  // Base Directory of the Api (Remember Leading and Trailing "/")
+        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net"; // HTTP URL of Server
+        //private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
+        private const string ApiBaseUrl = "/api/"; // Base Directory of the Api (Remember Leading and Trailing "/")
 
         /// <summary>
         /// 
@@ -39,8 +39,7 @@ namespace StatueApp.Facade
                 }
                 catch (Exception ex)
                 {
-                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-                    await msgDialog.ShowAsync();
+                    throw ex;
                 }
                 return listOfObjects;
             }
@@ -72,8 +71,7 @@ namespace StatueApp.Facade
                 }
                 catch (Exception ex)
                 {
-                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-                    await msgDialog.ShowAsync();
+                    throw ex;
                 }
                 return result;
             }
@@ -97,7 +95,7 @@ namespace StatueApp.Facade
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
+                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri + "/ByStatueId/" + statueId);
                     if (response.IsSuccessStatusCode)
                     {
                         listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
@@ -105,15 +103,11 @@ namespace StatueApp.Facade
                 }
                 catch (Exception ex)
                 {
-                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-                    await msgDialog.ShowAsync();
+                    throw ex;
                 }
                 return listOfObjects;
             }
         }
-
-
-
 
         /// <summary>
         /// 
@@ -134,15 +128,13 @@ namespace StatueApp.Facade
                     var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, obj);
                     if (response.IsSuccessStatusCode)
                     {
-                        return obj.VerboseName + " Created";
+                        return "Success: " + obj.VerboseName + " Created";
                     }
-                    return "Error Creating " + obj.VerboseName + ": " + response.StatusCode;
+                    return "Error: Failed to create " + obj.VerboseName + " :: " + response.StatusCode;
                 }
                 catch (Exception ex)
                 {
-                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-                    await msgDialog.ShowAsync();
-                    throw;
+                    throw ex;
                 }
             }
         }
@@ -167,15 +159,13 @@ namespace StatueApp.Facade
                     var response = await client.PutAsJsonAsync(ApiBaseUrl + obj.ResourceUri + "/" + id, obj);
                     if (response.IsSuccessStatusCode)
                     {
-                        return obj.VerboseName + " Updated";
+                        return "Success: " + obj.VerboseName + " Updated";
                     }
-                    return "Error Updating " + obj.VerboseName + ": " + response.StatusCode;
+                    return "Error: Failed to update " + obj.VerboseName + " :: " + response.StatusCode;
                 }
                 catch (Exception ex)
                 {
-                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-                    await msgDialog.ShowAsync();
-                    throw;
+                    throw ex;
                 }
             }
         }
@@ -200,15 +190,13 @@ namespace StatueApp.Facade
                     var response = await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/" + id);
                     if (response.IsSuccessStatusCode)
                     {
-                        return obj.VerboseName + " Deleted";
+                        return "Success: " + obj.VerboseName + " Deleted";
                     }
-                    return "Error Deleting " + obj.VerboseName + ": " + response.StatusCode;
+                    return "Error: Failed to delete " + obj.VerboseName + " :: " + response.StatusCode;
                 }
                 catch (Exception ex)
                 {
-                    var msgDialog = new MessageDialog(ex.Message, "Runtime Error");
-                    await msgDialog.ShowAsync();
-                    throw;
+                    throw ex;
                 }
             }
         }
