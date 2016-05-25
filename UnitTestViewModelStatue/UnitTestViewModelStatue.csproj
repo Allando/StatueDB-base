@@ -4,19 +4,22 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{1B2B741B-FB99-4358-9E82-E491FABCA8D8}</ProjectGuid>
+    <ProjectGuid>{6519722b-7db6-48ea-b09a-9eec2f502cbe}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StatueApp</RootNamespace>
-    <AssemblyName>StatueApp</AssemblyName>
+    <RootNamespace>UnitTestViewModelStatue</RootNamespace>
+    <AssemblyName>UnitTestViewModelStatue</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>StatueApp_TemporaryKey.pfx</PackageCertificateKeyFile>
+    
+    <PackageCertificateKeyFile>UnitTestViewModelStatue_TemporaryKey.pfx</PackageCertificateKeyFile>
+    
+    <UnitTestPlatformVersion  Condition="'$(UnitTestPlatformVersion)' == ''">14.0</UnitTestPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -88,81 +91,34 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <!--A reference to the entire .Net Framework and Windows SDK are automatically included-->
     <None Include="project.json" />
+    <SDKReference Include="MSTestFramework.Universal, Version=$(UnitTestPlatformVersion)" />
+    <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Common\NavigationHelper.cs" />
-    <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Common\StatueSingleton.cs" />
-    <Compile Include="Facade\facadeStatue.cs" />
-    <Compile Include="Handler\handlerCreateStatue.cs" />
-    <Compile Include="Interface\IGetByStatueId.cs" />
-    <Compile Include="Interface\IWebUri.cs" />
-    <Compile Include="Model\modelDamage.cs" />
-    <Compile Include="Model\modelDamageImageList.cs" />
-    <Compile Include="Model\modelDamageType.cs" />
-    <Compile Include="Properties\Annotations2.cs" />
-    <Compile Include="SampleCode\SampleObservableCollectionSingleton.cs" />
-    <Compile Include="SampleCode\SampleSingleton.cs" />
-    <Compile Include="ViewModel\ViewModelAddDamage.cs" />
-    <Compile Include="ViewModel\ViewModelCreateStatue.cs" />
-    <Compile Include="View\CreateDamage.xaml.cs">
-      <DependentUpon>CreateDamage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CreateNote.xaml.cs">
-      <DependentUpon>CreateNote.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CreateStatue1.xaml.cs" />
-    <Compile Include="View\CreateStatue2.xaml.cs" />
-    <Compile Include="Model\modelCulturalValue.cs" />
-    <Compile Include="Model\modelCulturalValueList.cs" />
-    <Compile Include="Model\modelDescription.cs" />
-    <Compile Include="Model\modelGPSLocation.cs" />
-    <Compile Include="Model\modelImage.cs" />
-    <Compile Include="Model\modelImageList.cs" />
-    <Compile Include="Model\modelMaterial.cs" />
-    <Compile Include="Model\modelMaterialList.cs" />
-    <Compile Include="Model\modelPlacement.cs" />
-    <Compile Include="Model\modelPlacementList.cs" />
-    <Compile Include="Model\modelStatue.cs" />
-    <Compile Include="Model\modelStatueType.cs" />
-    <Compile Include="Model\modelStatueTypeList.cs" />
-    <Compile Include="Model\modelZipcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\CreateTreatment.xaml.cs">
-      <DependentUpon>CreateTreatment.xaml</DependentUpon>
+    <Compile Include="UnitTestApp.xaml.cs">
+      <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FindStatue.xaml.cs">
-      <DependentUpon>FindStatue.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SeeStatue.xaml.cs">
-      <DependentUpon>SeeStatue.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\StatueIsCreated.xaml.cs" />
+    <Compile Include="UnitTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="UnitTestApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="StatueApp_TemporaryKey.pfx" />
+    
+    <None Include="UnitTestViewModelStatue_TemporaryKey.pfx" />
+    
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\kklogo.png" />
-    <Content Include="Assets\logo.png" />
-    <Content Include="Assets\LoopSearch.png" />
-    <Content Include="Assets\Statue1.png" />
-    <Content Include="Assets\Statue2.png" />
-    <Content Include="Assets\Statue3.png" />
-    <Content Include="Assets\Statue4.png" />
-    <Content Include="Assets\_DSC0396.jpg" />
-    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Properties\UnitTestApp.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -170,48 +126,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="View\CreateDamage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\CreateNote.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\CreateStatue1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\CreateStatue2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\CreateTreatment.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\FindStatue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SeeStatue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\StatueIsCreated.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

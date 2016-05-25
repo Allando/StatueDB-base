@@ -12,24 +12,19 @@ namespace StatueApp.Handler
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
-        private static int GetHighestStatueId()
+        /// <returns>Highest Statue Id (int)</returns>
+        private static async Task<int> GetHighestStatueId()
         {
-            var statue = new modelStatue();
-            var statueList = facadeStatue.GetListAsync(statue);
+            var statueList = await facadeStatue.GetListAsync(new modelStatue());
 
-            //foreach (var item in statueList.Result)
-            //{
-            //    if (item.Id > statueId)
-            //    {
-            //        statueId = item.Id;
-            //    }
-            //}
-            //return statueId;
+            int max = 0;
+            foreach (var item in statueList)
+                max = Math.Max(max, item.Id);
+            return max;
 
             // Løber listen af statuer igennem og finder og retunerer det højeste Id (Sidst tilføjede statue)
             // Gør det samme som ovenstående Loop
-            return statueList.Result.Select(item => item.Id).Concat(new[] { 0 }).Max();
+            //return statueList.Result.Select(item => item.Id).Concat(new[] {0}).Max();
         }
 
         /// <summary>
@@ -38,49 +33,51 @@ namespace StatueApp.Handler
         /// <returns></returns>
         public static async Task<string> CreateStatue()
         {
-            var Singleton = StatueSingleton.Instance;
+            var NewStatue = StatueSingleton.Instance;
+            NewStatue.Statue.Created = DateTime.Now;
+            NewStatue.Statue.Updated = DateTime.Now;
             try
             {
-                await facadeStatue.PostAsync(Singleton.Statue);
-                var statueId = GetHighestStatueId();
+                var text = await facadeStatue.PostAsync(NewStatue.Statue);
+                int statueId = await GetHighestStatueId();
 
                 #region Posting Loops
                 // her skal du sette alle statueiderne på listerne
-                foreach (var culturalValue in Singleton.CulturalValues)
+                foreach (var culturalValue in NewStatue.CulturalValues)
                 {
                     await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
                 }
-                foreach (var image in Singleton.Images)
+                foreach (var image in NewStatue.Images)
                 {
                     await facadeStatue.PostAsync(new modelImageList(statueId, image.Id));
                 }
-                foreach (var material in Singleton.Materials)
+                foreach (var material in NewStatue.Materials)
                 {
                     await facadeStatue.PostAsync(new modelMaterialList(statueId, material.Id));
                 }
-                foreach (var placement in Singleton.Placements)
+                foreach (var placement in NewStatue.Placements)
                 {
                     await facadeStatue.PostAsync(new modelPlacementList(statueId, placement.Id));
                 }
-                foreach (var statueType in Singleton.StatueTypes)
+                foreach (var statueType in NewStatue.StatueTypes)
                 {
-                    await facadeStatue.PostAsync(new modelStatueTypeList(statueId,statueType.Id));
+                    await facadeStatue.PostAsync(new modelStatueTypeList(statueId, statueType.Id));
                 }
-                if (Singleton.Description != null)
+                if (NewStatue.Description != null)
                 {
-                    await facadeStatue.PostAsync(Singleton.Description);
+                    await facadeStatue.PostAsync(NewStatue.Description);
                 }
-                if (Singleton.GpsLocation != null)
+                if (NewStatue.GpsLocation != null)
                 {
-                    await facadeStatue.PostAsync(Singleton.GpsLocation);
+                    await facadeStatue.PostAsync(NewStatue.GpsLocation);
                 }
-
                 #endregion
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+            //NewStatue.Dispose();
             return "Statue Created Successfully";
         }
     }
