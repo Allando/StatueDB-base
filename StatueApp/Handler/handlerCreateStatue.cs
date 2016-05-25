@@ -79,7 +79,7 @@ namespace StatueApp.Handler
             {
                 throw new Exception(ex.Message);
             }
-            NewStatue.Dispose();
+          //  NewStatue.Dispose();
             return "Statue Created Successfully";
         }
     }
