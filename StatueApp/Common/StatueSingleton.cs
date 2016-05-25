@@ -15,6 +15,8 @@ namespace StatueApp.Common
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
         public modelStatue Statue { get; set; }
+        public modelStatue SelectedStatue { get; set; }
+ 
         public ObservableCollection<modelImage> Images { get; set; }
         public ObservableCollection<modelMaterial> Materials { get; set; }
         public ObservableCollection<modelPlacement> Placements { get; set; }
@@ -53,6 +55,7 @@ namespace StatueApp.Common
         private StatueSingleton() // Default Constructor
         {
             Statue = new modelStatue();
+            SelectedStatue = new modelStatue();
             CulturalValues = new ObservableCollection<modelCulturalValue>();
             Images = new ObservableCollection<modelImage>();
             Materials = new ObservableCollection<modelMaterial>();
