@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using StatueApp.Common;
 using StatueApp.Facade;
@@ -13,7 +11,7 @@ namespace StatueApp.Handler
     {
         private static async Task<int> GetHighestDamageId()
         {
-            var damageList = await facadeStatue.GetListAsync(new modelStatue());
+            var damageList = await facadeStatue.GetListAsync(new modelDamage());
 
             //int max = 0;
             //foreach (var item in statueList)
@@ -34,13 +32,13 @@ namespace StatueApp.Handler
             try
             {
                 statusMsg = await Facade.facadeStatue.PostAsync(NewDamage.Damage);
+                var damageId = await GetHighestDamageId();
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
-
-            return "Not Implemented";
+            return statusMsg;
         }
     }
 }
