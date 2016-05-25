@@ -9,7 +9,7 @@ using StatueApp.Model;
 
 namespace StatueApp.Handler
 {
-    public class handlerCreateStatue
+    public class handlerStatue
     {
         /// <summary>
         /// Runs through the listn of Statue and finds the highest
@@ -49,10 +49,10 @@ namespace StatueApp.Handler
                 {
                     await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
                 }
-                foreach (var image in NewStatue.Images)
-                {
-                    await facadeStatue.PostAsync(new modelImageList(statueId, image.Id));
-                }
+                //foreach (var image in NewStatue.Images)
+                //{
+                //    await facadeStatue.PostAsync(new modelImageList(statueId, image.Id));
+                //}
                 foreach (var material in NewStatue.Materials)
                 {
                     await facadeStatue.PostAsync(new modelMaterialList(statueId, material.Id));
@@ -77,10 +77,10 @@ namespace StatueApp.Handler
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             NewStatue.Dispose();
-            return "Statue Created Successfully";
+            return statusMsg;
         }
     }
 }
