@@ -8,6 +8,7 @@ using StatueApp.Facade;
 using StatueApp.Handler;
 using StatueApp.Model;
 using Windows.UI.Popups;
+using StatueApp.View;
 
 namespace StatueApp.ViewModel
 {
@@ -15,7 +16,10 @@ namespace StatueApp.ViewModel
     {
         #region Properties
         public static StatueSingleton NewStatue { get; set; }
+        public static modelStatue SelectedStatueFromList { get; set; }
+
         public RelayCommand CreateStatueCommand { get; set; }
+        public RelayCommand ViewStatueCommand { get; set; }
 
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement { get; set; }
@@ -53,6 +57,8 @@ namespace StatueApp.ViewModel
             GetStatueAsync();
 
             CreateStatueCommand = new RelayCommand(DoCreateStatue);
+
+            ViewStatueCommand = new RelayCommand(ViewStatue);
         }
         #endregion
 
@@ -147,6 +153,7 @@ namespace StatueApp.ViewModel
         public async void GetStatueAsync()
         {
             var listOfStatues = await facadeStatue.GetListAsync(new modelStatue());
+            Statues.Clear();
             foreach (var statue in listOfStatues)
             {
                 Statues.Add(statue);
@@ -160,6 +167,15 @@ namespace StatueApp.ViewModel
             var msg = await handlerCreateStatue.CreateStatue();
             var message = new MessageDialog(msg);
             await message.ShowAsync();
+        }
+
+        public void ViewStatue()
+        {
+            NewStatue.SelectedStatue.Name = SelectedStatueFromList.Name;
+            NewStatue.SelectedStatue.Address = SelectedStatueFromList.Address;
+
+            //Navigaere til viewet SeeStatue
+            NavigationHelper.navigate(typeof(SeeStatue));
         }
         #endregion
         #endregion

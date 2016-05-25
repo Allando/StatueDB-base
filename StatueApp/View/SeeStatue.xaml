@@ -5,10 +5,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:ViewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.SeeStatue"
     mc:Ignorable="d">
 
-    
+
+    <Page.DataContext>
+        <ViewModel:ViewModelCreateStatue/>
+    </Page.DataContext>
+
+
     <Grid Background="#FFE1D0BC">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <Interactivity:Interaction.Behaviors>
@@ -16,7 +22,7 @@
                     <Core:NavigateToPageAction TargetPage="StatueApp.View.MainPage"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
-            
+
             <Image x:Name="imageLogo" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
             <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
@@ -58,15 +64,15 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Height="116" Margin="343,-640,0,0">
-                <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0">
-                    <TextBlock x:Name="textBlockNavn" Height="30" Width="180" TextWrapping="Wrap" Text="Navn" FontWeight="Bold"/>
+            <StackPanel Height="121" Margin="343,-640,0,0">
+                <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,3">
+                    <TextBlock x:Name="textBlockNavn" Height="30" Width="180" TextWrapping="Wrap" FontWeight="Bold" FontSize="18.667" Margin="0" Text="{Binding NewStatue.SelectedStatue.Name}"/>
                 </StackPanel>
                 <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,0">
                     <TextBlock x:Name="textBlockKunster" Height="30" Width="180" TextWrapping="Wrap" Text="Kunster" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,0">
-                    <TextBlock x:Name="textBlockAdr" Height="30" Width="180" TextWrapping="Wrap" Text="Adresse" FontWeight="Bold"/>
+                    <TextBlock x:Name="textBlockAdr" Height="30" Width="180" TextWrapping="Wrap" FontWeight="Bold" Text="{Binding NewStatue.SelectedStatue.Address}"/>
                 </StackPanel>
                 <StackPanel Height="30" HorizontalAlignment="Left" Width="180" Margin="0,0,0,0">
                     <TextBlock x:Name="textBlockGPS" Height="30" Width="180" TextWrapping="Wrap" Text="GPS" FontWeight="Bold"/>
