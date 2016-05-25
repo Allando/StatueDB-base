@@ -7,7 +7,7 @@ using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    public class StatueSingleton : INotifyPropertyChanged, IDisposable
+    public class StatueSingleton : INotifyPropertyChanged
     {
         /// Properties
         /// 
@@ -16,7 +16,7 @@ namespace StatueApp.Common
         public modelGPSLocation GpsLocation { get; set; }
         public modelStatue Statue { get; set; }
         public modelStatue SelectedStatue { get; set; }
- 
+
         public ObservableCollection<modelImage> Images { get; set; }
         public ObservableCollection<modelMaterial> Materials { get; set; }
         public ObservableCollection<modelPlacement> Placements { get; set; }
@@ -29,7 +29,7 @@ namespace StatueApp.Common
         /// </summary>
         #region Singleton
         private static StatueSingleton _instance;
-        
+
         /// <summary>
         /// Sætter instancen af Singletonen udfra om den er initialiseret elle ikke.
         /// </summary>
@@ -73,13 +73,20 @@ namespace StatueApp.Common
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
-        #region Disposable Support
+        /// <summary>
+        /// Nulstiller værdierne i Singletonen
+        /// </summary>
         public void Dispose()
         {
-            _instance.Dispose();
-        } 
-        #endregion
-
+            _instance.Statue = new modelStatue();
+            _instance.SelectedStatue = new modelStatue();
+            _instance.Description = new modelDescription();
+            _instance.GpsLocation = new modelGPSLocation();
+            _instance.CulturalValues.Clear();
+            _instance.Images.Clear();
+            _instance.Materials.Clear();
+            _instance.Placements.Clear();
+            _instance.StatueTypes.Clear();
+        }
     }
 }

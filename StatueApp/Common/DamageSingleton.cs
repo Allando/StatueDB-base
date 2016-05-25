@@ -7,7 +7,7 @@ using StatueApp.Model;
 
 namespace StatueApp.Common
 {
-    public class DamageSingleton : INotifyPropertyChanged, IDisposable
+    public class DamageSingleton : INotifyPropertyChanged
     {
         public int StatueId { get; set; }
         public modelDamage Damage { get; set; }
@@ -36,14 +36,15 @@ namespace StatueApp.Common
         }
         #endregion
 
-        #region Disposable Support
         /// <summary>
         /// Bruges til at nulstille Singleton'en
         /// </summary>
         public void Dispose()
         {
-            _instance.Dispose();
+            _instance.Damage = new modelDamage();
+            _instance.DamageType = new modelDamageType();
+            _instance.Images.Clear();
+            _instance.StatueId = -1;
         }
-        #endregion
     }
 }
