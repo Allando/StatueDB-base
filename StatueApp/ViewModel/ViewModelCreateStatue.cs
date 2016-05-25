@@ -57,7 +57,6 @@ namespace StatueApp.ViewModel
             GetStatueAsync();
 
             CreateStatueCommand = new RelayCommand(DoCreateStatue);
-
             ViewStatueCommand = new RelayCommand(ViewStatue);
         }
         #endregion
@@ -160,11 +159,11 @@ namespace StatueApp.ViewModel
             }
         }
         #endregion
-        #region RelayCommands
 
+        #region RelayCommands
         public async void  DoCreateStatue()
         {
-            var msg = await handlerCreateStatue.CreateStatue();
+            var msg = await handlerStatue.CreateStatue();
             var message = new MessageDialog(msg);
             await message.ShowAsync();
         }
