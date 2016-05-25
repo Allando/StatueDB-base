@@ -97,7 +97,7 @@ namespace StatueApp.Facade
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
+                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri+ "/ByStatueId/"+statueId);
                     if (response.IsSuccessStatusCode)
                     {
                         listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
