@@ -18,6 +18,13 @@ namespace StatueApp.ViewModel
         #region Properties
         public static DamageSingleton NewDamage { get; set; }
         public static ObservableCollection<modelDamageType> DamageTypes;
+
+        private bool _loadingIcon;
+        public bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set { _loadingIcon = value; OnPropertyChanged(); }
+        }
         #endregion
 
         #region Contructor
@@ -45,7 +52,6 @@ namespace StatueApp.ViewModel
             }
         } 
         #endregion
-
 
         #region PropertyChanged Support
         public event PropertyChangedEventHandler PropertyChanged;

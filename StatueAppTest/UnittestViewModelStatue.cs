@@ -14,7 +14,7 @@ namespace StatueAppTest
         [TestInitialize]
         public void Before()
         {
-           
+
         }
 
         [TestMethod]
@@ -25,9 +25,9 @@ namespace StatueAppTest
             Assert.AreEqual(teststatue.Id, teststatue.Id);
             Assert.AreEqual(teststatue.Name, teststatue.Name);
             Assert.AreEqual(teststatue.Address, teststatue.Address);
-            Assert.AreEqual(teststatue.Zipcode , teststatue.Zipcode);
-            Assert.AreEqual(teststatue.Created , teststatue.Created);
-            Assert.AreEqual(teststatue.Updated , teststatue.Updated);
+            Assert.AreEqual(teststatue.Zipcode, teststatue.Zipcode);
+            Assert.AreEqual(teststatue.Created, teststatue.Created);
+            Assert.AreEqual(teststatue.Updated, teststatue.Updated);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace StatueAppTest
 
             Assert.AreEqual(teststatuemateriale.Id, teststatuemateriale.Id);
             Assert.AreEqual(teststatuemateriale.MaterialName, teststatuemateriale.MaterialName);
-            Assert.AreEqual(teststatuemateriale.MaterialType , teststatuemateriale.MaterialType);
+            Assert.AreEqual(teststatuemateriale.MaterialType, teststatuemateriale.MaterialType);
         }
 
         [TestMethod]
@@ -45,8 +45,8 @@ namespace StatueAppTest
         {
             var teststatueimage = new modelImage(5, "Url");
 
-            Assert.AreEqual(teststatueimage.Id , teststatueimage.Id);
-            Assert.AreEqual(teststatueimage.ImageUrl , teststatueimage.ImageUrl);
+            Assert.AreEqual(teststatueimage.Id, teststatueimage.Id);
+            Assert.AreEqual(teststatueimage.ImageUrl, teststatueimage.ImageUrl);
         }
 
         [TestMethod]
@@ -54,8 +54,8 @@ namespace StatueAppTest
         {
             var teststatueculturalvalue = new modelCulturalValue(7, "a");
 
-            Assert.AreEqual(teststatueculturalvalue.Id , teststatueculturalvalue.Id);
-            Assert.AreEqual(teststatueculturalvalue.CulturalValueChar , teststatueculturalvalue.CulturalValueChar);
+            Assert.AreEqual(teststatueculturalvalue.Id, teststatueculturalvalue.Id);
+            Assert.AreEqual(teststatueculturalvalue.CulturalValueChar, teststatueculturalvalue.CulturalValueChar);
         }
 
         [TestMethod]
@@ -63,8 +63,8 @@ namespace StatueAppTest
         {
             var teststatueplacement = new modelPlacement(3, "sokkel");
 
-            Assert.AreEqual(teststatueplacement.Id , teststatueplacement.Id);
-            Assert.AreEqual(teststatueplacement.PlacementName , teststatueplacement.PlacementName);
+            Assert.AreEqual(teststatueplacement.Id, teststatueplacement.Id);
+            Assert.AreEqual(teststatueplacement.PlacementName, teststatueplacement.PlacementName);
         }
 
         [TestMethod]
@@ -72,8 +72,8 @@ namespace StatueAppTest
         {
             var teststatuetype = new modelStatueType(5, "vandkunst");
 
-            Assert.AreEqual(teststatuetype.Id , teststatuetype.Id);
-            Assert.AreEqual(teststatuetype.StatueTypeName , teststatuetype.StatueTypeName);
+            Assert.AreEqual(teststatuetype.Id, teststatuetype.Id);
+            Assert.AreEqual(teststatuetype.StatueTypeName, teststatuetype.StatueTypeName);
         }
 
         [TestMethod]
@@ -81,9 +81,9 @@ namespace StatueAppTest
         {
             var testspecificmateriallist = new modelMaterialList(3, 4, 5);
 
-            Assert.AreEqual(testspecificmateriallist.Id , testspecificmateriallist.Id);
-            Assert.AreEqual(testspecificmateriallist.FK_Statue , testspecificmateriallist.FK_Statue);
-            Assert.AreEqual(testspecificmateriallist.FK_Material , testspecificmateriallist.FK_Material);
+            Assert.AreEqual(testspecificmateriallist.Id, testspecificmateriallist.Id);
+            Assert.AreEqual(testspecificmateriallist.FK_Statue, testspecificmateriallist.FK_Statue);
+            Assert.AreEqual(testspecificmateriallist.FK_Material, testspecificmateriallist.FK_Material);
         }
-   }
+    }
 }

@@ -31,6 +31,14 @@ namespace StatueApp.ViewModel
         public static ObservableCollection<modelMaterial> StatueMaterialMetal { get; set; }
         public static ObservableCollection<modelMaterial> StatueMaterialOther { get; set; }
         public static ObservableCollection<modelStatue> Statues { get; set; }
+
+        private bool _loadingIcon;
+        public bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set { _loadingIcon = value; OnPropertyChanged();}
+        }
+
         #endregion
 
         #region Constructors

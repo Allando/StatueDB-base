@@ -81,7 +81,7 @@ namespace StatueApp.Handler
             {
                 throw ex;
             }
-            NewStatue.Dispose();
+            //NewStatue.Dispose();
             return statusMsg;
         }
     }
