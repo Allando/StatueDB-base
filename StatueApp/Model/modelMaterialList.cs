@@ -13,14 +13,14 @@ namespace StatueApp.Model
 
         public modelMaterialList(int fkStatue, int fkMaterial) : this()
         {
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
             FK_Statue = fkStatue;
             FK_Material = fkMaterial;
         }
 
         public modelMaterialList(int id, int fkStatue, int fkMaterial) : this()
         {
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
             Id = id;
             FK_Statue = fkStatue;
             FK_Material = fkMaterial;

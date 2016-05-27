@@ -12,14 +12,14 @@ namespace StatueApp.Model
         }
 
         public modelCulturalValueList(int fkStatue, int fkCulturalValue) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             FK_Statue = fkStatue;
             FK_CulturalValue = fkCulturalValue;
         }
 
         public modelCulturalValueList(int id, int fkStatue, int fkCulturalValue) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             FK_Statue = fkStatue;

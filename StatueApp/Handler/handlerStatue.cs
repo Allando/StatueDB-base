@@ -12,7 +12,7 @@ namespace StatueApp.Handler
     public class handlerStatue
     {
         /// <summary>
-        /// Runs through the listn of Statue and finds the highest
+        /// Finder den nyeste generede statue, ved at finde den statue med det højeste Id
         /// </summary>
         /// <returns>Highest Statue Id (int)</returns>
         private static async Task<int> GetHighestStatueId()
@@ -30,7 +30,7 @@ namespace StatueApp.Handler
         }
 
         /// <summary>
-        /// 
+        /// Denne metode tager statue og de nødvendige mellem tabler og gemmer dem i databasen
         /// </summary>
         /// <returns></returns>
         public static async Task<string> CreateStatue()
@@ -42,8 +42,10 @@ namespace StatueApp.Handler
             try
             {
                 statusMsg = await facadeStatue.PostAsync(NewStatue.Statue);
+                //Kalder denne metode for at finde Id'et på den nyeste Statue
                 var statueId = await GetHighestStatueId();
 
+                //Alle posting loops, tager Id'et fra den nyeste statue + Id'et fra de valgte properties og skriver ind i mellem tablerne
                 #region Posting Loops
                 foreach (var culturalValue in NewStatue.CulturalValues)
                 {

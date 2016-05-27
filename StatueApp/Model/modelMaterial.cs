@@ -11,14 +11,14 @@ namespace StatueApp.Model
         }
 
         public modelMaterial(string materialName, string materialType)
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             MaterialName = materialName;
             MaterialType = materialType;
         }
 
         public modelMaterial(int id, string materialName, string materialType)
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             MaterialName = materialName;

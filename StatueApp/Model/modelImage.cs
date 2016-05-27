@@ -11,13 +11,13 @@ namespace StatueApp.Model
         }
 
         public modelImage(string ImageUrl) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             this.ImageUrl = ImageUrl;
         }
 
         public modelImage(int id, string imageUrl) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             ImageUrl = imageUrl;

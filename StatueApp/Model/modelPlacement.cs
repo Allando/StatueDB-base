@@ -11,13 +11,13 @@ namespace StatueApp.Model
         }
 
         public modelPlacement(string placementName) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             PlacementName = placementName;
         }
 
         public modelPlacement(int id, string placementName) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             PlacementName = placementName;

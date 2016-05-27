@@ -11,13 +11,13 @@ namespace StatueApp.Model
         }
 
         public modelCulturalValue(string culturalValueChar) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            //Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             CulturalValueChar = culturalValueChar;
         }
 
         public modelCulturalValue(int id, string culturalValueName) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             CulturalValueChar = culturalValueName;

@@ -9,6 +9,10 @@ namespace StatueApp.Handler
 {
     public class handlerDamage
     {
+        /// <summary>
+        /// Finder den nyeste generede damage, ved at finde den damage med det højeste Id
+        /// </summary>
+        /// <returns></returns>
         private static async Task<int> GetHighestDamageId()
         {
             var damageList = await facadeStatue.GetListAsync(new modelDamage());
@@ -23,7 +27,11 @@ namespace StatueApp.Handler
             return damageList.Select(item => item.Id).Concat(new[] { 0 }).Max();
         }
 
-
+        /// <summary>
+        /// Denne metode tager den damage der er blevet lavet viewet og gemmer den i databasen
+        /// </summary>
+        /// <param name="statueId"></param>
+        /// <returns></returns>
         public static async Task<string> AddDamage(int statueId)
         {
             string statusMsg;
@@ -32,6 +40,7 @@ namespace StatueApp.Handler
             try
             {
                 statusMsg = await Facade.facadeStatue.PostAsync(NewDamage.Damage);
+                //Vi kalder denne metode for at kunne finde Id'et på den nyeste statue
                 var damageId = await GetHighestDamageId();
             }
             catch (Exception ex)

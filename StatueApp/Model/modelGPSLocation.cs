@@ -12,14 +12,14 @@ namespace StatueApp.Model
         }
 
         public modelGPSLocation(string coordinates, int fkStatue) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Coordinates = coordinates;
             FK_Statue = fkStatue;
         }
 
         public modelGPSLocation(int id, string coordinates, int fkStatue) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             Coordinates = coordinates;

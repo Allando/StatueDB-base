@@ -12,14 +12,14 @@ namespace StatueApp.Model
         }
 
         public modelDescription(int fkStatue, string description) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             FK_Statue = fkStatue;
             Description = description;
         }
 
         public modelDescription(int id, int fkStatue, string description) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             FK_Statue = fkStatue;
