@@ -15,9 +15,13 @@ namespace StatueApp.ViewModel
 {
     public class ViewModelAddDamage : INotifyPropertyChanged
     {
+        #region Properties
         public static DamageSingleton NewDamage { get; set; }
         public static ObservableCollection<modelDamageType> DamageTypes;
+        #endregion
 
+        #region Contructor
+        //Constructor
         public ViewModelAddDamage()
         {
             NewDamage = DamageSingleton.Instance;
@@ -26,6 +30,12 @@ namespace StatueApp.ViewModel
             GetDamageTypesAsync();
         }
 
+        #endregion
+
+        #region Metoder
+        /// <summary>
+        /// Henter alle Damage typer ind fra databasen og tilføjer dem til en ObservableCollection
+        /// </summary>
         public async void GetDamageTypesAsync()
         {
             var listOfDamageTypes = await facadeStatue.GetListAsync(new modelDamageType());
@@ -33,7 +43,9 @@ namespace StatueApp.ViewModel
             {
                 DamageTypes.Add(item);
             }
-        }
+        } 
+        #endregion
+
 
         #region PropertyChanged Support
         public event PropertyChangedEventHandler PropertyChanged;
