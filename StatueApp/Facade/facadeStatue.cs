@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
+using StatueApp.Exeption;
 using StatueApp.Interface;
 
 namespace StatueApp.Facade
@@ -35,13 +36,14 @@ namespace StatueApp.Facade
                     if (response.IsSuccessStatusCode)
                     {
                         listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
+                        return listOfObjects;
                     }
+                    throw new ServerErrorExeption("Kunne ikke finde: " + obj.VerboseName + response.ReasonPhrase);
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new ServerErrorExeption(ex.Message);
                 }
-                return listOfObjects;
             }
         }
 
@@ -67,13 +69,16 @@ namespace StatueApp.Facade
                     if (response.IsSuccessStatusCode)
                     {
                         result = response.Content.ReadAsAsync<T>().Result;
+                        return result;
                     }
+                    throw new ServerErrorExeption("Kunne ikke finde: " + obj.VerboseName + response.ReasonPhrase );
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new ServerErrorExeption(ex.Message);
                 }
-                return result;
+                
+               
             }
         }
 
@@ -99,13 +104,15 @@ namespace StatueApp.Facade
                     if (response.IsSuccessStatusCode)
                     {
                         listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
+                        return listOfObjects;
                     }
+                    throw new ServerErrorExeption("Kunne ikke finde: " + obj.VerboseName + response.ReasonPhrase);
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new ServerErrorExeption(ex.Message);
                 }
-                return listOfObjects;
+                
             }
         }
 
@@ -130,11 +137,11 @@ namespace StatueApp.Facade
                     {
                         return "Success: " + obj.VerboseName + " Created";
                     }
-                    return "Error: Failed to create " + obj.VerboseName + " :: " + response.StatusCode;
+                    throw new ServerErrorExeption("Error: Failed to create " + obj.VerboseName + " :: " + response.StatusCode);
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new ServerErrorExeption(ex.Message);
                 }
             }
         }
@@ -161,11 +168,11 @@ namespace StatueApp.Facade
                     {
                         return "Success: " + obj.VerboseName + " Updated";
                     }
-                    return "Error: Failed to update " + obj.VerboseName + " :: " + response.StatusCode;
+                    throw new ServerErrorExeption("Error: Failed to update " + obj.VerboseName + " :: " + response.StatusCode);
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new ServerErrorExeption(ex.Message);
                 }
             }
         }
@@ -192,11 +199,11 @@ namespace StatueApp.Facade
                     {
                         return "Success: " + obj.VerboseName + " Deleted";
                     }
-                    return "Error: Failed to delete " + obj.VerboseName + " :: " + response.StatusCode;
+                    throw new ServerErrorExeption("Error: Failed to delete " + obj.VerboseName + " :: " + response.StatusCode);
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    throw new ServerErrorExeption(ex.Message);
                 }
             }
         }

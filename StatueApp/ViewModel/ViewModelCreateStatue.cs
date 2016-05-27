@@ -8,6 +8,7 @@ using StatueApp.Facade;
 using StatueApp.Handler;
 using StatueApp.Model;
 using Windows.UI.Popups;
+using StatueApp.Exeption;
 using StatueApp.View;
 
 namespace StatueApp.ViewModel
@@ -36,7 +37,7 @@ namespace StatueApp.ViewModel
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged();}
+            set { _loadingIcon = value; OnPropertyChanged(); }
         }
 
         #endregion
@@ -76,15 +77,27 @@ namespace StatueApp.ViewModel
         /// </summary>
         /// <param name="s">Materiale Type</param>
         /// <returns>ObservableCollection of modelMaterial</returns>
-        public static ObservableCollection<modelMaterial> GetSpecificMaterialList(string s)
+        private static ObservableCollection<modelMaterial> GetSpecificMaterialList(string s)
         {
             var materialList = new ObservableCollection<modelMaterial>();
-            foreach (var material in StatueMaterial)
+            try
             {
-                if (string.Equals(material.MaterialType, s, StringComparison.CurrentCultureIgnoreCase))
+
+                foreach (var material in StatueMaterial)
                 {
-                    materialList.Add(material);
+                    if (string.Equals(material.MaterialType, s, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        materialList.Add(material);
+                    }
                 }
+            }
+            catch (NullReferenceException)
+            {
+                throw new MaterialListEmptyExeption();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             //Bliver returneret til GetStatueMaterialAsync metoden
             return materialList;
@@ -95,10 +108,30 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetStatueTypeAsync()
         {
-            var listOfStatueType = await facadeStatue.GetListAsync(new modelStatueType());
-            foreach (var statueType in listOfStatueType)
+            try
             {
-                StatueType.Add(statueType);
+                LoadingIcon = true;
+                var listOfStatueType = await facadeStatue.GetListAsync(new modelStatueType());
+                foreach (var statueType in listOfStatueType)
+                {
+                    StatueType.Add(statueType);
+                }
+            }
+            catch (ServerErrorExeption ex)
+            {
+                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Statue type listen er tom");
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
             }
         }
 
@@ -107,11 +140,32 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetStatuePlacementAsync()
         {
-            var listOfStatuePlacement = await facadeStatue.GetListAsync(new modelPlacement());
-            foreach (var statuePlacement in listOfStatuePlacement)
+            try
             {
-                StatuePlacement.Add(statuePlacement);
+                LoadingIcon = true;
+                var listOfStatuePlacement = await facadeStatue.GetListAsync(new modelPlacement());
+                foreach (var statuePlacement in listOfStatuePlacement)
+                {
+                    StatuePlacement.Add(statuePlacement);
+                }
             }
+            catch (ServerErrorExeption ex)
+            {
+                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Statue Placement listen er tom");
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
+            }
+
         }
 
         /// <summary>
@@ -119,11 +173,32 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetCulturalValueAsync()
         {
-            var listOfCulturalValue = await facadeStatue.GetListAsync(new modelCulturalValue());
-            foreach (var culturalValue in listOfCulturalValue)
+            try
             {
-                CulturalValue.Add(culturalValue);
+                LoadingIcon = false;
+                var listOfCulturalValue = await facadeStatue.GetListAsync(new modelCulturalValue());
+                foreach (var culturalValue in listOfCulturalValue)
+                {
+                    CulturalValue.Add(culturalValue);
+                }
             }
+            catch (ServerErrorExeption ex)
+            {
+                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Kultural Værdi listen er tom");
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
+            }
+
         }
 
         /// <summary>
@@ -131,11 +206,32 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetStatueImageAsync()
         {
-            var listOfStatueImage = await facadeStatue.GetListAsync(new modelImage());
-            foreach (var statueImage in listOfStatueImage)
+            try
             {
-                StatueImage.Add(statueImage);
+                LoadingIcon = true;
+                var listOfStatueImage = await facadeStatue.GetListAsync(new modelImage());
+                foreach (var statueImage in listOfStatueImage)
+                {
+                    StatueImage.Add(statueImage);
+                }
             }
+            catch (ServerErrorExeption ex)
+            {
+                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Image listen er tom");
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
+            }
+
         }
 
         /// <summary>
@@ -143,16 +239,40 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetStatueMaterialAsync()
         {
-            var listOfStatueMaterial = await facadeStatue.GetListAsync(new modelMaterial());
-            foreach (var statueMaterial in listOfStatueMaterial)
+            try
             {
-                StatueMaterial.Add(statueMaterial);
-            }
+                LoadingIcon = true;
+                var listOfStatueMaterial = await facadeStatue.GetListAsync(new modelMaterial());
+                foreach (var statueMaterial in listOfStatueMaterial)
+                {
+                    StatueMaterial.Add(statueMaterial);
+                }
 
-            // Nødvendigt at kalde herfra, da Materiale listen ellers ikke er klar
-            StatueMaterialStone = GetSpecificMaterialList("s");
-            StatueMaterialMetal = GetSpecificMaterialList("m");
-            StatueMaterialOther = GetSpecificMaterialList("a");
+                // Nødvendigt at kalde herfra, da Materiale listen ellers ikke er klar
+                StatueMaterialStone = GetSpecificMaterialList("s");
+                StatueMaterialMetal = GetSpecificMaterialList("m");
+                StatueMaterialOther = GetSpecificMaterialList("a");
+            }
+            catch (ServerErrorExeption ex)
+            {
+                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Materialle listen er tom");
+            }
+            catch (MaterialListEmptyExeption)
+            {
+                ExeptionHandler.ShowExeptonError("Ingen materialler valgt");
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
+            }
         }
 
         /// <summary>
@@ -160,11 +280,31 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetStatueAsync()
         {
-            var listOfStatues = await facadeStatue.GetListAsync(new modelStatue());
-            Statues.Clear();
-            foreach (var statue in listOfStatues)
+            try
             {
-                Statues.Add(statue);
+                LoadingIcon = true;
+                var listOfStatues = await facadeStatue.GetListAsync(new modelStatue());
+                Statues.Clear();
+                foreach (var statue in listOfStatues)
+                {
+                    Statues.Add(statue);
+                }
+            }
+            catch (ServerErrorExeption ex)
+            {
+                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Statue listen er tom");
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
             }
         }
         #endregion
@@ -173,11 +313,28 @@ namespace StatueApp.ViewModel
         /// <summary>
         /// Opretter statuen og returnere en besked fra webservicen
         /// </summary>
-        public async void  DoCreateStatue()
+        public async void DoCreateStatue()
         {
-            var msg = await handlerStatue.CreateStatue();
-            var message = new MessageDialog(msg);
-            await message.ShowAsync();
+            try
+            {
+                LoadingIcon = true;
+                var msg = await handlerStatue.CreateStatue();
+                var message = new MessageDialog(msg);
+                await message.ShowAsync();
+            }
+            catch (ServerErrorExeption ex)
+            {
+                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
+            }
+
         }
 
         /// <summary>
@@ -185,11 +342,23 @@ namespace StatueApp.ViewModel
         /// </summary>
         public void ViewStatue()
         {
-            NewStatue.SelectedStatue.Name = SelectedStatueFromList.Name;
-            NewStatue.SelectedStatue.Address = SelectedStatueFromList.Address;
+            try
+            {
+                NewStatue.SelectedStatue.Name = SelectedStatueFromList.Name;
+                NewStatue.SelectedStatue.Address = SelectedStatueFromList.Address;
 
-            //Navigaere til viewet SeeStatue
-            NavigationHelper.navigate(typeof(SeeStatue));
+                //Navigaere til viewet SeeStatue
+                NavigationHelper.navigate(typeof(SeeStatue));
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Ingen statue valgt");
+            }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
+
         }
         #endregion
         #endregion

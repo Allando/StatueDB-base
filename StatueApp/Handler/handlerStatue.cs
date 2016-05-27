@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using StatueApp.Common;
+using StatueApp.Exeption;
 using StatueApp.Facade;
 using StatueApp.Model;
 
@@ -17,16 +18,28 @@ namespace StatueApp.Handler
         /// <returns>Højeste Statue Id (int)</returns>
         private static async Task<int> GetHighestStatueId()
         {
-            var statueList = await facadeStatue.GetListAsync(new modelStatue());
+            try
+            {
+                var statueList = await facadeStatue.GetListAsync(new modelStatue());
 
-            //int max = 0;
-            //foreach (var item in statueList)
-            //    max = Math.Max(max, item.Id);
-            //return max;
-            // Løber listen af statuer igennem og finder og retunerer det højeste Id (Sidst tilføjede statue)
+                //int max = 0;
+                //foreach (var item in statueList)
+                //    max = Math.Max(max, item.Id);
+                //return max;
+                // Løber listen af statuer igennem og finder og retunerer det højeste Id (Sidst tilføjede statue)
 
-            // Gør det samme som ovenstående Loop
-            return statueList.Select(item => item.Id).Concat(new[] {0}).Max();
+                // Gør det samme som ovenstående Loop
+                return statueList.Select(item => item.Id).Concat(new[] {0}).Max();
+            }
+            catch (ServerErrorExeption ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Statuen ikke gemt");
+            }
+            return -1;
         }
 
         /// <summary>
