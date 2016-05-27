@@ -31,7 +31,7 @@ namespace StatueAppTest
             singleton.StatueTypes.Add(statuetypes.ElementAt(2));
 
 
-            await handlerCreateStatue.CreateStatue();
+            await handlerStatue.CreateStatue();
 
 
             var statueList = facadeStatue.GetListAsync(new modelStatue()).Result;

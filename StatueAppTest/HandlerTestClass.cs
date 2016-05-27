@@ -33,7 +33,7 @@ namespace StatueAppTest
 
 
 
-           handlerCreateStatue.CreateStatue();
+           handlerStatue.CreateStatue();
 
             for (int i = 0; i < 10000000; i++)
             {

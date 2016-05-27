@@ -78,6 +78,7 @@ namespace StatueApp.ViewModel
                     materialList.Add(material);
                 }
             }
+            //Bliver returneret til GetStatueMaterialAsync metoden
             return materialList;
         }
 
@@ -161,6 +162,10 @@ namespace StatueApp.ViewModel
         #endregion
 
         #region RelayCommands
+
+        /// <summary>
+        /// Opretter statuen og returnere en besked fra webservicen
+        /// </summary>
         public async void  DoCreateStatue()
         {
             var msg = await handlerStatue.CreateStatue();
@@ -168,6 +173,9 @@ namespace StatueApp.ViewModel
             await message.ShowAsync();
         }
 
+        /// <summary>
+        /// Denne metode udfylder properties så man kan se en specifik statue på SeeStatue Viewet + navigere til viewet 
+        /// </summary>
         public void ViewStatue()
         {
             NewStatue.SelectedStatue.Name = SelectedStatueFromList.Name;
