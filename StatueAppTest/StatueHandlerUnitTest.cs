@@ -62,11 +62,11 @@ namespace StatueAppTest
 
 
 
-            // facadeStatue.DeleteAsync(new modelCulturalValueList(), culturalvalue.First().Id);
-            // facadeStatue.DeleteAsync(new modelMaterialList(), material.First().Id);
-            // facadeStatue.DeleteAsync(new modelPlacementList(), placement.First().Id);
-            // facadeStatue.DeleteAsync(new modelStatueTypeList(), statuetype.First().Id);
-            //await facadeStatue.DeleteAsync(new modelStatue(), neweststatue.Id);
+            await facadeStatue.DeleteAsync(new modelCulturalValueList(), culturalvalue.First().Id);
+            await facadeStatue.DeleteAsync(new modelMaterialList(), material.First().Id);
+            await facadeStatue.DeleteAsync(new modelPlacementList(), placement.First().Id);
+            await facadeStatue.DeleteAsync(new modelStatueTypeList(), statuetype.First().Id);
+            await facadeStatue.DeleteAsync(new modelStatue(), neweststatue.Id);
         }
     }
 }
