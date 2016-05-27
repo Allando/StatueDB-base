@@ -46,6 +46,7 @@ namespace StatueApp.Common
         ///     }
         /// }
         /// 
+        
         /// Gør det samme som ovenstående kode
         public static StatueSingleton Instance => _instance ?? (_instance = new StatueSingleton());
 
@@ -73,6 +74,8 @@ namespace StatueApp.Common
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        #region Dispose Metode
         /// <summary>
         /// Nulstiller værdierne i Singletonen
         /// </summary>
@@ -87,6 +90,7 @@ namespace StatueApp.Common
             _instance.Materials.Clear();
             _instance.Placements.Clear();
             _instance.StatueTypes.Clear();
-        }
+        } 
+        #endregion
     }
 }

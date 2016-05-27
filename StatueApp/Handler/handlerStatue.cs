@@ -14,7 +14,7 @@ namespace StatueApp.Handler
         /// <summary>
         /// Finder den nyeste generede statue, ved at finde den statue med det højeste Id
         /// </summary>
-        /// <returns>Highest Statue Id (int)</returns>
+        /// <returns>Højeste Statue Id (int)</returns>
         private static async Task<int> GetHighestStatueId()
         {
             var statueList = await facadeStatue.GetListAsync(new modelStatue());
@@ -23,8 +23,8 @@ namespace StatueApp.Handler
             //foreach (var item in statueList)
             //    max = Math.Max(max, item.Id);
             //return max;
-
             // Løber listen af statuer igennem og finder og retunerer det højeste Id (Sidst tilføjede statue)
+
             // Gør det samme som ovenstående Loop
             return statueList.Select(item => item.Id).Concat(new[] {0}).Max();
         }
@@ -32,7 +32,7 @@ namespace StatueApp.Handler
         /// <summary>
         /// Denne metode tager statue og de nødvendige mellem tabler og gemmer dem i databasen
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returnere besked fra webserice - statusMsg </returns>
         public static async Task<string> CreateStatue()
         {
             var statusMsg="";

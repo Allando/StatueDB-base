@@ -31,7 +31,7 @@ namespace StatueApp.Common
 
         #region Singleton
         /// <summary>
-        /// Denne metode gør så der kun er en damage singleTon, ved at retunere instance i stedet for at lave en ny instance
+        /// Denne metode gør så der kun er en damage singleton, ved at retunere instance i stedet for at lave en ny instance
         /// </summary>
         public static DamageSingleton Instance => _instance ?? (_instance = new DamageSingleton()); ///
         #endregion
@@ -46,6 +46,7 @@ namespace StatueApp.Common
         }
         #endregion
 
+        #region Dispose Metode
         /// <summary>
         /// Bruges til at nulstille Singleton'en
         /// </summary>
@@ -55,6 +56,7 @@ namespace StatueApp.Common
             _instance.DamageType = new modelDamageType();
             _instance.Images.Clear();
             _instance.StatueId = -1;
-        }
+        } 
+        #endregion
     }
 }

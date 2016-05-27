@@ -141,7 +141,7 @@ namespace StatueApp.ViewModel
                 StatueMaterial.Add(statueMaterial);
             }
 
-            // Nødvendigt at kalde herfra da Materiale listen ellers ikke er klar
+            // Nødvendigt at kalde herfra, da Materiale listen ellers ikke er klar
             StatueMaterialStone = GetSpecificMaterialList("s");
             StatueMaterialMetal = GetSpecificMaterialList("m");
             StatueMaterialOther = GetSpecificMaterialList("a");
@@ -162,7 +162,6 @@ namespace StatueApp.ViewModel
         #endregion
 
         #region RelayCommands
-
         /// <summary>
         /// Opretter statuen og returnere en besked fra webservicen
         /// </summary>
