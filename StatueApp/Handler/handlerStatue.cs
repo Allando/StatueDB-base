@@ -39,6 +39,10 @@ namespace StatueApp.Handler
             {
                 ExeptionHandler.ShowExeptonError("Statuen ikke gemt");
             }
+            catch (Exception ex)
+            {
+                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+            }
             return -1;
         }
 
@@ -49,47 +53,123 @@ namespace StatueApp.Handler
         public static async Task<string> CreateStatue()
         {
             var statusMsg="";
-            var NewStatue = StatueSingleton.Instance;
-            NewStatue.Statue.Created = DateTime.Now;
-            NewStatue.Statue.Updated = DateTime.Now;
+           
             try
             {
+                var NewStatue = StatueSingleton.Instance;
+                NewStatue.Statue.Created = DateTime.Now;
+                NewStatue.Statue.Updated = DateTime.Now;
                 statusMsg = await facadeStatue.PostAsync(NewStatue.Statue);
                 //Kalder denne metode for at finde Id'et på den nyeste Statue
                 var statueId = await GetHighestStatueId();
 
                 //Alle posting loops, tager Id'et fra den nyeste statue + Id'et fra de valgte properties og skriver ind i mellem tablerne
                 #region Posting Loops
-                foreach (var culturalValue in NewStatue.CulturalValues)
+                try
                 {
-                    await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
+                    foreach (var culturalValue in NewStatue.CulturalValues)
+                    {
+                        await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
+                    }
                 }
-                //foreach (var image in NewStatue.Images)
-                //{
-                //    await facadeStatue.PostAsync(new modelImageList(statueId, image.Id));
-                //}
-                foreach (var material in NewStatue.Materials)
+                //I catach metoderne slettes alle de ting der er blevet oprettet ind til fejlen skete
+                catch (Exception ex)
                 {
-                    await facadeStatue.PostAsync(new modelMaterialList(statueId, material.Id));
+                    ExeptionHandler.DeleteNotListCleanUpMethod(statueId, new modelStatue());
+                    throw ex;
                 }
-                foreach (var placement in NewStatue.Placements)
+                
+                //Starter ny foreach loop
+                try
                 {
-                    await facadeStatue.PostAsync(new modelPlacementList(statueId, placement.Id));
+                    foreach (var material in NewStatue.Materials)
+                    {
+                        await facadeStatue.PostAsync(new modelMaterialList(statueId, material.Id));
+                    }
                 }
-                foreach (var statueType in NewStatue.StatueTypes)
+                catch (Exception ex)
                 {
-                    await facadeStatue.PostAsync(new modelStatueTypeList(statueId, statueType.Id));
+                    ExeptionHandler.DeleteNotListCleanUpMethod(statueId, new modelStatue());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelCulturalValueList());
+                    throw ex;
                 }
-                if (NewStatue.Description != null)
+
+                //Starter ny foreach loop
+                try
                 {
-                    await facadeStatue.PostAsync(NewStatue.Description);
+                    foreach (var placement in NewStatue.Placements)
+                    {
+                        await facadeStatue.PostAsync(new modelPlacementList(statueId, placement.Id));
+                    }
                 }
-                if (NewStatue.GpsLocation != null)
+                catch (Exception ex)
                 {
-                    await facadeStatue.PostAsync(NewStatue.GpsLocation);
+                    ExeptionHandler.DeleteNotListCleanUpMethod(statueId, new modelStatue());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelCulturalValueList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelMaterialList());
+                    throw ex;
                 }
+
+                //Starter ny foreach loop
+                try
+                {
+                    foreach (var statueType in NewStatue.StatueTypes)
+                    {
+                        await facadeStatue.PostAsync(new modelStatueTypeList(statueId, statueType.Id));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExeptionHandler.DeleteNotListCleanUpMethod(statueId, new modelStatue());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelCulturalValueList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelMaterialList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelPlacementList());
+                    throw ex;
+                }
+
+                //Starter ny foreach loop
+                try
+                {
+                    if (NewStatue.Description != null)
+                    {
+                        await facadeStatue.PostAsync(NewStatue.Description);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExeptionHandler.DeleteNotListCleanUpMethod(statueId, new modelStatue());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelCulturalValueList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelMaterialList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelPlacementList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelStatueTypeList());
+                    throw ex;
+                }
+
+                //
+                try
+                {
+                    if (NewStatue.GpsLocation != null)
+                    {
+                        await facadeStatue.PostAsync(NewStatue.GpsLocation);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExeptionHandler.DeleteNotListCleanUpMethod(statueId, new modelStatue());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelCulturalValueList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelMaterialList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelPlacementList());
+                    ExeptionHandler.DeleteCleanUpMethod(statueId, new modelStatueTypeList());
+                    if (NewStatue.Description != null)
+                    {
+                        ExeptionHandler.DeleteNotListCleanUpMethod(statueId, new modelDescription());
+                    }
+                    throw ex;
+                }
+                //
                 #endregion
             }
+           
             catch (Exception ex)
             {
                 throw ex;

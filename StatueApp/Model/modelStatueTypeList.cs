@@ -2,7 +2,7 @@
 
 namespace StatueApp.Model
 {
-    public class modelStatueTypeList : IWebUri, IGetByStatueId
+    public class modelStatueTypeList : IWebUri, IGetByStatueId, IHasFkStatuecs
     {
         public modelStatueTypeList()
         {

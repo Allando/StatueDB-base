@@ -2,7 +2,7 @@
 
 namespace StatueApp.Model
 {
-    public class modelCulturalValueList : IWebUri, IGetByStatueId
+    public class modelCulturalValueList : IWebUri, IGetByStatueId, IHasFkStatuecs
     {
         public modelCulturalValueList()
         {

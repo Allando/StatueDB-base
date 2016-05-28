@@ -13,14 +13,14 @@
     </Page.DataContext>
 
 
-    <Grid Background="#FFE1D0BC">
+    <Grid Background="#FFE1D0BC" HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="PointerPressed">
                     <Core:NavigateToPageAction TargetPage="StatueApp.View.MainPage"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
-            
+
             <Image x:Name="imageLogo" Width="100" Source="ms-appx:///Assets/logo.png" Margin="0,0,0,-0.2"/>
             <TextBlock x:Name="kulptur_text" Height="91" Margin="0,80,0,0" TextWrapping="Wrap" Text="kulptur" HorizontalAlignment="Left" FontSize="48" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
             <TextBlock x:Name="D_text" Height="91" Margin="34,50,0,0" TextWrapping="Wrap" Text="D" HorizontalAlignment="Left" FontSize="82" FontFamily="Bookman Old Style" Foreground="#FF0E143F"/>
@@ -74,6 +74,7 @@
                 <Button x:Name="buttonAdmin" Content="Admin" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="81" FontSize="16" FontFamily="Verdana" Background="#00000000"/>
             </Border>
         </StackPanel>
+        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250" Width="120" IsActive="{Binding LoadingIcon}"/>
 
     </Grid>
 </Page>
