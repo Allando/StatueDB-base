@@ -29,10 +29,14 @@ namespace StatueApp.Model
 
         public modelDamageType(int id, string type) : this()
         {
-            //Konstrukerer objektet med parameterne og indholdet af standard contrutoren
+            //Konstrukerer objektet med parameterne og indholdet af standard construtoren
             Id = id;
             Type = type;
         }
 
+        public override string ToString()
+        {
+            return $"{Type}";
+        }
     }
 }

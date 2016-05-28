@@ -17,7 +17,7 @@ namespace StatueApp.ViewModel
     {
         #region Properties
         public static DamageSingleton NewDamage { get; set; }
-        public static ObservableCollection<modelDamageType> DamageTypes;
+        public static ObservableCollection<modelDamageType> DamageTypes {get; set;}
 
         private bool _loadingIcon;
         public bool LoadingIcon
