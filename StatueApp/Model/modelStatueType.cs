@@ -11,13 +11,13 @@ namespace StatueApp.Model
         }
 
         public modelStatueType(string statueTypeName) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             StatueTypeName = statueTypeName;
         }
 
         public modelStatueType(int id, string statueTypeName) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             StatueTypeName = statueTypeName;

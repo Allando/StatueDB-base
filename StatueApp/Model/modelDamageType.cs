@@ -23,11 +23,13 @@ namespace StatueApp.Model
 
         public modelDamageType(string type) : this()
         {
+            //Konstrukerer objektet med parameterne og indholdet af standard contrutoren
             Type = type;
         }
 
         public modelDamageType(int id, string type) : this()
         {
+            //Konstrukerer objektet med parameterne og indholdet af standard contrutoren
             Id = id;
             Type = type;
         }

@@ -100,8 +100,11 @@
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\StatueSingleton.cs" />
+    <Compile Include="Exeption\MaterialListEmptyExeption.cs" />
+    <Compile Include="Exeption\ServerErrorExeption.cs" />
     <Compile Include="Facade\facadeStatue.cs" />
-    <Compile Include="Handler\handlerCreateStatue.cs" />
+    <Compile Include="Handler\ExeptionHandler.cs" />
+    <Compile Include="Handler\handlerStatue.cs" />
     <Compile Include="Handler\handlerDamage.cs" />
     <Compile Include="Interface\IGetByStatueId.cs" />
     <Compile Include="Interface\IWebUri.cs" />

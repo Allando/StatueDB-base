@@ -12,7 +12,7 @@ namespace StatueApp.Model
         }
 
         public modelStatue(string name, string address, string zipcode, DateTime created, DateTime updated) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Name = name;
             Address = address;
@@ -23,7 +23,7 @@ namespace StatueApp.Model
 
         public modelStatue(int id, string name, string address, string zipcode, DateTime created, DateTime updated)
             : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             Id = id;
             Name = name;

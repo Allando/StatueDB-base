@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using StatueApp.Common;
+using StatueApp.Exeption;
 using StatueApp.Facade;
 using StatueApp.Model;
 
@@ -12,27 +13,39 @@ namespace StatueApp.Handler
     public class handlerCreateStatue
     {
         /// <summary>
-        /// Runs through the listn of Statue and finds the highest
+        /// Finder den nyeste generede statue, ved at finde den statue med det højeste Id
         /// </summary>
-        /// <returns>Highest Statue Id (int)</returns>
+        /// <returns>Højeste Statue Id (int)</returns>
         private static async Task<int> GetHighestStatueId()
         {
-            var statueList = await facadeStatue.GetListAsync(new modelStatue());
+            try
+            {
+                var statueList = await facadeStatue.GetListAsync(new modelStatue());
 
-            //int max = 0;
-            //foreach (var item in statueList)
-            //    max = Math.Max(max, item.Id);
-            //return max;
+                //int max = 0;
+                //foreach (var item in statueList)
+                //    max = Math.Max(max, item.Id);
+                //return max;
+                // Løber listen af statuer igennem og finder og retunerer det højeste Id (Sidst tilføjede statue)
 
-            // Løber listen af statuer igennem og finder og retunerer det højeste Id (Sidst tilføjede statue)
-            // Gør det samme som ovenstående Loop
-            return statueList.Select(item => item.Id).Concat(new[] {0}).Max();
+                // Gør det samme som ovenstående Loop
+                return statueList.Select(item => item.Id).Concat(new[] {0}).Max();
+            }
+            catch (ServerErrorExeption ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException)
+            {
+                ExeptionHandler.ShowExeptonError("Statuen ikke gemt");
+            }
+            return -1;
         }
 
         /// <summary>
-        /// 
+        /// Denne metode tager statue og de nødvendige mellem tabler og gemmer dem i databasen
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returnere besked fra webserice - statusMsg </returns>
         public static async Task<string> CreateStatue()
         {
             var statusMsg="";
@@ -42,8 +55,10 @@ namespace StatueApp.Handler
             try
             {
                 statusMsg = await facadeStatue.PostAsync(NewStatue.Statue);
+                //Kalder denne metode for at finde Id'et på den nyeste Statue
                 var statueId = await GetHighestStatueId();
 
+                //Alle posting loops, tager Id'et fra den nyeste statue + Id'et fra de valgte properties og skriver ind i mellem tablerne
                 #region Posting Loops
                 foreach (var culturalValue in NewStatue.CulturalValues)
                 {
@@ -79,7 +94,7 @@ namespace StatueApp.Handler
             {
                 throw ex;
             }
-            NewStatue.Dispose();
+            //NewStatue.Dispose();
             return statusMsg;
         }
     }

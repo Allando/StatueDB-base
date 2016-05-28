@@ -12,13 +12,13 @@ namespace StatueApp.Model
         }
 
         public modelZipcode(string zipcodeValue) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             ZipcodeValue = zipcodeValue;
         }
 
         public modelZipcode(string zipcodeValue, string cityName) : this()
-            // Constructs Object with parameters AND the content of the Default Constructor
+            // Konstrukerer objektet med parameterne og indholdet af standard contrutoren
         {
             ZipcodeValue = zipcodeValue;
             CityName = cityName;

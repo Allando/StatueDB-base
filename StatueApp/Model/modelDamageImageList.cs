@@ -24,12 +24,14 @@ namespace StatueApp.Model
 
         public modelDamageImageList(int fkDamage, int fkImage) : this()
         {
+            //Konstrukerer objektet med parameterne og indholdet af standard contrutoren
             FK_Damage = fkDamage;
             FK_Image = fkImage;
         }
 
         public modelDamageImageList(int id, int fkDamage, int fkImage) : this()
         {
+            //Konstrukerer objektet med parameterne og indholdet af standard contrutoren
             Id = id;
             FK_Damage = fkDamage;
             FK_Image = fkImage;

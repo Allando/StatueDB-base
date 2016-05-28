@@ -10,6 +10,9 @@ namespace StatueApp.Common
 {
     class NavigationHelper
     {
+        /// <summary>
+        /// Denne klasse gør at man kan navigaere fra C# koden i stedet for Xaml koden
+        /// </summary>
         private static Frame _frame;
 
         public static void navigate(Type page)

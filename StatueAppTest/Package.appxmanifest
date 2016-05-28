@@ -5,15 +5,15 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
-  <Identity Name="6631ab72-6ec7-44a4-9c0d-29dbdd4d56ad"
-            Publisher="CN=Anders"
+  <Identity Name="c84e8eb9-25bb-47fd-b8ac-66d4f5d2f9d3"
+            Publisher="CN=tomiz"
             Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="6631ab72-6ec7-44a4-9c0d-29dbdd4d56ad" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="c84e8eb9-25bb-47fd-b8ac-66d4f5d2f9d3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>StatueAppTest</DisplayName>
-    <PublisherDisplayName>Anders</PublisherDisplayName>
+    <PublisherDisplayName>tomiz</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   

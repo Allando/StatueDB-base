@@ -9,6 +9,7 @@ namespace StatueApp.Common
 {
     public class DamageSingleton : INotifyPropertyChanged
     {
+        #region Properties
         public int StatueId { get; set; }
         public modelDamage Damage { get; set; }
         public modelDamageType DamageType { get; set; }
@@ -16,6 +17,9 @@ namespace StatueApp.Common
 
         private static DamageSingleton _instance;
 
+        #endregion
+
+        #region Contructor
         private DamageSingleton()
         {
             StatueId = -1;
@@ -23,8 +27,14 @@ namespace StatueApp.Common
             DamageType = new modelDamageType();
             Images = new ObservableCollection<modelImage>();
         }
+        #endregion
 
-        public static DamageSingleton Instance => _instance ?? (_instance = new DamageSingleton());
+        #region Singleton
+        /// <summary>
+        /// Denne metode gør så der kun er en damage singleton, ved at retunere instance i stedet for at lave en ny instance
+        /// </summary>
+        public static DamageSingleton Instance => _instance ?? (_instance = new DamageSingleton()); ///
+        #endregion
 
         #region PropertyChanged Support
         public event PropertyChangedEventHandler PropertyChanged;
@@ -36,6 +46,7 @@ namespace StatueApp.Common
         }
         #endregion
 
+        #region Dispose Metode
         /// <summary>
         /// Bruges til at nulstille Singleton'en
         /// </summary>
@@ -45,6 +56,7 @@ namespace StatueApp.Common
             _instance.DamageType = new modelDamageType();
             _instance.Images.Clear();
             _instance.StatueId = -1;
-        }
+        } 
+        #endregion
     }
 }
