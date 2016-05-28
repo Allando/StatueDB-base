@@ -1,7 +1,6 @@
 ﻿<Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:StatueApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
@@ -9,7 +8,7 @@
     x:Class="StatueApp.View.FindStatue"
     mc:Ignorable="d">
     <Page.DataContext>
-        <ViewModel:ViewModelCreateStatue/>
+        <ViewModel:ViewModelStatue/>
     </Page.DataContext>
 
 
@@ -64,7 +63,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="98,250,98,130">
-            <ListView x:Name="listViewStatue" Height="258" BorderBrush="Gray" BorderThickness="1" ItemsSource="{Binding Statues, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStatueFromList, Mode=TwoWay}"/>
+            <ListView x:Name="listViewStatue" Height="258" BorderBrush="Gray" BorderThickness="1" ItemsSource="{Binding Statues, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStatue, Mode=TwoWay}"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom" Width="902" Orientation="Horizontal" Margin="112,0,10,0">
@@ -75,6 +74,5 @@
             </Border>
         </StackPanel>
         <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250" Width="120" IsActive="{Binding LoadingIcon}"/>
-
     </Grid>
 </Page>

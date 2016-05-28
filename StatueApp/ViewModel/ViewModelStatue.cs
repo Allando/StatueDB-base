@@ -8,16 +8,15 @@ using StatueApp.Facade;
 using StatueApp.Handler;
 using StatueApp.Model;
 using Windows.UI.Popups;
-using StatueApp.Exeption;
 using StatueApp.View;
 
 namespace StatueApp.ViewModel
 {
-    public class ViewModelCreateStatue : INotifyPropertyChanged
+    public class ViewModelStatue : INotifyPropertyChanged
     {
         #region Properties
         public static StatueSingleton NewStatue { get; set; }
-        public static modelStatue SelectedStatueFromList { get; set; }
+        public static modelStatue SelectedStatue { get; set; }
 
         public RelayCommand CreateStatueCommand { get; set; }
         public RelayCommand ViewStatueCommand { get; set; }
@@ -34,72 +33,59 @@ namespace StatueApp.ViewModel
         public static ObservableCollection<modelStatue> Statues { get; set; }
 
         private bool _loadingIcon;
-        public bool LoadingIcon
-        {
-            get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged(); }
-        }
 
         #endregion
 
         #region Constructors
-        public ViewModelCreateStatue()
+        public ViewModelStatue()
         {
             NewStatue = StatueSingleton.Instance;
+            try
+            {
+                StatueType = new ObservableCollection<modelStatueType>();
+                GetStatueTypeAsync();
 
-            StatueType = new ObservableCollection<modelStatueType>();
-            GetStatueTypeAsync();
+                StatuePlacement = new ObservableCollection<modelPlacement>();
+                GetStatuePlacementAsync();
 
-            StatuePlacement = new ObservableCollection<modelPlacement>();
-            GetStatuePlacementAsync();
+                CulturalValue = new ObservableCollection<modelCulturalValue>();
+                GetCulturalValueAsync();
 
-            CulturalValue = new ObservableCollection<modelCulturalValue>();
-            GetCulturalValueAsync();
+                StatueImage = new ObservableCollection<modelImage>();
+                GetStatueImageAsync();
 
-            StatueImage = new ObservableCollection<modelImage>();
-            GetStatueImageAsync();
+                StatueMaterial = new ObservableCollection<modelMaterial>();
+                GetStatueMaterialAsync();
 
-            StatueMaterial = new ObservableCollection<modelMaterial>();
-            GetStatueMaterialAsync();
-
-            Statues = new ObservableCollection<modelStatue>();
-            GetStatueAsync();
+                Statues = new ObservableCollection<modelStatue>();
+                GetStatueAsync();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ShowExceptionError(ex.Message);
+            }
 
             CreateStatueCommand = new RelayCommand(DoCreateStatue);
             ViewStatueCommand = new RelayCommand(ViewStatue);
         }
         #endregion
 
-        #region Methods
         #region Liste Generatorer
         /// <summary>
-        /// Genererer en Observable Collection af en Bestemt type Materialer 
+        /// Genererer en Observable Collection af en bestemt type Materialer 
         /// </summary>
-        /// <param name="s">Materiale Type</param>
-        /// <returns>ObservableCollection of modelMaterial</returns>
-        private static ObservableCollection<modelMaterial> GetSpecificMaterialList(string s)
+        /// <param name="materialType">Materiale Type</param>
+        /// <returns>ObservableCollection af modelMaterial</returns>
+        private static ObservableCollection<modelMaterial> GetSpecificMaterialList(string materialType)
         {
             var materialList = new ObservableCollection<modelMaterial>();
-            try
+            foreach (var material in StatueMaterial)
             {
-
-                foreach (var material in StatueMaterial)
+                if (string.Equals(material.MaterialType, materialType, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    if (string.Equals(material.MaterialType, s, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        materialList.Add(material);
-                    }
+                    materialList.Add(material);
                 }
             }
-            catch (NullReferenceException)
-            {
-                throw new MaterialListEmptyExeption();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            //Bliver returneret til GetStatueMaterialAsync metoden
             return materialList;
         }
 
@@ -117,17 +103,9 @@ namespace StatueApp.ViewModel
                     StatueType.Add(statueType);
                 }
             }
-            catch (ServerErrorExeption ex)
-            {
-                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
-            }
-            catch (NullReferenceException)
-            {
-                ExeptionHandler.ShowExeptonError("Statue type listen er tom");
-            }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
             finally
             {
@@ -149,17 +127,9 @@ namespace StatueApp.ViewModel
                     StatuePlacement.Add(statuePlacement);
                 }
             }
-            catch (ServerErrorExeption ex)
-            {
-                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
-            }
-            catch (NullReferenceException)
-            {
-                ExeptionHandler.ShowExeptonError("Statue Placement listen er tom");
-            }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
             finally
             {
@@ -182,17 +152,9 @@ namespace StatueApp.ViewModel
                     CulturalValue.Add(culturalValue);
                 }
             }
-            catch (ServerErrorExeption ex)
-            {
-                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
-            }
-            catch (NullReferenceException)
-            {
-                ExeptionHandler.ShowExeptonError("Kultural Værdi listen er tom");
-            }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
             finally
             {
@@ -215,17 +177,9 @@ namespace StatueApp.ViewModel
                     StatueImage.Add(statueImage);
                 }
             }
-            catch (ServerErrorExeption ex)
-            {
-                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
-            }
-            catch (NullReferenceException)
-            {
-                ExeptionHandler.ShowExeptonError("Image listen er tom");
-            }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
             finally
             {
@@ -235,7 +189,7 @@ namespace StatueApp.ViewModel
         }
 
         /// <summary>
-        /// Henter og laver liste over statue Materialler
+        /// Henter og laver liste over statue materialler
         /// </summary>
         public async void GetStatueMaterialAsync()
         {
@@ -253,21 +207,9 @@ namespace StatueApp.ViewModel
                 StatueMaterialMetal = GetSpecificMaterialList("m");
                 StatueMaterialOther = GetSpecificMaterialList("a");
             }
-            catch (ServerErrorExeption ex)
-            {
-                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
-            }
-            catch (NullReferenceException)
-            {
-                ExeptionHandler.ShowExeptonError("Materialle listen er tom");
-            }
-            catch (MaterialListEmptyExeption)
-            {
-                ExeptionHandler.ShowExeptonError("Ingen materialler valgt");
-            }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
             finally
             {
@@ -290,26 +232,28 @@ namespace StatueApp.ViewModel
                     Statues.Add(statue);
                 }
             }
-            catch (ServerErrorExeption ex)
-            {
-                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
-            }
-            catch (NullReferenceException)
-            {
-                ExeptionHandler.ShowExeptonError("Statue listen er tom");
-            }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
             finally
             {
                 LoadingIcon = false;
             }
         }
+
+        #region Methods
+        /// <summary>
+        /// Loading Icon
+        /// </summary>
+        public bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set { _loadingIcon = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
-        #region RelayCommands
         /// <summary>
         /// Opretter statuen og returnere en besked fra webservicen
         /// </summary>
@@ -322,19 +266,14 @@ namespace StatueApp.ViewModel
                 var message = new MessageDialog(msg);
                 await message.ShowAsync();
             }
-            catch (ServerErrorExeption ex)
-            {
-                ExeptionHandler.ShowExeptonError("Server fejl: ", ex.Message);
-            }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
             finally
             {
                 LoadingIcon = false;
             }
-
         }
 
         /// <summary>
@@ -342,25 +281,25 @@ namespace StatueApp.ViewModel
         /// </summary>
         public void ViewStatue()
         {
+            // TODO
             try
             {
-                NewStatue.SelectedStatue.Name = SelectedStatueFromList.Name;
-                NewStatue.SelectedStatue.Address = SelectedStatueFromList.Address;
+                NewStatue.SelectedStatue.Name = SelectedStatue.Name;
+                NewStatue.SelectedStatue.Address = SelectedStatue.Address;
 
-                //Navigaere til viewet SeeStatue
+                // Navigerer til View'et ViewStatue
                 NavigationHelper.navigate(typeof(SeeStatue));
             }
             catch (NullReferenceException)
             {
-                ExeptionHandler.ShowExeptonError("Ingen statue valgt");
+                ExceptionHandler.ShowExceptionError("Ingen statue valgt");
             }
             catch (Exception ex)
             {
-                ExeptionHandler.ShowExeptonError("Ukendt fejl: ", ex.Message);
+                ExceptionHandler.ShowExceptionError(ex.Message);
             }
 
         }
-        #endregion
         #endregion
 
         #region PropertyChangedSupport

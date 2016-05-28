@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using StatueApp.Common;
 using StatueApp.Facade;
@@ -8,10 +9,10 @@ using StatueApp.Model;
 namespace StatueAppTest
 {
     [TestClass]
-    internal class HandlerTestClass
+    public class UnitTest_Handler
     {
         [TestMethod]
-        public void TestGetListMethod()
+        public async Task Createstatuetest()
         {
             StatueSingleton singleton = StatueSingleton.Instance;
             singleton.Statue.Name = "carsten";
@@ -26,14 +27,7 @@ namespace StatueAppTest
             singleton.Placements.Add(placements.ElementAt(1));
             singleton.StatueTypes.Add(statuetypes.ElementAt(2));
 
-
-
-            handlerStatue.CreateStatue();
-
-            for (var i = 0; i < 10000000; i++)
-            {
-               var x = 2 + 2;
-            }
+            await handlerStatue.CreateStatue();
 
             var statueList = facadeStatue.GetListAsync(new modelStatue()).Result;
 
@@ -52,25 +46,19 @@ namespace StatueAppTest
             var placement = facadeStatue.GetByStatueIdAsync(new modelPlacementList(), neweststatue.Id).Result;
             var statuetype = facadeStatue.GetByStatueIdAsync(new modelStatueTypeList(), neweststatue.Id).Result;
 
-            Assert.AreEqual(neweststatue.Name, "carsten");
-            Assert.AreEqual(neweststatue.Address, "rampelyset 12");
-            Assert.AreEqual(neweststatue.Zipcode, "1234");
-            Assert.AreEqual(culturalvalue.First().FK_CulturalValue, culturalvalues.First().Id);
-            Assert.AreEqual(material.First().FK_Material, materials.First().Id);
-            Assert.AreEqual(placement.First().FK_Placement, placements.First().Id);
-            Assert.AreEqual(statuetype.First().FK_StatueType, statuetypes.First().Id);
+            Assert.AreEqual("carsten", neweststatue.Name);
+            Assert.AreEqual("rampelyset 12", neweststatue.Address);
+            Assert.AreEqual("1234", neweststatue.Zipcode);
+            Assert.AreEqual(3, culturalvalue.First().FK_CulturalValue);
+            Assert.AreEqual(6, material.First().FK_Material);
+            Assert.AreEqual(2, placement.First().FK_Placement);
+            Assert.AreEqual(3, statuetype.First().FK_StatueType);
 
-
-
-
-            facadeStatue.DeleteAsync(new modelCulturalValueList(), culturalvalue.First().Id);
-            facadeStatue.DeleteAsync(new modelMaterialList(), material.First().Id);
-            facadeStatue.DeleteAsync(new modelPlacementList(), placement.First().Id);
-            facadeStatue.DeleteAsync(new modelStatueTypeList(), statuetype.First().Id);
-            facadeStatue.DeleteAsync(new modelStatue(), neweststatue.Id);
-
-
+            await facadeStatue.DeleteAsync(new modelCulturalValueList(), culturalvalue.First().Id);
+            await facadeStatue.DeleteAsync(new modelMaterialList(), material.First().Id);
+            await facadeStatue.DeleteAsync(new modelPlacementList(), placement.First().Id);
+            await facadeStatue.DeleteAsync(new modelStatueTypeList(), statuetype.First().Id);
+            await facadeStatue.DeleteAsync(new modelStatue(), neweststatue.Id);
         }
-
     }
 }
