@@ -8,7 +8,7 @@
     x:Class="StatueApp.View.StatueIsCreated"
     mc:Ignorable="d">
     <Page.DataContext>
-        <ViewModel:ViewModelCreateStatue/>
+        <ViewModel:ViewModelStatue/>
     </Page.DataContext>
 
     
@@ -41,7 +41,7 @@
             <Button x:Name="button1" Content="Indsæt billede" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,30,0,0" Width="167" Height="40" FontFamily="Verdana" FontSize="16"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Height="270" Margin="0,217,64,0" VerticalAlignment="Top" Width="302">
-            <ListView x:Name="listView" Height="246" Margin="10,20,10.4,0" ItemsSource="{Binding Singleton.Image}"/>
+            <ListView x:Name="listView" Height="246" Margin="10,20,10.4,0"/>
         </StackPanel>
         <StackPanel Height="100" Orientation="Horizontal" Margin="0,492,10,48" HorizontalAlignment="Right">
             <Border BorderBrush="#FF786B5E" Width="200" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="25" Margin="10,0,0,20" Height="60" VerticalAlignment="Bottom">
@@ -63,7 +63,7 @@
                         <Core:NavigateToPageAction TargetPage="StatueApp.View.MainPage"/>
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>
-                <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="Annullere" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" />
+                <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="Annuller" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" Foreground="#FF0E143F" />
                 <!--<Button x:Name="button2" Content="Annullere" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Width="163" FontFamily="Verdana" FontSize="16" Height="30" Foreground="#FF0E143F" Padding="0" Background="#00000000"  BorderThickness="0" />-->
             </Border>
         </StackPanel>

@@ -1,5 +1,4 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using StatueApp.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -49,11 +48,11 @@ namespace StatueApp.View
         {
             foreach (modelMaterial removedItem in e.RemovedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.Materials.Remove(removedItem);
+                ViewModel.ViewModelStatue.NewStatue.Materials.Remove(removedItem);
             }
             foreach (modelMaterial addedItem in e.AddedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.Materials.Add(addedItem);
+                ViewModel.ViewModelStatue.NewStatue.Materials.Add(addedItem);
             }
         }
 
@@ -65,11 +64,11 @@ namespace StatueApp.View
         {
             foreach (modelPlacement removedItem in e.RemovedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.Placements.Remove(removedItem);
+                ViewModel.ViewModelStatue.NewStatue.Placements.Remove(removedItem);
             }
             foreach (modelPlacement addedItem in e.AddedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.Placements.Add(addedItem);
+                ViewModel.ViewModelStatue.NewStatue.Placements.Add(addedItem);
             }
         }
 
@@ -81,11 +80,11 @@ namespace StatueApp.View
         {
             foreach (modelStatueType removedItem in e.RemovedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.StatueTypes.Remove(removedItem);
+                ViewModel.ViewModelStatue.NewStatue.StatueTypes.Remove(removedItem);
             }
             foreach (modelStatueType addedItem in e.AddedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.StatueTypes.Add(addedItem);
+                ViewModel.ViewModelStatue.NewStatue.StatueTypes.Add(addedItem);
             }
         }
 
@@ -97,29 +96,12 @@ namespace StatueApp.View
         {
             foreach (modelCulturalValue removedItem in e.RemovedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.CulturalValues.Remove(removedItem);
+                ViewModel.ViewModelStatue.NewStatue.CulturalValues.Remove(removedItem);
             }
             foreach (modelCulturalValue addedItem in e.AddedItems)
             {
-                ViewModel.ViewModelCreateStatue.NewStatue.CulturalValues.Add(addedItem);
+                ViewModel.ViewModelStatue.NewStatue.CulturalValues.Add(addedItem);
             }
         }
-
-        //private void MatrialeKlik()
-        //{
-        //    StackPanelMatrialer.Visibility = Visibility.Visible;
-        //    StackPanelPlacering.Visibility = Visibility.Collapsed;
-        //    StackPanelType.Visibility = Visibility.Collapsed;
-        //    StackPanelCv.Visibility = Visibility.Collapsed;
-        //}
-
-        //private void PlaceringsKlik()
-        //{
-        //    StackPanelMatrialer.Visibility = Visibility.Collapsed;
-        //    StackPanelPlacering.Visibility = Visibility.Visible;
-        //    StackPanelType.Visibility = Visibility.Collapsed;
-        //    StackPanelCv.Visibility = Visibility.Collapsed;
-        //}
-
     }
 }

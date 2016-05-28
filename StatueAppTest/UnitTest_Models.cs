@@ -1,22 +1,13 @@
 ﻿using System;
 using StatueApp.Model;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using StatueApp.Facade;
 
 namespace StatueAppTest
 {
     [TestClass]
-    public class UnittestViewModelStatue
+    public class UnitTest_Models
     {
-        //private modelStatue _statue;
-
-
         [TestInitialize]
-        public void Before()
-        {
-
-        }
-
         [TestMethod]
         public void TestGetStatueMethod()
         {

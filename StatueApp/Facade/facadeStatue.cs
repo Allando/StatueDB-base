@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Windows.UI.Popups;
-using StatueApp.Exeption;
+using StatueApp.CustomException;
 using StatueApp.Interface;
 
 namespace StatueApp.Facade
@@ -12,7 +11,7 @@ namespace StatueApp.Facade
     public class facadeStatue
     {
         private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net"; // HTTP URL of Server
-        //private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
+        // private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
         private const string ApiBaseUrl = "/api/"; // Base Directory of the Api (Remember Leading and Trailing "/")
 
         /// <summary>
@@ -23,7 +22,6 @@ namespace StatueApp.Facade
         /// <returns>Enumerable List of T</returns>
         public static async Task<IEnumerable<T>> GetListAsync<T>(T obj) where T : IWebUri
         {
-            IEnumerable<T> listOfObjects = null;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -33,16 +31,14 @@ namespace StatueApp.Facade
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
-                        return listOfObjects;
-                    }
-                    throw new ServerErrorExeption("Kunne ikke finde: " + obj.VerboseName + response.ReasonPhrase);
+                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    var listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
+                    return listOfObjects;
                 }
                 catch (Exception ex)
                 {
-                    throw new ServerErrorExeption(ex.Message);
+                    throw new ServerErrorException("Server Fejl\n"+ ex.Message);
                 }
             }
         }
@@ -66,19 +62,17 @@ namespace StatueApp.Facade
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + result.ResourceUri + "/" + id);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        result = response.Content.ReadAsAsync<T>().Result;
-                        return result;
-                    }
-                    throw new ServerErrorExeption("Kunne ikke finde: " + obj.VerboseName + response.ReasonPhrase );
+                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    result = response.Content.ReadAsAsync<T>().Result;
+                    return result;
                 }
                 catch (Exception ex)
                 {
-                    throw new ServerErrorExeption(ex.Message);
+                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
                 }
-                
-               
+
+
             }
         }
 
@@ -91,7 +85,6 @@ namespace StatueApp.Facade
         /// <returns></returns>
         public static async Task<IEnumerable<T>> GetByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, IGetByStatueId, new()
         {
-            IEnumerable<T> listOfObjects = null;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -101,18 +94,16 @@ namespace StatueApp.Facade
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri + "/ByStatueId/" + statueId);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
-                        return listOfObjects;
-                    }
-                    throw new ServerErrorExeption("Kunne ikke finde: " + obj.VerboseName + response.ReasonPhrase);
+                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    var listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
+                    return listOfObjects;
                 }
                 catch (Exception ex)
                 {
-                    throw new ServerErrorExeption(ex.Message);
+                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
                 }
-                
+
             }
         }
 
@@ -133,15 +124,13 @@ namespace StatueApp.Facade
                 try
                 {
                     var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, obj);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return "Success: " + obj.VerboseName + " Created";
-                    }
-                    throw new ServerErrorExeption("Error: Failed to create " + obj.VerboseName + " :: " + response.StatusCode);
+                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    return "Success: " + obj.VerboseName + " Oprettet";
                 }
                 catch (Exception ex)
                 {
-                    throw new ServerErrorExeption(ex.Message);
+                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
                 }
             }
         }
@@ -164,15 +153,13 @@ namespace StatueApp.Facade
                 try
                 {
                     var response = await client.PutAsJsonAsync(ApiBaseUrl + obj.ResourceUri + "/" + id, obj);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return "Success: " + obj.VerboseName + " Updated";
-                    }
-                    throw new ServerErrorExeption("Error: Failed to update " + obj.VerboseName + " :: " + response.StatusCode);
+                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    return "Success: " + obj.VerboseName + " Opdateret";
                 }
                 catch (Exception ex)
                 {
-                    throw new ServerErrorExeption(ex.Message);
+                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
                 }
             }
         }
@@ -195,15 +182,13 @@ namespace StatueApp.Facade
                 try
                 {
                     var response = await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/" + id);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return "Success: " + obj.VerboseName + " Deleted";
-                    }
-                    throw new ServerErrorExeption("Error: Failed to delete " + obj.VerboseName + " :: " + response.StatusCode);
+                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    return "Success: " + obj.VerboseName + " Slettet";
                 }
                 catch (Exception ex)
                 {
-                    throw new ServerErrorExeption(ex.Message);
+                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
                 }
             }
         }

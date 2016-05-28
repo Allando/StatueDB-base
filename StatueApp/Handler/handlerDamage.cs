@@ -39,13 +39,15 @@ namespace StatueApp.Handler
 
             try
             {
-                statusMsg = await Facade.facadeStatue.PostAsync(NewDamage.Damage);
-                //Vi kalder denne metode for at kunne finde Id'et på den nyeste statue
+                statusMsg = await facadeStatue.PostAsync(NewDamage.Damage);
+                // ReSharper disable once UnusedVariable
                 var damageId = await GetHighestDamageId();
             }
-            catch (Exception ex)
+
+            // ReSharper disable once RedundantCatchClause
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             return statusMsg;
         }

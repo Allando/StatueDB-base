@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using StatueApp.Handler;
 
 namespace StatueApp.Common
 {
@@ -17,8 +14,15 @@ namespace StatueApp.Common
 
         public static void navigate(Type page)
         {
-            _frame = (Window.Current.Content as Frame);
-            _frame.Navigate(page);
+            try
+            {
+                _frame = (Window.Current.Content as Frame);
+                _frame?.Navigate(page); // Hvis _frame IKKE er null
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ShowExceptionError(ex.Message);
+            }
         }
     }
 }

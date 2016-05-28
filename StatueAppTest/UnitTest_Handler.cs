@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using StatueApp.Common;
@@ -10,13 +9,11 @@ using StatueApp.Model;
 namespace StatueAppTest
 {
     [TestClass]
-    public class StatueHandlerUnitTest
+    public class UnitTest_Handler
     {
         [TestMethod]
         public async Task Createstatuetest()
         {
-
-
             StatueSingleton singleton = StatueSingleton.Instance;
             singleton.Statue.Name = "carsten";
             singleton.Statue.Address = "rampelyset 12";
@@ -30,9 +27,7 @@ namespace StatueAppTest
             singleton.Placements.Add(placements.ElementAt(1));
             singleton.StatueTypes.Add(statuetypes.ElementAt(2));
 
-
             await handlerStatue.CreateStatue();
-
 
             var statueList = facadeStatue.GetListAsync(new modelStatue()).Result;
 
@@ -58,9 +53,6 @@ namespace StatueAppTest
             Assert.AreEqual(6, material.First().FK_Material);
             Assert.AreEqual(2, placement.First().FK_Placement);
             Assert.AreEqual(3, statuetype.First().FK_StatueType);
-
-
-
 
             await facadeStatue.DeleteAsync(new modelCulturalValueList(), culturalvalue.First().Id);
             await facadeStatue.DeleteAsync(new modelMaterialList(), material.First().Id);
