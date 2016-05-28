@@ -10,7 +10,7 @@ using StatueApp.Model;
 
 namespace StatueApp.Handler
 {
-    public class handlerStatue
+    public class handlerCreateStatue
     {
         /// <summary>
         /// Finder den nyeste generede statue, ved at finde den statue med det højeste Id
