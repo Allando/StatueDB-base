@@ -70,7 +70,7 @@
 
             <StackPanel Height="371" Margin="488,-370,0,0" Padding="0" Orientation="Vertical" HorizontalAlignment="Left" Width="340" RenderTransformOrigin="0.5,0.5">
                 <StackPanel Width="339" Margin="0,0,0,73.2">
-                    <ListView x:Name="listViewSkader" Height="299" Margin="0,0,0.2,0" BorderBrush="Gray" BorderThickness="1" Width="327"/>
+                    <ListView x:Name="listViewSkader" Height="299" Margin="0,0,0.2,0" BorderBrush="Gray" BorderThickness="1" Width="327" ItemsSource="{Binding Damages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Height="30" Margin="0,-55,0,0" HorizontalAlignment="Right" Width="94">
                     <Border BorderBrush="#FF786B5E" Height="30" Width="94" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="0">

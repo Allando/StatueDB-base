@@ -3,11 +3,12 @@ using StatueApp.Interface;
 
 namespace StatueApp.Model
 {
-    public class modelDamage : IWebUri
+    public class modelDamage : IWebUri, IGetByStatueId
     {
 
         public string ResourceUri { get; } 
         public string VerboseName { get; }
+        public bool CanGetByStatueId { get; }
 
         // Properties
         public int Id { get; set; }
@@ -24,6 +25,7 @@ namespace StatueApp.Model
         {
             ResourceUri = "Damages";
             VerboseName = "Damage";
+            CanGetByStatueId = true;
             CreatedDate = DateTime.Now;
         }
 
@@ -42,5 +44,9 @@ namespace StatueApp.Model
             Placement = placement;
         }
 
+        public override string ToString()
+        {
+            return $"Skade Oprettet: {CreatedDate}\n{DamageDescription}";
+        }
     }
 }

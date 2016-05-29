@@ -19,11 +19,11 @@ namespace StatueApp.ViewModel
         public modelDamageType SelectedDamageType
         {
             get { return _selectedDamageType; }
-            set {_selectedDamageType = value; OnPropertyChanged(); }
+            set { _selectedDamageType = value; OnPropertyChanged(); }
         }
         public RelayCommand AddDamageCommand { get; set; }
         public static ObservableCollection<modelDamageType> DamageTypes { get; set; }
-        public static ObservableCollection<DamageSingleton> Damages { get; set; }
+        public static ObservableCollection<modelDamage> Damages { get; set; }
 
         private bool _loadingIcon;
         private static modelDamageType _selectedDamageType;
@@ -46,12 +46,15 @@ namespace StatueApp.ViewModel
             {
                 DamageTypes = new ObservableCollection<modelDamageType>();
                 GetDamageTypesAsync();
+
+                Damages = new ObservableCollection<modelDamage>();
+                GetDamagesAsync();
             }
             catch (Exception ex)
             {
                 ExceptionHandler.ShowExceptionError(ex.Message);
             }
-            AddDamageCommand=new RelayCommand(DoAddDamage);
+            AddDamageCommand = new RelayCommand(DoAddDamage);
         }
         #endregion
 
@@ -68,6 +71,7 @@ namespace StatueApp.ViewModel
                 var msg = await handlerDamage.AddDamage(SelectedStatue.SelectedStatue.Id);
                 var message = new MessageDialog(msg);
                 await message.ShowAsync();
+                NewDamage.Dispose();
             }
             catch (Exception ex)
             {
@@ -79,7 +83,6 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetDamageTypesAsync()
         {
-            DamageTypes.Clear();
             try
             {
                 var listOfDamageTypes = await facadeStatue.GetListAsync(new modelDamageType());
@@ -93,6 +96,22 @@ namespace StatueApp.ViewModel
                 ExceptionHandler.ShowExceptionError(ex.Message);
             }
         }
+        public async void GetDamagesAsync()
+        {
+            try
+            {
+                var listOfDamages = await facadeStatue.GetByStatueIdAsync(new modelDamage(), SelectedStatue.SelectedStatue.Id);
+                foreach (var item in listOfDamages)
+                {
+                    Damages.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ShowExceptionError(ex.Message);
+            }
+        }
+
         #endregion
 
         #region PropertyChanged Support
