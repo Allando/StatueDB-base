@@ -60,13 +60,16 @@ namespace StatueApp.Handler
 
             if (!statusMsg.Contains("Success") || statueId <= 0) return statusMsg;
 
+            #region Foreach Loops
+            // Disse Foreach Loops, løber igennem de mange forskellige mellem tabler, og poster deres værdi i til databasen. 
             try
             {
                 foreach (var culturalValue in NewStatue.CulturalValues)
                 {
                     statusMsg = await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
-                    if (!statusMsg.Contains("Success"))
-                    {
+
+                    //Hvis statusMsg ikke får beskeden Succes fra facaden, løber den ud af foreach loop'et og skriver en Exception fejl besked
+                    if (!statusMsg.Contains("Success"))                    {
                         throw new Exception(statusMsg);
                     }
                 }
@@ -110,8 +113,10 @@ namespace StatueApp.Handler
                         throw new Exception(statusMsg);
                     }
                 }
-            }
-                // ReSharper disable once RedundantCatchClause
+            } 
+            #endregion
+
+            // ReSharper disable once RedundantCatchClause
             catch (Exception)
             {
                 throw;

@@ -135,7 +135,6 @@ namespace StatueApp.ViewModel
             {
                 LoadingIcon = false;
             }
-
         }
 
         /// <summary>
@@ -160,7 +159,6 @@ namespace StatueApp.ViewModel
             {
                 LoadingIcon = false;
             }
-
         }
 
         /// <summary>
@@ -185,7 +183,6 @@ namespace StatueApp.ViewModel
             {
                 LoadingIcon = false;
             }
-
         }
 
         /// <summary>
@@ -297,7 +294,6 @@ namespace StatueApp.ViewModel
             {
                 ExceptionHandler.ShowExceptionError(ex.Message);
             }
-
         }
         #endregion
 

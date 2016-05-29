@@ -71,8 +71,6 @@ namespace StatueApp.Facade
                 {
                     throw new ServerErrorException("Server Fejl\n" + ex.Message);
                 }
-
-
             }
         }
 
@@ -103,7 +101,6 @@ namespace StatueApp.Facade
                 {
                     throw new ServerErrorException("Server Fejl\n" + ex.Message);
                 }
-
             }
         }
 
