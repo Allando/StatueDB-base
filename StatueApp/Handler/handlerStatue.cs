@@ -64,54 +64,60 @@ namespace StatueApp.Handler
             // Disse Foreach Loops, løber igennem de mange forskellige mellem tabler, og poster deres værdi i til databasen. 
             try
             {
+                string loopStatusMsg="";
                 foreach (var culturalValue in NewStatue.CulturalValues)
                 {
-                    statusMsg = await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
+                    loopStatusMsg = await facadeStatue.PostAsync(new modelCulturalValueList(statueId, culturalValue.Id));
 
                     //Hvis statusMsg ikke får beskeden Succes fra facaden, løber den ud af foreach loop'et og skriver en Exception fejl besked
-                    if (!statusMsg.Contains("Success"))                    {
-                        throw new Exception(statusMsg);
+                    if (!loopStatusMsg.Contains("Success"))
+                    {
+                        throw new Exception(loopStatusMsg);
                     }
                 }
                 foreach (var material in NewStatue.Materials)
                 {
-                    statusMsg = await facadeStatue.PostAsync(new modelMaterialList(statueId, material.Id));
-                    if (!statusMsg.Contains("Success"))
+                    loopStatusMsg = await facadeStatue.PostAsync(new modelMaterialList(statueId, material.Id));
+                    if (!loopStatusMsg.Contains("Success"))
                     {
-                        throw new Exception(statusMsg);
+                        throw new Exception(loopStatusMsg);
                     }
                 }
                 foreach (var placement in NewStatue.Placements)
                 {
-                    statusMsg = await facadeStatue.PostAsync(new modelPlacementList(statueId, placement.Id));
-                    if (!statusMsg.Contains("Success"))
+                    loopStatusMsg = await facadeStatue.PostAsync(new modelPlacementList(statueId, placement.Id));
+                    if (!loopStatusMsg.Contains("Success"))
                     {
-                        throw new Exception(statusMsg);
+                        throw new Exception(loopStatusMsg);
                     }
                 }
                 foreach (var statueType in NewStatue.StatueTypes)
                 {
-                    statusMsg = await facadeStatue.PostAsync(new modelStatueTypeList(statueId, statueType.Id));
-                    if (!statusMsg.Contains("Success"))
+                    loopStatusMsg = await facadeStatue.PostAsync(new modelStatueTypeList(statueId, statueType.Id));
+                    if (!loopStatusMsg.Contains("Success"))
                     {
-                        throw new Exception(statusMsg);
+                        throw new Exception(loopStatusMsg);
                     }
                 }
-                if (NewStatue.Description != null)
+                //if (NewStatue.Description != null)
+                //{
+                //    loopStatusMsg = await facadeStatue.PostAsync(NewStatue.Description);
+                //    if (!loopStatusMsg.Contains("Success"))
+                //    {
+                //        throw new Exception(loopStatusMsg);
+                //    }
+                //}
+                //if (NewStatue.GpsLocation != null)
+                //{
+                //    loopStatusMsg = await facadeStatue.PostAsync(NewStatue.GpsLocation);
+                //    if (!loopStatusMsg.Contains("Success"))
+                //    {
+                //        throw new Exception(loopStatusMsg);
+                //    }
+                //}
+                if (!loopStatusMsg.Contains("Success"))
                 {
-                    statusMsg = await facadeStatue.PostAsync(NewStatue.Description);
-                    if (!statusMsg.Contains("Success"))
-                    {
-                        throw new Exception(statusMsg);
-                    }
-                }
-                if (NewStatue.GpsLocation != null)
-                {
-                    statusMsg = await facadeStatue.PostAsync(NewStatue.GpsLocation);
-                    if (!statusMsg.Contains("Success"))
-                    {
-                        throw new Exception(statusMsg);
-                    }
+                    statusMsg = loopStatusMsg;
                 }
             } 
             #endregion
@@ -122,13 +128,14 @@ namespace StatueApp.Handler
                 throw;
             }
             NewStatue.Dispose();
+            
             return statusMsg;
         }
 
         public static async Task<string> DeleteStatue()
         {
             var statue = StatueSingleton.Instance;
-            var statusMsg = "Doh";
+            var statusMsg = "";
             var statueId = statue.SelectedStatue.Id;
 
             try

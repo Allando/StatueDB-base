@@ -22,7 +22,6 @@ namespace StatueApp.ViewModel
         public RelayCommand ViewStatueCommand { get; set; }
         public RelayCommand DeleteStatueCommand { get; set; }
 
-
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement { get; set; }
         public static ObservableCollection<modelCulturalValue> CulturalValue { get; set; }
