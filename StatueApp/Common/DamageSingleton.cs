@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using StatueApp.Annotations;
@@ -51,7 +52,9 @@ namespace StatueApp.Common
         /// </summary>
         public void Dispose()
         {
-            _instance.Damage = new modelDamage();
+            //_instance.Damage = new modelDamage();
+            _instance.Damage.CreatedDate = DateTime.Now;
+
             _instance.DamageType = new modelDamageType();
             _instance.Images.Clear();
             _instance.StatueId = -1;

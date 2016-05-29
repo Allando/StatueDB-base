@@ -68,9 +68,14 @@ namespace StatueApp.ViewModel
             NewDamage.Damage.FK_Statue = SelectedStatue.SelectedStatue.Id;
             try
             {
+                Damages.Clear();
+                
                 var msg = await handlerDamage.AddDamage(SelectedStatue.SelectedStatue.Id);
                 var message = new MessageDialog(msg);
                 await message.ShowAsync();
+                
+                GetDamagesAsync();
+
                 NewDamage.Dispose();
             }
             catch (Exception ex)
@@ -101,8 +106,9 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetDamagesAsync()
         {
-            try
+           try
             {
+                //Damages.Clear();
                 var listOfDamages = await facadeStatue.GetByStatueIdAsync(new modelDamage(), SelectedStatue.SelectedStatue.Id);
                 foreach (var item in listOfDamages)
                 {
