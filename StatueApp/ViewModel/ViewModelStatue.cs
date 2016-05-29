@@ -284,8 +284,7 @@ namespace StatueApp.ViewModel
             // TODO
             try
             {
-                NewStatue.SelectedStatue.Name = SelectedStatue.Name;
-                NewStatue.SelectedStatue.Address = SelectedStatue.Address;
+                NewStatue.SelectedStatue = SelectedStatue;
 
                 // Navigerer til View'et ViewStatue
                 NavigationHelper.navigate(typeof(SeeStatue));

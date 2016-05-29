@@ -36,7 +36,7 @@ namespace StatueApp.Handler
         {
             string statusMsg;
             var NewDamage = DamageSingleton.Instance;
-
+            NewDamage.Damage.FK_Statue = statueId;
             try
             {
                 statusMsg = await facadeStatue.PostAsync(NewDamage.Damage);

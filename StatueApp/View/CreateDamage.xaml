@@ -5,20 +5,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:ViewModel="using:StatueApp.ViewModel"
+    xmlns:viewModel="using:StatueApp.ViewModel"
     x:Class="StatueApp.View.CreateDamage"
     mc:Ignorable="d">
 
-
     <Page.DataContext>
-        <ViewModel:ViewModelAddDamage/>
+        <viewModel:ViewModelAddDamage/>
     </Page.DataContext>
-
-
     <Grid Background="#FFE1D0BC">
-        <Grid.DataContext>
-            <ViewModel:ViewModelAddDamage/>
-        </Grid.DataContext>
         <StackPanel HorizontalAlignment="Center" Height="149" Margin="10,5,10,0" VerticalAlignment="Top" Orientation="Horizontal">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="PointerPressed">
@@ -39,22 +33,17 @@
             <StackPanel Height="371" Margin="39,0,386,0">
                 <StackPanel Height="51" Margin="0,0,0.2,0" Orientation="Horizontal">
                     <TextBlock x:Name="textBlockType" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="Type:" Width="59" FontWeight="Bold" Margin="0,10,0,0"/>
-                    <ComboBox x:Name="comboBoxType" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="249" Margin="89,17,0,0.2" ItemsSource="{Binding DamageTypes}"/>
+                    <ComboBox x:Name="comboBoxType" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="249" Margin="89,17,0,0.2" ItemsSource="{Binding DamageTypes}" SelectedItem="{Binding SelectedDamageType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Vælg"/>
                 </StackPanel>
 
                 <StackPanel Height="51" Margin="0,10,0.2,0" Orientation="Horizontal">
                     <TextBlock x:Name="textBlockPlacering" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="Placering:" Width="82" FontWeight="Bold" Margin="0,18,0,7.2"/>
-                    <TextBox x:Name="textBoxPlacering" TextWrapping="Wrap" Text=""  Width="249" Margin="66,17,0,0.2"/>
-                </StackPanel>
-
-                <StackPanel Height="51" Margin="0,10,0.2,0" Orientation="Horizontal">
-                    <TextBlock x:Name="textBlockNiveau" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="Niveau:" Width="82" FontWeight="Bold" Margin="0,18,0,7.2"/>
-                    <TextBox x:Name="textBoxNiveau" TextWrapping="Wrap" Text=""  Width="34" Margin="66,17,0,0.2"/>
+                    <TextBox x:Name="textBoxPlacering" TextWrapping="Wrap" Text="{Binding NewDamage.Damage.Placement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="249" Margin="66,17,0,0.2"/>
                 </StackPanel>
 
                 <StackPanel Height="132" Margin="0,10,0.2,0" Orientation="Horizontal">
                     <TextBlock x:Name="textBlockBeskrivelse" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="Beskrivelse:" Width="82" FontWeight="Bold" Margin="0,0,0,75"/>
-                    <TextBox x:Name="textBoxBeskrivelse" TextWrapping="Wrap" Text=""  Width="247" Margin="66,17,0,0"/>
+                    <TextBox x:Name="textBoxBeskrivelse" TextWrapping="Wrap" Text="{Binding NewDamage.Damage.DamageDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="247" Margin="66,17,0,0"/>
                 </StackPanel>
 
                 <StackPanel Height="45" Margin="150,10,10.2,0" Orientation="Horizontal">
@@ -68,7 +57,13 @@
                         <TextBlock x:Name="textBlockTilbage" TextWrapping="Wrap" Text="Tilbage" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
                     </Border>
                     <Border BorderBrush="#FF786B5E" Height="30" Width="94" BorderThickness="2,2,2,2" Background="#FFB4A390" CornerRadius="15" Margin="20,0,0,0">
-                        <TextBlock x:Name="textBlockGem" TextWrapping="Wrap" Text="Gem" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="PointerPressed">
+                                <core:InvokeCommandAction Command="{Binding AddDamageCommand}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="textBlockGem" TextWrapping="Wrap" Text="Tilføj" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="13" Foreground="#FF0E143F" Padding="0"/>
+                        
                     </Border>
                 </StackPanel>
             </StackPanel>
@@ -92,6 +87,7 @@
                 <Button x:Name="button4" Content="Admin" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="81" FontSize="16" FontFamily="Verdana" Background="#00000000"/>
             </Border>
         </StackPanel>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,610,0,0" TextWrapping="Wrap" Text="{Binding SelectedStatue.SelectedStatue.Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>
