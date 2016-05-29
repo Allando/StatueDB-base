@@ -96,6 +96,9 @@ namespace StatueApp.ViewModel
                 ExceptionHandler.ShowExceptionError(ex.Message);
             }
         }
+        /// <summary>
+        /// Henter og laver en liste over Damages på den selected statue
+        /// </summary>
         public async void GetDamagesAsync()
         {
             try

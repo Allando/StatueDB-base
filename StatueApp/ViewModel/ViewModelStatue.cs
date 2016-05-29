@@ -138,7 +138,6 @@ namespace StatueApp.ViewModel
             {
                 LoadingIcon = false;
             }
-
         }
 
         /// <summary>
@@ -163,7 +162,6 @@ namespace StatueApp.ViewModel
             {
                 LoadingIcon = false;
             }
-
         }
 
         /// <summary>
@@ -188,7 +186,6 @@ namespace StatueApp.ViewModel
             {
                 LoadingIcon = false;
             }
-
         }
 
         /// <summary>
