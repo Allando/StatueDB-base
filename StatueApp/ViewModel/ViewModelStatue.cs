@@ -20,6 +20,8 @@ namespace StatueApp.ViewModel
 
         public RelayCommand CreateStatueCommand { get; set; }
         public RelayCommand ViewStatueCommand { get; set; }
+        public RelayCommand DeleteStatueCommand { get; set; }
+
 
         public static ObservableCollection<modelStatueType> StatueType { get; set; }
         public static ObservableCollection<modelPlacement> StatuePlacement { get; set; }
@@ -67,6 +69,7 @@ namespace StatueApp.ViewModel
 
             CreateStatueCommand = new RelayCommand(DoCreateStatue);
             ViewStatueCommand = new RelayCommand(ViewStatue);
+            DeleteStatueCommand = new RelayCommand(DoDeleteStatue);
         }
         #endregion
 
@@ -222,11 +225,12 @@ namespace StatueApp.ViewModel
         /// </summary>
         public async void GetStatueAsync()
         {
+            Statues.Clear();
             try
             {
                 LoadingIcon = true;
                 var listOfStatues = await facadeStatue.GetListAsync(new modelStatue());
-                Statues.Clear();
+
                 foreach (var statue in listOfStatues)
                 {
                     Statues.Add(statue);
@@ -281,7 +285,6 @@ namespace StatueApp.ViewModel
         /// </summary>
         public void ViewStatue()
         {
-            // TODO
             try
             {
                 NewStatue.SelectedStatue = SelectedStatue;
@@ -289,15 +292,30 @@ namespace StatueApp.ViewModel
                 // Navigerer til View'et ViewStatue
                 NavigationHelper.navigate(typeof(SeeStatue));
             }
-            catch (NullReferenceException)
+            catch (Exception ex)
             {
-                ExceptionHandler.ShowExceptionError("Ingen statue valgt");
+                ExceptionHandler.ShowExceptionError(ex.Message);
+            }
+        }
+
+        public async void DoDeleteStatue()
+        {
+            try
+            {
+                LoadingIcon = true;
+                var msg = await handlerStatue.DeleteStatue();
+                var message = new MessageDialog(msg);
+                await message.ShowAsync();
             }
             catch (Exception ex)
             {
                 ExceptionHandler.ShowExceptionError(ex.Message);
             }
-
+            finally
+            {
+                LoadingIcon = false;
+            }
+            GetStatueAsync();
         }
         #endregion
 

@@ -8,8 +8,7 @@ namespace StatueApp.Common
 {
     public class StatueSingleton : INotifyPropertyChanged
     {
-        /// Properties
-        /// 
+        // Properties
         #region Properties
         public modelDescription Description { get; set; }
         public modelGPSLocation GpsLocation { get; set; }
@@ -30,23 +29,21 @@ namespace StatueApp.Common
         private static StatueSingleton _instance;
 
         /// <summary>
-        /// Sætter instancen af Singletonen udfra om den er initialiseret elle ikke.
+        /// Sætter instancen af Singletonen udfra om den er initialiseret eller ikke.
         /// </summary>
-        /// 
-        /// public static SampleSingleton Instance
-        /// {
-        ///     get
-        ///     {
-        ///         if (_instance == null)
-        ///         {
-        ///             _instance = new SampleSingleton();
-        ///         }
-        ///         return _instance;
-        ///     }
-        /// }
-        /// 
-        
-        /// Gør det samme som ovenstående kode
+
+        // public static SampleSingleton Instance
+        // {
+        //     get
+        //     {
+        //         if (_instance == null)
+        //         {
+        //             _instance = new SampleSingleton();
+        //         }
+        //         return _instance;
+        //     }
+        // }
+        // Gør det samme som ovenstående kode
         public static StatueSingleton Instance => _instance ?? (_instance = new StatueSingleton());
 
         /// <summary>
@@ -61,16 +58,6 @@ namespace StatueApp.Common
             Materials = new ObservableCollection<modelMaterial>();
             Placements = new ObservableCollection<modelPlacement>();
             StatueTypes = new ObservableCollection<modelStatueType>();
-        }
-        #endregion
-
-        #region PropertyChanged Support
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
 
@@ -91,5 +78,16 @@ namespace StatueApp.Common
             _instance.StatueTypes.Clear();
         } 
         #endregion
+
+        #region PropertyChanged Support
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+
     }
 }

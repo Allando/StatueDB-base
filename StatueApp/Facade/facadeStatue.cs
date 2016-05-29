@@ -192,5 +192,34 @@ namespace StatueApp.Facade
                 }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="statueId"></param>
+        /// <returns></returns>
+        public static async Task DeleteByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, IGetByStatueId
+        {
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/ByStatueId/" + statueId);
+                //try
+                //{
+                //    var response = await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/ByStatueId/" + statueId);
+                //    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                //        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                //}
+                //catch (Exception ex)
+                //{
+                //    throw new ServerErrorException("Server Fejl\n" + ex.Message);
+                //}
+            }
+        }
     }
 }

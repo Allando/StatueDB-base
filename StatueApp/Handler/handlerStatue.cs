@@ -53,9 +53,9 @@ namespace StatueApp.Handler
                 statusMsg = await facadeStatue.PostAsync(NewStatue.Statue);
                 statueId = await GetHighestStatueId();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception(ex.Message, ex);
+                throw;
             }
 
             if (!statusMsg.Contains("Success") || statueId <= 0) return statusMsg;
@@ -111,12 +111,36 @@ namespace StatueApp.Handler
                     }
                 }
             }
-                // ReSharper disable once RedundantCatchClause
+            // ReSharper disable once RedundantCatchClause
             catch (Exception)
             {
                 throw;
             }
-            //NewStatue.Dispose();
+            NewStatue.Dispose();
+            return statusMsg;
+        }
+
+        public static async Task<string> DeleteStatue()
+        {
+            var statue = StatueSingleton.Instance;
+            var statusMsg = "Doh";
+            var statueId = statue.SelectedStatue.Id;
+
+            try
+            {
+                await facadeStatue.DeleteByStatueIdAsync(new modelCulturalValueList(), statueId);
+                await facadeStatue.DeleteByStatueIdAsync(new modelMaterialList(), statueId);
+                await facadeStatue.DeleteByStatueIdAsync(new modelPlacementList(), statueId);
+                await facadeStatue.DeleteByStatueIdAsync(new modelStatueTypeList(), statueId);
+
+                await facadeStatue.DeleteByStatueIdAsync(new modelDamage(), statueId);
+
+                statusMsg = await facadeStatue.DeleteAsync(new modelStatue(), statueId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             return statusMsg;
         }
     }
