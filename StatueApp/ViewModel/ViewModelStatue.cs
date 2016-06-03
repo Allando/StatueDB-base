@@ -287,7 +287,10 @@ namespace StatueApp.ViewModel
                 NewStatue.SelectedStatue = SelectedStatue;
 
                 // Navigerer til View'et ViewStatue
-                NavigationHelper.navigate(typeof(SeeStatue));
+                if (SelectedStatue != null)
+                {
+                    NavigationHelper.navigate(typeof(SeeStatue));
+                }
             }
             catch (Exception ex)
             {
