@@ -105,10 +105,10 @@ namespace StatueApp.Facade
         }
 
         /// <summary>
-        /// 
+        /// Sender et objekt til webservicen, serialiseret som JSON
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
+        /// <typeparam name="T">Objekt Type</typeparam>
+        /// <param name="obj">Objekt som skal sendes</param>
         /// <returns></returns>
         public static async Task<string> PostAsync<T>(T obj) where T : IWebUri
         {
