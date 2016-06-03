@@ -264,6 +264,7 @@ namespace StatueApp.ViewModel
                 LoadingIcon = true;
                 var msg = await handlerStatue.CreateStatue();
                 var message = new MessageDialog(msg);
+                NavigationHelper.navigate(typeof(StatueIsCreated));
                 await message.ShowAsync();
             }
             catch (Exception ex)

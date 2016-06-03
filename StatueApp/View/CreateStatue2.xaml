@@ -206,7 +206,7 @@
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="PointerPressed">
                             <Core:InvokeCommandAction Command="{Binding CreateStatueCommand}" />
-                            <Core:NavigateToPageAction TargetPage="StatueApp.View.StatueIsCreated"/>
+                            <!--<Core:NavigateToPageAction TargetPage="StatueApp.View.StatueIsCreated"/>-->
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
 
